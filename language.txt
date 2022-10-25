@@ -1,0 +1,32 @@
+As inspiration from AI Feynman, also use RPN
+
+Unary operators:
+~ = unary negation
+S, C = sin, cos
+A - abs
+s, c, t = asin, acos, atan
+L = ln
+><, inc dec
+
+Binary operators:
++, *, /, -, ^ (exp, like 5^2 = 5 * 5 = 25)
+
+
+Constants:
+1, 0, P (pi), E (e)
+
+Literals:
+Always of the form x{n}
+
+ex: x{0} is the first literal (we need not evaluate inside the {} since it's unlikely our expression will utilize variable variables) 
+
+Ex: V = IR
+	y = x{1}x{2}*
+
+	K = mv^2 / 2
+
+	y = 0>>x{0}0>>x{1}^*/
+	y = 1>x{0}x{1}*x{1}*/
+
+- We parse recognized operators, constants as arguments
+- If we see x, we know to expect {...}, need not parse inside {}, continue parsing after }
