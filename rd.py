@@ -10,7 +10,7 @@ import numpy as np
 import matplotlib as plt
 from eval import Eval, EvalPt
 import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' # or any {‘0’, ‘1’, ‘2’}
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' # or any {‘0’, ‘1’, ‘2’}, stops tf from complaining about things it shouldn't be worried about
 import tensorflow as tf
 import re # Can't believe I'm actually using this
 import timeit # Just so I know how much time I've wasted
@@ -210,12 +210,14 @@ def main():
     minutes, sec = divmod(stop-start, 60.0)
     print(f"Took {int(minutes)} minutes, {sec:1.4f} seconds")
 
+
+    # Rn, this is just looking for the nearest matches on "best" performance
     for i in records:
-        if i[2] <= 5 * records[-1][2]:
+        if i[1] <= 5 * records[-1][1]:
             print(i)
 
     for i in all_models:
-        if i[2] <= 10 * records[-1][2]:
+        if i[1] <= 5 * records[-1][1]:
             print(i)
 
 if __name__ == "__main__":
