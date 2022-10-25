@@ -25,6 +25,8 @@ DEFAULT_TEST_SIZE = 0.2
 
 
 class mystery_function():
+    """Dumb ass class
+    """
     def __init__(self, fn, dim, sample_size=DEFAULT_SAMPLE_SIZE, scale=DEFAULT_SCALE, test_size=DEFAULT_TEST_SIZE, noisy=False, noise_factor=DEFAULT_NOISE):
         self.fn = fn
         self.dim = dim
