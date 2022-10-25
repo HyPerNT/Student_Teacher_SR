@@ -1,4 +1,4 @@
-# Symbolic Regression via Student Teacher Regression
+# Symbolic Regression via Student-Teacher Learning
 A novel attempt at interpretable function-learning via Student-Teacher Neural Networks.
 
 ---

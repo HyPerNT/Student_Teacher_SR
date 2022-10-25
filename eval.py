@@ -114,7 +114,7 @@ def EvalPt(expr: str, x: np.ndarray) -> np.ndarray:
                     elif symbol == "<":
                         stack.append(q - 1)
                     elif symbol == "S":
-                        stack.append(math.sin(q))
+                        stack.append(float(math.sin(q)))
                     elif symbol == "C":
                         stack.append(math.cos(q))
 
@@ -170,10 +170,9 @@ def Eval(expr: str, x: np.ndarray) -> np.ndarray:
     """
     newarr = np.array([])
     i = 0
-
-    for xi in x:
+    for index in range(len(x)):
         i += 1
-        x2 = EvalPt(expr, xi) # Get ans from EvalPt
+        x2 = EvalPt(expr, x[index]) # Get ans from EvalPt
         newarr = np.append(newarr, x2) # Append
     s = list(x.shape)
     s[1] += 1
