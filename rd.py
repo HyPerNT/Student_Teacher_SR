@@ -208,6 +208,37 @@ def iterateNN(fn, layer_range=10, node_range=512, by=2, method="*", rate=0.01, n
     print(f"Best Configuration: {best_ij[0]} layers and {best_ij[1]} nodes/layer, loss of {best_nn_loss:1.4f}")
     return best_confs, best_model, history
 
+def plotNN(fn, nn):
+    x = fn.x_train
+    y1 = fn.y_train
+    y2 = nn.predict(fn.x_train)
+    x = np.reshape(x, (-1))
+    y1 = np.reshape(y1, (-1))
+    y2 = np.reshape(y2, (-1))
+    fig = plt.figure()
+    ax = fig.add_subplot(1, 1, 1)
+
+    # Move left y-axis and bottim x-axis to centre, passing through (0,0)
+    ax.spines['left'].set_position('zero')
+    ax.spines['bottom'].set_position('zero')
+
+    # Eliminate upper and right axes
+    ax.spines['right'].set_color('none')
+    ax.spines['top'].set_color('none')
+
+    # Show ticks in the left and lower axes only
+    ax.xaxis.set_ticks_position('bottom')
+    ax.yaxis.set_ticks_position('left')
+    plt.plot(x, y1, label = "Ground Truth", color = "blue")
+    plt.plot(x, y2, label = "Predicted", color = "red")
+    err = y2-y1
+    plt.plot(x, err, label = "Error", linestyle = "--", color = "green")
+
+
+    plt.legend()
+    plt.savefig(f'./{FIG_DIR}/{nn.name}.png')
+
+
 def main():
     # start = timeit.default_timer()
 
@@ -256,34 +287,8 @@ def main():
     # Let's visualize the result we get for the best NN
 
     sin.gen_data(test_size=0, sample_size=500, scale=10, sorted=True)
-    x = sin.x_train
-    y1 = sin.y_train
-    y2 = nn.predict(sin.x_train)
-    x = np.reshape(x, (-1))
-    y1 = np.reshape(y1, (-1))
-    y2 = np.reshape(y2, (-1))
-    fig = plt.figure()
-    ax = fig.add_subplot(1, 1, 1)
+    plotNN(sin, nn)
 
-    # Move left y-axis and bottim x-axis to centre, passing through (0,0)
-    ax.spines['left'].set_position('zero')
-    ax.spines['bottom'].set_position('zero')
-
-    # Eliminate upper and right axes
-    ax.spines['right'].set_color('none')
-    ax.spines['top'].set_color('none')
-
-    # Show ticks in the left and lower axes only
-    ax.xaxis.set_ticks_position('bottom')
-    ax.yaxis.set_ticks_position('left')
-    plt.plot(x, y1, label = "Ground Truth", color = "blue")
-    plt.plot(x, y2, label = "Predicted", color = "red")
-    err = y2-y1
-    plt.plot(x, err, label = "Error", linestyle = "--", color = "green")
-
-
-    plt.legend()
-    plt.savefig(f'./{FIG_DIR}/{nn.name}.png')
 
 if __name__ == "__main__":
     main()
