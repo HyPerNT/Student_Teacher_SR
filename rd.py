@@ -254,10 +254,6 @@ def main():
     log = mystery_function("0>0>>x{0}*+L", 1, scale=9, center=3.5, gen_data=True, noisy=True)
     # records, best_nn, all_models = iterateNN(sin, layer_range=10, name='sin_nn', node_range=512) # Store results from iteration
 
-    print(f"Input Vector\tResult\n------------------------------------\n")
-    for i in range(10):
-        print(f"{sin.x_train[i]}\t{sin.y_train[i]}")
-    exit()
     # Build and train sin, playing with non-linear function learning
     nn = getNN(3, 512, sin.shape, name="sin")
     nn.compile(optimizer=tf.keras.optimizers.Adam(), loss='mean_squared_error', metrics=[tfa.metrics.r_square.RSquare()])
