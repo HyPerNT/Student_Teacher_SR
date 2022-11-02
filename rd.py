@@ -13,6 +13,7 @@ from eval import Eval, EvalPt
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' # or any {‘0’, ‘1’, ‘2’}, stops tf from complaining about things it shouldn't be worried about
 import tensorflow as tf
+import tensorflow_addons as tfa
 import re # Can't believe I'm actually using this
 import timeit # Just so I know how much time I've wasted
 
@@ -25,6 +26,7 @@ DEFAULT_NOISE = 0.000001
 DEFAULT_SAMPLE_SIZE = 10_000
 DEFAULT_SCALE = 1
 DEFAULT_TEST_SIZE = 0.2
+DEFAULT_CENTER = 0
 
 FIG_DIR = "figures"
 
@@ -37,7 +39,7 @@ FIG_DIR = "figures"
 
 class mystery_function():
     """A class to model a given fn, also handles creation/storage of data to train/test on"""
-    def __init__(self, fn, dim, gen_data=False, sample_size=DEFAULT_SAMPLE_SIZE, scale=DEFAULT_SCALE, test_size=DEFAULT_TEST_SIZE, noisy=False, noise_factor=DEFAULT_NOISE):
+    def __init__(self, fn, dim, gen_data=False, sample_size=DEFAULT_SAMPLE_SIZE, scale=DEFAULT_SCALE, center=DEFAULT_CENTER, test_size=DEFAULT_TEST_SIZE, noisy=False, noise_factor=DEFAULT_NOISE):
         """Init function, generates a function for fn in dim variables, includes optional params for tuning the data generated
         
             Parameters
@@ -55,9 +57,9 @@ class mystery_function():
         self.dim = dim
         self.shape = (dim, )
         if gen_data:
-            self.gen_data(sample_size=sample_size, scale=scale, test_size=test_size, noisy=noisy, noise_factor=noise_factor)
+            self.gen_data(sample_size=sample_size, scale=scale, test_size=test_size, center=center, noisy=noisy, noise_factor=noise_factor)
 
-    def gen_data(self, sample_size=DEFAULT_SAMPLE_SIZE, scale=DEFAULT_SCALE, test_size=DEFAULT_TEST_SIZE, noisy=False, noise_factor=DEFAULT_NOISE, sorted=False):
+    def gen_data(self, sample_size=DEFAULT_SAMPLE_SIZE, scale=DEFAULT_SCALE, center=DEFAULT_CENTER, test_size=DEFAULT_TEST_SIZE, noisy=False, noise_factor=DEFAULT_NOISE, sorted=False):
         """
         Method to generate data for our candidate fn, makes a random numpy array and defers to Eval() for answers
 
@@ -75,9 +77,14 @@ class mystery_function():
                 """
 
         r = np.random.rand(int(sample_size*(1-test_size)), self.dim) * scale # Generate input train array according to params
+        center_factor = center - scale/2
+        for x in r:
+            for y in x:
+                y += center_factor
+
         self.x_train = r
         if sorted:
-            self.x_train = np.arange(0, scale, scale/sample_size)
+            self.x_train = np.arange(center-scale/2, center+scale/2, scale/sample_size)
             self.x_train = np.reshape(self.x_train, (len(self.x_train), 1))
         self.y_train = Eval(self.fn, self.x_train)[:,-1] # Init x_train and y_train
 
@@ -244,14 +251,23 @@ def main():
 
     # fn1 = mystery_function("0>>x{0}0>>x{1}^*/", 2, sample_size=100_000, scale=10, gen_data=True, noisy=True) # This is just 1/2 mv^2, basically
     sin = mystery_function("x{0}S", 1, scale=4, gen_data=True, noisy=True)
-
+    log = mystery_function("0>0>>x{0}*+L", 1, scale=9, center=3.5, gen_data=True, noisy=True)
     # records, best_nn, all_models = iterateNN(sin, layer_range=10, name='sin_nn', node_range=512) # Store results from iteration
 
+    print(f"Input Vector\tResult\n------------------------------------\n")
+    for i in range(10):
+        print(f"{sin.x_train[i]}\t{sin.y_train[i]}")
+    exit()
     # Build and train sin, playing with non-linear function learning
     nn = getNN(3, 512, sin.shape, name="sin")
-    nn.compile(optimizer=tf.keras.optimizers.Adam(), loss='mean_squared_error')
+    nn.compile(optimizer=tf.keras.optimizers.Adam(), loss='mean_squared_error', metrics=[tfa.metrics.r_square.RSquare()])
     nn.fit(sin.x_train, sin.y_train, epochs=EPOCHS)
     nn.evaluate(sin.x_test, sin.y_test)
+
+    nn2 = getNN(3, 512, log.shape, name="log")
+    nn2.compile(optimizer=tf.keras.optimizers.Adam(), loss='mean_squared_error', metrics=[tfa.metrics.r_square.RSquare()])
+    nn2.fit(log.x_train, log.y_train, epochs=EPOCHS)
+    nn2.evaluate(log.x_test, log.y_test)
 
 
     # stop = timeit.default_timer()
@@ -287,8 +303,11 @@ def main():
     # Let's visualize the result we get for the best NN
 
     sin.gen_data(test_size=0, sample_size=500, scale=10, sorted=True)
+    log.gen_data(test_size=0, sample_size=500, scale=9, center=3.5, sorted=True)
+    nn.evaluate(sin.x_train, sin.y_train)
+    nn2.evaluate(log.x_train, log.y_train)
     plotNN(sin, nn)
-
+    plotNN(log, nn2)
 
 if __name__ == "__main__":
     main()
