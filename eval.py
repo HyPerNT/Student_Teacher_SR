@@ -128,11 +128,9 @@ def EvalPt(expr: str, x: np.ndarray) -> np.ndarray:
                             return np.append(x, np.nan)
                         stack.append(math.acos(q))
                     elif symbol == "t":
-                        if q <= -(math.pi/2) or q >= (math.pi/2):
-                            return np.append(x, np.nan)
                         stack.append(math.atan(q))
                     elif symbol == "A":
-                            return np.append(x, np.nan)
+                        stack.append(abs(q))
                     elif symbol == "L":
                         if q <= 0:
                             return np.append(x, np.nan)

@@ -7,14 +7,13 @@ Testing ground for code, has some solid work done in advance to make more tediou
 """
 
 import numpy as np
-import matplotlib
 import matplotlib.pyplot as plt
-from eval import Eval, EvalPt
+from eval import Eval
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' # or any {‘0’, ‘1’, ‘2’}, stops tf from complaining about things it shouldn't be worried about
 import tensorflow as tf
-import tensorflow_addons as tfa
-import re # Can't believe I'm actually using this
+import math
+import logging
 import timeit # Just so I know how much time I've wasted
 
 # Some constants that can be tweaked
@@ -27,8 +26,13 @@ DEFAULT_SAMPLE_SIZE = 10_000
 DEFAULT_SCALE = 1
 DEFAULT_TEST_SIZE = 0.2
 DEFAULT_CENTER = 0
+GREEDY_LOSS = 10**-6
 
 FIG_DIR = "figures"
+UNIT_DIR = "unit_fns"
+LOG_DIR = 'log'
+
+csv_logger = None
 
 # Maybe we can identify certain operations?
 # Identity is always identity matrix
@@ -187,10 +191,13 @@ def iterateNN(fn, layer_range=10, node_range=512, by=2, method="*", rate=0.01, n
         # Vary across # of nodes per layer
         while j <= node_range:
             name = name_base + f"_{i}-layers_{j}-nodes" # Generate name for this model, describe it so we can see something useful in terminal
-            print(f'\n\nTraining {name}...\n{(len(name)+12)*"-"}')
+            logging.info(f'\n\nTraining {name}...\n{(len(name)+12)*"-"}')
             model = getNN(i, j, fn.shape, rate, name) # Build a NN of that architectyre
             model.compile(optimizer=tf.keras.optimizers.Adam(), loss='mean_squared_error') # Compile it
             train = model.fit(fn.x_train, fn.y_train, epochs=EPOCHS) # Train
+            loss_history = train.history['loss']
+            numpy_loss_history = np.array(loss_history)
+            np.savetxt(f"./{LOG_DIR}/training_logs/{name}.txt", numpy_loss_history, delimiter=",")
             train = min(train.history['loss'])
             predict = model.evaluate(fn.x_test, fn.y_test) # Test
             if summary:
@@ -203,16 +210,21 @@ def iterateNN(fn, layer_range=10, node_range=512, by=2, method="*", rate=0.01, n
                 best_ij = [i,j]
                 best_confs.append([best_ij, best_nn_loss]) # Append to best models
                 best_model = model
-                print(f"{(len(best_ij)+16)*'-'}\nNew Best: {best_ij}\nScore: {best_nn_loss:1.4f}\n{(len(best_ij)+16)*'-'}") # Log to term
-
+                logging.info(f"{(len(best_ij)+16)*'-'}\nNew Best: {best_ij}\nScore: {best_nn_loss:1.4f}\n{(len(best_ij)+16)*'-'}") # Log to term
             # Increase # of nodes as specified
             if method=="*":
                 j *= by
             elif method=="+":
                 j += by
+            if i == 0:
+                j += node_range
+            if best_nn_loss < GREEDY_LOSS:
+                logging.info("Got greedy, found sufficient loss")
+                logging.info(f"Best Configuration: {best_ij[0]} layers and {best_ij[1]} nodes/layer, loss of {best_nn_loss:1.4f}")
+                return best_confs, best_model, history
 
     # Print best results, and return
-    print(f"Best Configuration: {best_ij[0]} layers and {best_ij[1]} nodes/layer, loss of {best_nn_loss:1.4f}")
+    logging.info(f"Best Configuration: {best_ij[0]} layers and {best_ij[1]} nodes/layer, loss of {best_nn_loss:1.4f}")
     return best_confs, best_model, history
 
 def plotNN(fn, nn):
@@ -246,30 +258,124 @@ def plotNN(fn, nn):
     plt.savefig(f'./{FIG_DIR}/{nn.name}.png')
 
 
+
+
+def bf_unit_nns():
+    binaries = {0: ['+', 'addition'], 1: ['-', 'subtraction'], 2: ['*', 'multiplication'], 3: ['/', 'division'], 4: ['^', 'exponentiation']}
+
+    unaries = {0: ['~', 'negation'], 1: ['A', 'abs'], 2: ['>', 'successor'], 3: ['<', 'predecessor']}
+
+    ext = {0: ['L', 'log'], 1: ['S', 'sin'], 2: ['C', 'cos'], 3: ['s', 'arcsin'], 4: ['c', 'arccos'], 5: ['t', 'arctan']}
+
+    for i in range(5):
+        path = os.path.join(UNIT_DIR, binaries[i][1])
+        if os.path.exists(path):
+            continue
+        fn = mystery_function(f"x{{0}}x{{1}}{binaries[i][0]}", 2, gen_data=True, sample_size=100_000, scale=2)
+        records, best_nn, all_models = iterateNN(fn, name=f"{binaries[i][1]}_nn")
+        logging.info(f'Satisfactory models for {binaries[i][1]}')
+        for k in all_models:
+            if k[1] <= 5 * records[-1][1]:
+                logging.info(f'Config:{k[0]}\tScore:{k[1]}\tParams:{k[2]}')
+        os.mkdir(path)
+        best_nn.save(path)
+
+
+    for i in range(4):
+        path = os.path.join(UNIT_DIR, unaries[i][1])
+        if os.path.exists(path):
+            continue
+        fn = mystery_function(f"x{{0}}{unaries[i][0]}", 1, gen_data=True, sample_size=100_000, scale=2)
+        records, best_nn, all_models = iterateNN(fn, name=f"{unaries[i][1]}_nn")
+        logging.info(f'Satisfactory models for {unaries[i][1]}')
+        for k in all_models:
+            if k[1] <= 5 * records[-1][1]:
+                logging.info(f'Config:{k[0]}\tScore:{k[1]}\tParams:{k[2]}')
+        os.mkdir(path)
+        best_nn.save(path)
+
+    for i in range(6):
+        center = 0
+        scale = 10_000
+        if i > 0 and i < 3:
+            scale = 2 * math.pi
+            center = math.pi
+        if i > 2 and i < 5:
+            scale = 2
+        if i == 0:
+            center = 5_000
+        fn = mystery_function(f"x{{0}}{ext[i][0]}", 1, gen_data=True, sample_size=100_000, center=center, scale = scale)
+        path = os.path.join(UNIT_DIR, ext[i][1])
+        if os.path.exists(path):
+            continue
+        records, best_nn, all_models = iterateNN(fn, name=f"{ext[i][1]}_nn")
+        logging.info(f'Satisfactory models for {ext[i][1]}')
+        for k in all_models:
+            if k[1] <= 5 * records[-1][1]:
+                logging.info(f'Config:{k[0]}\tScore:{k[1]}\tParams:{k[2]}')
+        os.mkdir(path)
+        best_nn.save(path)
+
+
+# Ideas:
+#   - Maybe do one knowledge distillation step of teacher -> student to reduce size of the NN/make the FF step easier
+#   - We can probably assume that over the domain we've learned, the teacher/student are "accurate enough" to throw random
+#     vectors at it and trust the result
+#   - Memorize/store unit student NNs? We can build ASTs from these and pass the results of one into another
+#   - We can also extend otherwise tricky/periodic functions with some pre/post-processing by doing things like % 2 pi
+#   - We can also check for out of bounds/NaNs and throw them out of ASTs for things like lg(0), if the student/teacher return *something*
+#       - Can we check for discontinuities in the NNs? I might play with this more...
+#       - This might be useful: https://arxiv.org/pdf/2012.03016.pdf
+#       - We need to build a NN with at least 2d + 1 hidden nodes in one of the layers though, it seems. Not a difficult thing to do
+#
+#
+#  Unit NN's to hard-code:
+#   - Addition: 0 hidden layers, weights are 1 bias = 0. Output has leaky ReLU w/ leak constant of 1
+#   - Subtraction: Basically the same, but w_1 = -1
+#   - Abs: 1 hidden layer, 2 nodes. Each weight is 1 and negative 1, that's it.
+#   - Negation: 0 hidden layers, leaky ReLU at output with constant of 1, weight is -1
+#   - Predecessor/successor: Addition with forced 1/-1 as second "hidden" input?
+#   - Identity fn?: Just straight forward. Might be useful as a way to pass numbers straight-through
+
+
+def init():
+    # get TF logger
+    log = logging.getLogger('tensorflow')
+    log.setLevel(logging.DEBUG)
+
+    # create formatter and add it to the handlers
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+    # create file handler which logs even debug messages
+    fh = logging.FileHandler(f'./{LOG_DIR}/tensorflow.log')
+    fh.setLevel(logging.DEBUG)
+    fh.setFormatter(formatter)
+    log.addHandler(fh)
+
+    logging.basicConfig(level=logging.DEBUG,
+                    format='%(asctime)s %(name)-12s %(levelname)-8s %(message)s\n',
+                    datefmt='%m-%d %H:%M',
+                    filename=f'./{LOG_DIR}/latest_run.log',
+                    filemode='w')
+    console = logging.StreamHandler()
+    console.setLevel(logging.INFO)
+    formatter = logging.Formatter('%(name)-12s: %(levelname)-8s %(message)s')
+    console.setFormatter(formatter)
+    logging.getLogger().addHandler(console)
+
 def main():
     # start = timeit.default_timer()
+    bf_unit_nns()
 
-    # fn1 = mystery_function("0>>x{0}0>>x{1}^*/", 2, sample_size=100_000, scale=10, gen_data=True, noisy=True) # This is just 1/2 mv^2, basically
-    sin = mystery_function("x{0}S", 1, scale=4, gen_data=True, noisy=True)
-    log = mystery_function("0>0>>x{0}*+L", 1, scale=9, center=3.5, gen_data=True, noisy=True)
+
     # records, best_nn, all_models = iterateNN(sin, layer_range=10, name='sin_nn', node_range=512) # Store results from iteration
 
     # Build and train sin, playing with non-linear function learning
-    nn = getNN(3, 512, sin.shape, name="sin")
-    nn.compile(optimizer=tf.keras.optimizers.Adam(), loss='mean_squared_error', metrics=[tfa.metrics.r_square.RSquare()])
-    nn.fit(sin.x_train, sin.y_train, epochs=EPOCHS)
-    nn.evaluate(sin.x_test, sin.y_test)
-
-    nn2 = getNN(3, 512, log.shape, name="log")
-    nn2.compile(optimizer=tf.keras.optimizers.Adam(), loss='mean_squared_error', metrics=[tfa.metrics.r_square.RSquare()])
-    nn2.fit(log.x_train, log.y_train, epochs=EPOCHS)
-    nn2.evaluate(log.x_test, log.y_test)
-
 
     # stop = timeit.default_timer()
 
     # Print everything out
-    # TODO: Process all of the f*cking data to hopefully get some insight
+    # TODO: Process all of the data to hopefully get some insight
     # print(f"Best models: \n{('-'*32)}\n{records}\n\n")
     # print(f"All models: \n{('-'*32)}\n{all_models}\n\n")
     
@@ -298,12 +404,9 @@ def main():
 
     # Let's visualize the result we get for the best NN
 
-    sin.gen_data(test_size=0, sample_size=500, scale=10, sorted=True)
-    log.gen_data(test_size=0, sample_size=500, scale=9, center=3.5, sorted=True)
-    nn.evaluate(sin.x_train, sin.y_train)
-    nn2.evaluate(log.x_train, log.y_train)
-    plotNN(sin, nn)
-    plotNN(log, nn2)
 
 if __name__ == "__main__":
+    print('Initializing...', end='\r')
+    init()
+    print('')
     main()
