@@ -329,12 +329,24 @@ def init():
 
     # Create formatter and add it to the handlers
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    if not os.path.exists(f'./{LOG_DIR}'):
+        os.mkdir(f'./{LOG_DIR}')
+
+
+    if not os.path.exists(f'./{LOG_DIR}/tensorflow.log'):
+        f = open(f'./{LOG_DIR}/tensorflow.log', 'x')
+        f.close()
 
     # Create file handler which logs even debug messages
     fh = logging.FileHandler(f'./{LOG_DIR}/tensorflow.log')
     fh.setLevel(logging.DEBUG)
     fh.setFormatter(formatter)
     log.addHandler(fh)
+
+
+    if not os.path.exists(f'./{LOG_DIR}/latest_run.log'):
+        f = open(f'./{LOG_DIR}/latest_run.log', 'x')
+        f.close()
 
     # Set up terminal logging
     logging.basicConfig(level=logging.DEBUG,
