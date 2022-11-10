@@ -32,15 +32,6 @@ FIG_DIR = "figures"
 UNIT_DIR = "unit_fns"
 LOG_DIR = 'log'
 
-csv_logger = None
-
-# Maybe we can identify certain operations?
-# Identity is always identity matrix
-# We can preserve arguments by passing forward args as identity matrix forward to next layer, same with operations we've gathered
-# Lin. combinations look like [ ... a b c.... d] for something like ax_n + bx_n+1 + cx_n+2 + dx_m
-# ... I can't figure out how to do multiplication of two variables in an array...
-
-
 class mystery_function():
     """A class to model a given fn, also handles creation/storage of data to train/test on"""
     def __init__(self, fn, dim, gen_data=False, sample_size=DEFAULT_SAMPLE_SIZE, scale=DEFAULT_SCALE, center=DEFAULT_CENTER, test_size=DEFAULT_TEST_SIZE, noisy=False, noise_factor=DEFAULT_NOISE):
@@ -261,26 +252,38 @@ def plotNN(fn, nn):
 
 
 def bf_unit_nns():
+    """This is meant to iterate through every unit funciton we intend to use and find an ideal enough architecture for unit students"""
+
     binaries = {0: ['+', 'addition'], 1: ['-', 'subtraction'], 2: ['*', 'multiplication'], 3: ['/', 'division'], 4: ['^', 'exponentiation']}
-
     unaries = {0: ['~', 'negation'], 1: ['A', 'abs'], 2: ['>', 'successor'], 3: ['<', 'predecessor']}
-
     ext = {0: ['L', 'log'], 1: ['S', 'sin'], 2: ['C', 'cos'], 3: ['s', 'arcsin'], 4: ['c', 'arccos'], 5: ['t', 'arctan']}
 
+    # First, run over binary operators
     for i in range(5):
         path = os.path.join(UNIT_DIR, binaries[i][1])
+
+        # Skip NNs we've found (allows us to select which NNs to re-train by renaming them/deleting them)
         if os.path.exists(path):
             continue
+
+        # Build the function / data
         fn = mystery_function(f"x{{0}}x{{1}}{binaries[i][0]}", 2, gen_data=True, sample_size=100_000, scale=2)
+
+        # Brute Force
         records, best_nn, all_models = iterateNN(fn, name=f"{binaries[i][1]}_nn")
+
+        # Log results
         logging.info(f'Satisfactory models for {binaries[i][1]}')
         for k in all_models:
             if k[1] <= 5 * records[-1][1]:
                 logging.info(f'Config:{k[0]}\tScore:{k[1]}\tParams:{k[2]}')
+
+        # Save best NN
         os.mkdir(path)
         best_nn.save(path)
 
 
+    # Run the simple unary fns
     for i in range(4):
         path = os.path.join(UNIT_DIR, unaries[i][1])
         if os.path.exists(path):
@@ -294,7 +297,9 @@ def bf_unit_nns():
         os.mkdir(path)
         best_nn.save(path)
 
+    # Run the scientific unary fns
     for i in range(6):
+        # These next few lines simply adjust the domains for some fns to avoid getting undefined/NaN results during training
         center = 0
         scale = 10_000
         if i > 0 and i < 3:
@@ -316,42 +321,22 @@ def bf_unit_nns():
         os.mkdir(path)
         best_nn.save(path)
 
-
-# Ideas:
-#   - Maybe do one knowledge distillation step of teacher -> student to reduce size of the NN/make the FF step easier
-#   - We can probably assume that over the domain we've learned, the teacher/student are "accurate enough" to throw random
-#     vectors at it and trust the result
-#   - Memorize/store unit student NNs? We can build ASTs from these and pass the results of one into another
-#   - We can also extend otherwise tricky/periodic functions with some pre/post-processing by doing things like % 2 pi
-#   - We can also check for out of bounds/NaNs and throw them out of ASTs for things like lg(0), if the student/teacher return *something*
-#       - Can we check for discontinuities in the NNs? I might play with this more...
-#       - This might be useful: https://arxiv.org/pdf/2012.03016.pdf
-#       - We need to build a NN with at least 2d + 1 hidden nodes in one of the layers though, it seems. Not a difficult thing to do
-#
-#
-#  Unit NN's to hard-code:
-#   - Addition: 0 hidden layers, weights are 1 bias = 0. Output has leaky ReLU w/ leak constant of 1
-#   - Subtraction: Basically the same, but w_1 = -1
-#   - Abs: 1 hidden layer, 2 nodes. Each weight is 1 and negative 1, that's it.
-#   - Negation: 0 hidden layers, leaky ReLU at output with constant of 1, weight is -1
-#   - Predecessor/successor: Addition with forced 1/-1 as second "hidden" input?
-#   - Identity fn?: Just straight forward. Might be useful as a way to pass numbers straight-through
-
-
 def init():
-    # get TF logger
+    """Pre-processing code. Runs before main() to do any setup"""
+    # Get TF logger
     log = logging.getLogger('tensorflow')
     log.setLevel(logging.DEBUG)
 
-    # create formatter and add it to the handlers
+    # Create formatter and add it to the handlers
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
-    # create file handler which logs even debug messages
+    # Create file handler which logs even debug messages
     fh = logging.FileHandler(f'./{LOG_DIR}/tensorflow.log')
     fh.setLevel(logging.DEBUG)
     fh.setFormatter(formatter)
     log.addHandler(fh)
 
+    # Set up terminal logging
     logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s %(name)-12s %(levelname)-8s %(message)s\n',
                     datefmt='%m-%d %H:%M',
@@ -363,47 +348,50 @@ def init():
     console.setFormatter(formatter)
     logging.getLogger().addHandler(console)
 
+#########################################################   NOTES   ######################################################################
+
+# Maybe we can identify certain operations?
+# Identity is always identity matrix
+# We can preserve arguments by passing forward args as identity matrix forward to next layer, same with operations we've gathered
+# Lin. combinations look like [ ... a b c.... d] for something like ax_n + bx_n+1 + cx_n+2 + dx_m
+# ... I can't figure out how to do multiplication of two variables in an array...
+
+# Ideas:
+#   - Maybe do one knowledge distillation step of teacher -> student to reduce size of the NN/make the FF step easier
+#   - We can probably assume that over the domain we've learned, the teacher/student are "accurate enough" to throw random
+#     vectors at it and trust the result
+#   ✔ Memorize/store unit student NNs? We can build ASTs from these and pass the results of one into another
+#   - We can also extend otherwise tricky/periodic functions with some pre/post-processing by doing things like % 2 pi
+#   - We can also check for out of bounds/NaNs and throw them out of ASTs for things like lg(0), if the student/teacher return *something*
+#       - Can we check for discontinuities in the NNs? I might play with this more...
+#       - This might be useful: https://arxiv.org/pdf/2012.03016.pdf
+#       - We need to build a NN with at least 2d + 1 hidden nodes in one of the layers though, it seems. Not a difficult thing to do
+
+#  Unit NN's to hard-code:
+#   - Addition: 0 hidden layers, weights = 1 bias = 0. Output has leaky ReLU w/ alpha = 1
+#   - Subtraction: Basically the same, but w_1 = -1
+#   - Abs: 1 hidden layer, 2 nodes. Each weight is 1 and negative 1 bias = 0, that's it.
+#   - Negation: 0 hidden layers, leaky ReLU at output with alpha = 1, weight is -1
+#   - Predecessor/successor: Addition with forced 1/-1 as second "hidden" input?
+#   - Identity fn?: Just straight forward. Might be useful as a way to pass numbers straight-through, require LReLU w/ alpha = 1
+
+# TODO List:
+#   1. A metric that is able to quantify the error between the teacher network’s soft-label and
+#   the student’s predicted label.
+#   2. A training algorithm that leverages the above algorithm to train the student network.
+#   3. An algorithm that is able to evaluate a cost metric for a string that represents the equation
+#   a set of unit student NNs are modeling.
+#   4. An algorithm to evaluate the associated Pareto score between the string cost and the
+#   model accuracy.
+#   5. An algorithm that generates a candidate Pareto frontier of student networks.
+#   6. An algorithm that removes the Pareto dominated candidates from the frontier and repopoulates the frontier with a genetic algorithm to emulate the Pareto optimal candidates.
+#   7. After satisfactory training, the best Pareto optimal candidate will be selected as the condensed model, and its string returned as the symbolic extraction.
+
+#############################################################################################################################################
+
+
 def main():
-    # start = timeit.default_timer()
     bf_unit_nns()
-
-
-    # records, best_nn, all_models = iterateNN(sin, layer_range=10, name='sin_nn', node_range=512) # Store results from iteration
-
-    # Build and train sin, playing with non-linear function learning
-
-    # stop = timeit.default_timer()
-
-    # Print everything out
-    # TODO: Process all of the data to hopefully get some insight
-    # print(f"Best models: \n{('-'*32)}\n{records}\n\n")
-    # print(f"All models: \n{('-'*32)}\n{all_models}\n\n")
-    
-    
-    # minutes, sec = divmod(stop-start, 60.0)
-    # print(f"Took {int(minutes)} minutes, {sec:1.4f} seconds")
-    
-    
-    # Seems like the "big" set of 10 layers, 2-512 nodes by powers of 2 for KE takes about 10 mins on my laptop - B
-    
-    # A note on why I'm brute-forcing NNs: Ramyaa suggested it would be a good idea to "get a feel" for the difficulty/
-    # architecture of learning different polynomials. I'll craft more mystery fn's for us to work with and let sit + spin
-    # Overnight eventually. I'll also write out the data so that we don't need to re-train every single time
-
-    # Rn, this is just looking for the nearest matches on "best" performance
-    # for i in records:
-    #     if i[1] <= 5 * records[-1][1]:
-    #         print(i)
-
-    # for i in all_models:
-    #     if i[1] <= 5 * records[-1][1]:
-    #         print(i)
-
-    # Across several tests, [2, 128] seems to be the best configuration for KE
-    # Additionally, [3, 512] seems best for sin(x), though it doesn't seem to generalize outside of the training domain
-
-    # Let's visualize the result we get for the best NN
-
 
 if __name__ == "__main__":
     print('Initializing...', end='\r')
