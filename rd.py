@@ -5,15 +5,16 @@ Authors: Brenton Candelaria and Sophia Novo-Gradac
 Testing ground for code, has some solid work done in advance to make more tedious work easier in the future
 
 """
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' # or any {‘0’, ‘1’, ‘2’}, stops tf from complaining about things it shouldn't be worried about
 
 import numpy as np
 import matplotlib.pyplot as plt
 from eval import Eval
-import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' # or any {‘0’, ‘1’, ‘2’}, stops tf from complaining about things it shouldn't be worried about
 import tensorflow as tf
 import math
 import logging
+from datetime import datetime
 import timeit # Just so I know how much time I've wasted
 
 # Some constants that can be tweaked
@@ -73,10 +74,7 @@ class mystery_function():
 
         r = np.random.rand(int(sample_size*(1-test_size)), self.dim) * scale # Generate input train array according to params
         center_factor = center - scale/2
-        for x in r:
-            for y in x:
-                y += center_factor
-
+        r = r + center_factor
         self.x_train = r
         if sorted:
             self.x_train = np.arange(center-scale/2, center+scale/2, scale/sample_size)
@@ -84,6 +82,7 @@ class mystery_function():
         self.y_train = Eval(self.fn, self.x_train)[:,-1] # Init x_train and y_train
 
         r = np.random.rand(int(sample_size*test_size), self.dim) * scale # Generate seperate test array according to params
+        r = r + center_factor
         self.x_test = r
         self.y_test = Eval(self.fn, self.x_test)[:,-1]  # Also init x_test and y_test
         
@@ -188,7 +187,7 @@ def iterateNN(fn, layer_range=10, node_range=512, by=2, method="*", rate=0.01, n
             train = model.fit(fn.x_train, fn.y_train, epochs=EPOCHS) # Train
             loss_history = train.history['loss']
             numpy_loss_history = np.array(loss_history)
-            np.savetxt(f"./{LOG_DIR}/training_logs/{name}.txt", numpy_loss_history, delimiter=",")
+            np.savetxt(f"./{LOG_DIR}/training_logs/{name_base}/{name}.txt", numpy_loss_history, delimiter=",")
             train = min(train.history['loss'])
             predict = model.evaluate(fn.x_test, fn.y_test) # Test
             if summary:
@@ -258,19 +257,39 @@ def bf_unit_nns():
     unaries = {0: ['~', 'negation'], 1: ['A', 'abs'], 2: ['>', 'successor'], 3: ['<', 'predecessor']}
     ext = {0: ['L', 'log'], 1: ['S', 'sin'], 2: ['C', 'cos'], 3: ['s', 'arcsin'], 4: ['c', 'arccos'], 5: ['t', 'arctan']}
 
+
+    if not os.path.exists(f'./{UNIT_DIR}'):
+        os.mkdir(f'./{UNIT_DIR}')
+
+    curr_time =datetime.now().strftime('%b-%d-%Y_%H%M%S')
+    if os.path.getsize(f'./{LOG_DIR}/latest_run.log') > 10:
+        os.rename(f'./{LOG_DIR}/training_logs/', f'./{LOG_DIR}/training_logs_{curr_time}/')
+        os.rename(f'./{LOG_DIR}/latest_run.log', f'./{LOG_DIR}/latest_run_{curr_time}.log')
+        os.rename(f'./{LOG_DIR}/tensorflow.log', f'./{LOG_DIR}/tensorflow_{curr_time}.log')
+
+    if not os.path.exists(f'./{LOG_DIR}/training_logs'):
+        os.mkdir(f'./{LOG_DIR}/training_logs')
+
     # First, run over binary operators
     for i in range(5):
-        path = os.path.join(UNIT_DIR, binaries[i][1])
 
         # Skip NNs we've found (allows us to select which NNs to re-train by renaming them/deleting them)
+        path = os.path.join(UNIT_DIR, binaries[i][1])
         if os.path.exists(path):
             continue
 
+        # Make directory for training logs
+        if not os.path.exists(f'./{LOG_DIR}/training_logs/{binaries[i][1]}'):
+            os.mkdir(f'./{LOG_DIR}/training_logs/{binaries[i][1]}')
+
         # Build the function / data
-        fn = mystery_function(f"x{{0}}x{{1}}{binaries[i][0]}", 2, gen_data=True, sample_size=100_000, scale=2)
+        center = 0
+        if i == 4:
+            center = 1
+        fn = mystery_function(f"x{{0}}x{{1}}{binaries[i][0]}", 2, gen_data=True, sample_size=100_000, center=center, scale=2)
 
         # Brute Force
-        records, best_nn, all_models = iterateNN(fn, name=f"{binaries[i][1]}_nn")
+        records, best_nn, all_models = iterateNN(fn, name=f"{binaries[i][1]}")
 
         # Log results
         logging.info(f'Satisfactory models for {binaries[i][1]}')
@@ -285,20 +304,35 @@ def bf_unit_nns():
 
     # Run the simple unary fns
     for i in range(4):
+
+        # Skip NNs we've found (allows us to select which NNs to re-train by renaming them/deleting them)
         path = os.path.join(UNIT_DIR, unaries[i][1])
         if os.path.exists(path):
             continue
+
+        # Make directory for training logs
+        if not os.path.exists(f'./{LOG_DIR}/training_logs/{unaries[i][1]}'):
+            os.mkdir(f'./{LOG_DIR}/training_logs/{unaries[i][1]}')
+
+        # Build the function / data
         fn = mystery_function(f"x{{0}}{unaries[i][0]}", 1, gen_data=True, sample_size=100_000, scale=2)
-        records, best_nn, all_models = iterateNN(fn, name=f"{unaries[i][1]}_nn")
+
+        # Brute Force
+        records, best_nn, all_models = iterateNN(fn, name=f"{unaries[i][1]}")
+
+        # Log results
         logging.info(f'Satisfactory models for {unaries[i][1]}')
         for k in all_models:
             if k[1] <= 5 * records[-1][1]:
                 logging.info(f'Config:{k[0]}\tScore:{k[1]}\tParams:{k[2]}')
+
+        # Save best NN
         os.mkdir(path)
         best_nn.save(path)
 
     # Run the scientific unary fns
     for i in range(6):
+
         # These next few lines simply adjust the domains for some fns to avoid getting undefined/NaN results during training
         center = 0
         scale = 10_000
@@ -309,33 +343,59 @@ def bf_unit_nns():
             scale = 2
         if i == 0:
             center = 5_000
-        fn = mystery_function(f"x{{0}}{ext[i][0]}", 1, gen_data=True, sample_size=100_000, center=center, scale = scale)
+
+        # Skip NNs we've found (allows us to select which NNs to re-train by renaming them/deleting them)
         path = os.path.join(UNIT_DIR, ext[i][1])
         if os.path.exists(path):
             continue
-        records, best_nn, all_models = iterateNN(fn, name=f"{ext[i][1]}_nn")
+
+        # Make directory for training logs
+        if not os.path.exists(f'./{LOG_DIR}/training_logs/{ext[i][1]}'):
+            os.mkdir(f'./{LOG_DIR}/training_logs/{ext[i][1]}')
+
+
+        # Build the function / data
+        fn = mystery_function(f"x{{0}}{ext[i][0]}", 1, gen_data=True, sample_size=100_000, center=center, scale = scale)
+
+        # Brute Force
+        records, best_nn, all_models = iterateNN(fn, name=f"{ext[i][1]}")
+
+        # Log results
         logging.info(f'Satisfactory models for {ext[i][1]}')
         for k in all_models:
             if k[1] <= 5 * records[-1][1]:
                 logging.info(f'Config:{k[0]}\tScore:{k[1]}\tParams:{k[2]}')
+
+        # Save best NN
         os.mkdir(path)
         best_nn.save(path)
 
+    # Store more than the most recent logs, might be useful
+    curr_time =datetime.now().strftime('%b-%d-%Y_%H%M%S')
+    os.rename(f'./{LOG_DIR}/training_logs/', f'./{LOG_DIR}/training_logs_{curr_time}/')
+    os.popen(f'cp ./{LOG_DIR}/latest_run.log ./{LOG_DIR}/latest_run_{curr_time}.log')
+    os.popen(f'cp ./{LOG_DIR}/tensorflow.log ./{LOG_DIR}/tensorflow_{curr_time}.log')
+
 def init():
     """Pre-processing code. Runs before main() to do any setup"""
+    # Build log directory if necessary
+    if not os.path.exists(f'./{LOG_DIR}'):
+        os.mkdir(f'./{LOG_DIR}')
+    if not os.path.exists(f'./{LOG_DIR}/training_logs'):
+        os.mkdir(f'./{LOG_DIR}/training_logs')
+    if not os.path.exists(f'./{LOG_DIR}/tensorflow.log'):
+        f = open(f'./{LOG_DIR}/tensorflow.log', 'x')
+        f.close()
+    if not os.path.exists(f'./{LOG_DIR}/latest_run.log'):
+        f = open(f'./{LOG_DIR}/latest_run.log', 'x')
+        f.close()
+
     # Get TF logger
     log = logging.getLogger('tensorflow')
     log.setLevel(logging.DEBUG)
 
     # Create formatter and add it to the handlers
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    if not os.path.exists(f'./{LOG_DIR}'):
-        os.mkdir(f'./{LOG_DIR}')
-
-
-    if not os.path.exists(f'./{LOG_DIR}/tensorflow.log'):
-        f = open(f'./{LOG_DIR}/tensorflow.log', 'x')
-        f.close()
 
     # Create file handler which logs even debug messages
     fh = logging.FileHandler(f'./{LOG_DIR}/tensorflow.log')
@@ -343,10 +403,6 @@ def init():
     fh.setFormatter(formatter)
     log.addHandler(fh)
 
-
-    if not os.path.exists(f'./{LOG_DIR}/latest_run.log'):
-        f = open(f'./{LOG_DIR}/latest_run.log', 'x')
-        f.close()
 
     # Set up terminal logging
     logging.basicConfig(level=logging.DEBUG,
@@ -356,7 +412,7 @@ def init():
                     filemode='w')
     console = logging.StreamHandler()
     console.setLevel(logging.INFO)
-    formatter = logging.Formatter('%(name)-12s: %(levelname)-8s %(message)s')
+    formatter = logging.Formatter('%(message)s')
     console.setFormatter(formatter)
     logging.getLogger().addHandler(console)
 
@@ -403,10 +459,15 @@ def init():
 
 
 def main():
+    start = timeit.default_timer()
     bf_unit_nns()
+    stop = timeit.default_timer()
+
+    minutes, seconds = divmod(stop-start, 60.0)
+    hours, minutes = divmod(minutes, 60)
+    print(f"Took {int(hours)}:{int(minutes)}:{seconds}")
 
 if __name__ == "__main__":
     print('Initializing...', end='\r')
     init()
-    print('')
     main()

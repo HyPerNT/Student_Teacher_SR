@@ -1,4 +1,5 @@
 figures/
 __pycache__/
 log/
+bad_unit_fns/
 
