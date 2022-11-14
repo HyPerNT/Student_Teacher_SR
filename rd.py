@@ -253,25 +253,19 @@ def plotNN(fn, nn):
 def bf_unit_nns():
     """This is meant to iterate through every unit funciton we intend to use and find an ideal enough architecture for unit students"""
 
-    binaries = {0: ['+', 'addition'], 1: ['-', 'subtraction'], 2: ['*', 'multiplication'], 3: ['/', 'division'], 4: ['^', 'exponentiation']}
+    binaries = {0: ['+', 'addition'], 1: ['-', 'subtraction']}
     unaries = {0: ['~', 'negation'], 1: ['A', 'abs'], 2: ['>', 'successor'], 3: ['<', 'predecessor']}
-    ext = {0: ['L', 'log'], 1: ['S', 'sin'], 2: ['C', 'cos'], 3: ['s', 'arcsin'], 4: ['c', 'arccos'], 5: ['t', 'arctan']}
+    ext = {0: ['L', 'log'], 1: ['S', 'sin'], 2: ['C', 'cos'], 3: ['s', 'arcsin'], 4: ['c', 'arccos'], 5: ['t', 'arctan'], 6: ['e^', 'exp']}
 
 
     if not os.path.exists(f'./{UNIT_DIR}'):
         os.mkdir(f'./{UNIT_DIR}')
 
-    curr_time =datetime.now().strftime('%b-%d-%Y_%H%M%S')
-    if os.path.getsize(f'./{LOG_DIR}/latest_run.log') > 10:
-        os.rename(f'./{LOG_DIR}/training_logs/', f'./{LOG_DIR}/training_logs_{curr_time}/')
-        os.rename(f'./{LOG_DIR}/latest_run.log', f'./{LOG_DIR}/latest_run_{curr_time}.log')
-        os.rename(f'./{LOG_DIR}/tensorflow.log', f'./{LOG_DIR}/tensorflow_{curr_time}.log')
-
     if not os.path.exists(f'./{LOG_DIR}/training_logs'):
         os.mkdir(f'./{LOG_DIR}/training_logs')
 
     # First, run over binary operators
-    for i in range(5):
+    for i in range(len(binaries)):
 
         # Skip NNs we've found (allows us to select which NNs to re-train by renaming them/deleting them)
         path = os.path.join(UNIT_DIR, binaries[i][1])
@@ -285,8 +279,8 @@ def bf_unit_nns():
         # Build the function / data
         center = 0
         if i == 4:
-            center = 1
-        fn = mystery_function(f"x{{0}}x{{1}}{binaries[i][0]}", 2, gen_data=True, sample_size=100_000, center=center, scale=2)
+            center = 2
+        fn = mystery_function(f"x{{0}}x{{1}}{binaries[i][0]}", 2, gen_data=True, sample_size=100_000, center=center, scale=4)
 
         # Brute Force
         records, best_nn, all_models = iterateNN(fn, name=f"{binaries[i][1]}")
@@ -303,7 +297,7 @@ def bf_unit_nns():
 
 
     # Run the simple unary fns
-    for i in range(4):
+    for i in range(len(unaries)):
 
         # Skip NNs we've found (allows us to select which NNs to re-train by renaming them/deleting them)
         path = os.path.join(UNIT_DIR, unaries[i][1])
@@ -331,7 +325,7 @@ def bf_unit_nns():
         best_nn.save(path)
 
     # Run the scientific unary fns
-    for i in range(6):
+    for i in range(len(ext)):
 
         # These next few lines simply adjust the domains for some fns to avoid getting undefined/NaN results during training
         center = 0
@@ -343,6 +337,8 @@ def bf_unit_nns():
             scale = 2
         if i == 0:
             center = 5_000
+        if i == 6:
+            scale = 20
 
         # Skip NNs we've found (allows us to select which NNs to re-train by renaming them/deleting them)
         path = os.path.join(UNIT_DIR, ext[i][1])
@@ -370,15 +366,18 @@ def bf_unit_nns():
         os.mkdir(path)
         best_nn.save(path)
 
-    # Store more than the most recent logs, might be useful
-    curr_time =datetime.now().strftime('%b-%d-%Y_%H%M%S')
-    os.rename(f'./{LOG_DIR}/training_logs/', f'./{LOG_DIR}/training_logs_{curr_time}/')
-    os.popen(f'cp ./{LOG_DIR}/latest_run.log ./{LOG_DIR}/latest_run_{curr_time}.log')
-    os.popen(f'cp ./{LOG_DIR}/tensorflow.log ./{LOG_DIR}/tensorflow_{curr_time}.log')
-
 def init():
     """Pre-processing code. Runs before main() to do any setup"""
-    # Build log directory if necessary
+
+    # Save old logs
+    curr_time =datetime.now().strftime('%b-%d-%Y_%H%M%S')
+    if os.path.exists(f'./{LOG_DIR}') and os.path.getsize(f'./{LOG_DIR}/latest_run.log') > 10:
+        os.rename(f'./{LOG_DIR}/training_logs/', f'./{LOG_DIR}/training_logs_{curr_time}/')
+        os.rename(f'./{LOG_DIR}/latest_run.log', f'./{LOG_DIR}/latest_run_{curr_time}.log')
+        os.rename(f'./{LOG_DIR}/tensorflow.log', f'./{LOG_DIR}/tensorflow_{curr_time}.log')
+
+
+    # Build log directory and logs if necessary (likely always going to happen)
     if not os.path.exists(f'./{LOG_DIR}'):
         os.mkdir(f'./{LOG_DIR}')
     if not os.path.exists(f'./{LOG_DIR}/training_logs'):
@@ -440,8 +439,17 @@ def init():
 #   - Subtraction: Basically the same, but w_1 = -1
 #   - Abs: 1 hidden layer, 2 nodes. Each weight is 1 and negative 1 bias = 0, that's it.
 #   - Negation: 0 hidden layers, leaky ReLU at output with alpha = 1, weight is -1
-#   - Predecessor/successor: Addition with forced 1/-1 as second "hidden" input?
+#   - Predecessor/successor: LRelu with alpha = 1, bias of 1/-1, w = 1, no hidden layer
 #   - Identity fn?: Just straight forward. Might be useful as a way to pass numbers straight-through, require LReLU w/ alpha = 1
+#
+#  Some things we could do, that feel like cheating:
+#   - Input preprocessing, do %2pi before passing to sin, cos. Change A * B to ln(a) + ln(b), etc.
+#   - Only wrench in the works is to learn ln, exponentiation
+#   - Actually, we can do exponentiation to some capacity by learning weights I think?
+#   - x^3 looks like 3ln(x) via our hacky multiplication, I think.
+#   - If we learn e^x on a finite enough domain, we can also reverse it without cheating.
+#   - We could also have two modes, hard-preprocessing using exact math, and soft-preprocessing using our learned NNs
+
 
 # TODO List:
 #   1. A metric that is able to quantify the error between the teacher network’s soft-label and
