@@ -93,7 +93,7 @@ def EvalPt(expr: str, x: np.ndarray) -> np.ndarray:
                         stack.append(x1 / x2)
                     elif symbol == "^":
                         # Prevent the CPU from cooking itself
-                        if (abs(x2) >= 20) or (x1 == 0 and x2 <= 0) or (x1 < 0):
+                        if (abs(x2) >= 20) or (x1 == 0 and x2 <= 0) or (x1 < 0 and int(x2) != x2):
                             return np.append(x, np.nan)
                         stack.append(x1 ** x2)
 

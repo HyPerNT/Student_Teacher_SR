@@ -33,6 +33,102 @@ FIG_DIR = "figures"
 UNIT_DIR = "unit_fns"
 LOG_DIR = 'log'
 
+# Distiller class for Student-Teacher capability, ripped from a TF Docs page
+class Distiller(tf.keras.Model):
+    def __init__(self, student, teacher):
+        super(Distiller, self).__init__()
+        self.teacher = teacher
+        self.student = student
+
+    def compile(
+        self,
+        optimizer,
+        metrics,
+        student_loss_fn,
+        distillation_loss_fn,
+        alpha=0.1,
+        temperature=3,
+    ):
+        """ Configure the distiller.
+
+        Args:
+            optimizer: Keras optimizer for the student weights
+            metrics: Keras metrics for evaluation
+            student_loss_fn: Loss function of difference between student
+                predictions and ground-truth
+            distillation_loss_fn: Loss function of difference between soft
+                student predictions and soft teacher predictions
+            alpha: weight to student_loss_fn and 1-alpha to distillation_loss_fn
+            temperature: Temperature for softening probability distributions.
+                Larger temperature gives softer distributions.
+        """
+        super(Distiller, self).compile(optimizer=optimizer, metrics=metrics)
+        self.student_loss_fn = student_loss_fn
+        self.distillation_loss_fn = distillation_loss_fn
+        self.alpha = alpha
+        self.temperature = temperature
+
+    def train_step(self, data):
+        # Unpack data
+        x, y = data
+
+        # Forward pass of teacher
+        teacher_predictions = self.teacher(x, training=False)
+
+        with tf.GradientTape() as tape:
+            # Forward pass of student
+            student_predictions = self.student(x, training=True)
+
+            # Compute losses
+            student_loss = self.student_loss_fn(y, student_predictions)
+
+            # Compute scaled distillation loss from https://arxiv.org/abs/1503.02531
+            # The magnitudes of the gradients produced by the soft targets scale
+            # as 1/T^2, multiply them by T^2 when using both hard and soft targets.
+            distillation_loss = (
+                self.distillation_loss_fn(
+                    tf.nn.softmax(teacher_predictions / self.temperature, axis=1),
+                    tf.nn.softmax(student_predictions / self.temperature, axis=1),
+                )
+                * self.temperature**2
+            )
+
+            loss = self.alpha * student_loss + (1 - self.alpha) * distillation_loss
+
+        # Compute gradients
+        trainable_vars = self.student.trainable_variables
+        gradients = tape.gradient(loss, trainable_vars)
+
+        # Update weights
+        self.optimizer.apply_gradients(zip(gradients, trainable_vars))
+
+        # Update the metrics configured in `compile()`.
+        self.compiled_metrics.update_state(y, student_predictions)
+
+        # Return a dict of performance
+        results = {m.name: m.result() for m in self.metrics}
+        results.update(
+            {"student_loss": student_loss, "distillation_loss": distillation_loss}
+        )
+        return results
+
+    def test_step(self, data):
+        # Unpack the data
+        x, y = data
+
+        # Compute predictions
+        y_prediction = self.student(x, training=False)
+
+        # Calculate the loss
+        student_loss = self.student_loss_fn(y, y_prediction)
+
+        # Update the metrics.
+        self.compiled_metrics.update_state(y, y_prediction)
+
+        # Return a dict of performance
+        results = {m.name: m.result() for m in self.metrics}
+        results.update({"student_loss": student_loss})
+        return results
 class mystery_function():
     """A class to model a given fn, also handles creation/storage of data to train/test on"""
     def __init__(self, fn, dim, gen_data=False, sample_size=DEFAULT_SAMPLE_SIZE, scale=DEFAULT_SCALE, center=DEFAULT_CENTER, test_size=DEFAULT_TEST_SIZE, noisy=False, noise_factor=DEFAULT_NOISE):
@@ -99,8 +195,59 @@ class mystery_function():
             self.x_test = self.x_test + noise_factor * noise
             for i in self.y_test:
                 i = i + noise_factor * (np.random.rand((0)) - 0.5)
+# Custom layer for handling our processing of unit students in the FF step
+class FnLayer(tf.keras.layers.Layer):
+    def __init__(self, input_dim, NNs):
+        super(FnLayer, self).__init__()
+        self.units = input_dim + len(NNs)
+        self.NNs = NNs
 
+    def build(self, input_shape):
+        # Our w and b matrices shouldn't do anything, the Dense layers do the work for us
+        self.w = self.add_weight(
+            shape=(input_shape[-1], self.units),
+            initializer="identity",
+            trainable=False,
+        )
+        self.b = self.add_weight(
+            shape=(self.units,), initializer="zeros", trainable=False
+        )
+            
+    def call(self, inputs): 
+        """This is broken"""
+        # Get our input from the dense layer
+        mat = tf.matmul(inputs, self.w) + self.b
 
+        # Init result so it has the correct shape
+        result = self.NNs[0](mat[0])[0]
+
+        # Iterate over unit students
+        for i in range(1, len(self.NNs)):
+            
+            # Ask them for an answer, add it to the result tensor
+            ans = self.NNs[i](mat[i])[i]
+            result = tf.concat((result, ans), axis=0)
+
+        # This basically makes the shape correct, I think? But it breaks our training apparently
+
+        # Make a tensor of zeroes to pad with, pad result so the top rows = the input (for passing past layers forward),
+        # bottom rows = the answers we've just obtained from the unit students on this layer
+        padding = tf.constant([[0,0], [mat.shape[1] - result.shape[0], 0]])
+        result = tf.reshape(result, [-1, result.shape[0]])
+        result = tf.pad(result, padding, "CONSTANT")
+
+        # Make an identity matrix with some 0s. Multiply by the original input to drop the bottom rows (unnecessary,
+        # they should be nonsense anyway for our purposes)
+        diag = [1.0 if i < inputs.shape[1] else 0.0 for i in range(mat.shape[1])]
+        mask = tf.linalg.tensor_diag(diag)
+        mask = tf.matmul(mat, mask)
+        result = tf.reshape(result, [-1, result.shape[1]])
+
+        # Return a matrix like [in[0], in[1], ..., in[n], unit[0], unit[1], ..., unit[m]
+        return result + mask
+        
+        
+        
 def getNN(layers, nodes, in_shape, rate=0.01, name='nn'):
     """Builds a simple FF-NN with the n layers and m nodes per layer, as specified.
         Each layer is really a densely connected layer followed by a dropout to prevent overfitting, but details
@@ -415,6 +562,29 @@ def init():
     console.setFormatter(formatter)
     logging.getLogger().addHandler(console)
 
+# Builds a student of desired depth, depth is proportional to the nesting of operations/height of the AST to read
+def construct_student(in_shape, layers, name, NNs):
+    # Make template NN
+    model = tf.keras.Sequential([tf.keras.Input(shape=in_shape)],name=name)
+    # Iteratively add layers
+    for i in range(layers):
+        model.add(tf.keras.layers.Dense(len(NNs) + in_shape[0] if i < 1 else model.layers[2 * i - 1].output_shape[1], activation='linear'))
+        model.add(FnLayer(model.layers[2 * i].output_shape[1], NNs))
+    # Add final layer for regression
+    model.add(tf.keras.layers.Dense(1))
+    return model
+
+# Reads in and returns our unit students as a tuple
+def loadNNs():
+    absNN = tf.keras.models.load_model(f'{UNIT_DIR}/abs')
+    acosNN = tf.keras.models.load_model(f'{UNIT_DIR}/arccos')
+    asinNN = tf.keras.models.load_model(f'{UNIT_DIR}/arcsin')
+    cosNN = tf.keras.models.load_model(f'{UNIT_DIR}/cos')
+    expNN = tf.keras.models.load_model(f'{UNIT_DIR}/exp')
+    logNN = tf.keras.models.load_model(f'{UNIT_DIR}/log')
+    sinNN = tf.keras.models.load_model(f'{UNIT_DIR}/sin')
+    return (absNN, acosNN, asinNN, cosNN, expNN, logNN, sinNN)
+    
 #########################################################   NOTES   ######################################################################
 
 # Maybe we can identify certain operations?
@@ -466,9 +636,45 @@ def init():
 #############################################################################################################################################
 
 
+    
+
 def main():
     start = timeit.default_timer()
-    bf_unit_nns()
+#    bf_unit_nns()
+    
+    models = loadNNs()
+    logging.info(f'Loaded unit student models')
+
+    fn = mystery_function("0>>x{0}0>>x{1}^*/", 2, True, scale = 20)
+    logging.info(f'Mystery function generated')
+
+    student = construct_student(fn.shape, 10, "Student", models)
+    logging.info(f'Student model generated')
+
+    # Let's just go with a random teacher architecture and use it to work with for now
+    teacher = getNN(10, 256, fn.shape, name='Teacher')
+    logging.info(f'Teacher model generated')
+
+    teacher.compile(optimizer=tf.keras.optimizers.Adam(), loss='mean_squared_error') # Compile it
+    teacher.fit(fn.x_train, fn.y_train, epochs=EPOCHS) # Train
+    teacher.evaluate(fn.x_test, fn.y_test)
+
+    logging.info(f"Beginning knowledge distillation step")
+    distiller = Distiller(student=student, teacher=teacher)
+    distiller.compile(
+        optimizer=tf.keras.optimizers.Adam(),
+        metrics=[tf.keras.metrics.MeanSquaredError()],
+        student_loss_fn=tf.keras.losses.MeanSquaredError(),
+        distillation_loss_fn=tf.keras.losses.KLDivergence(),
+        alpha=0.1,
+        temperature=10,
+    )
+
+    # Distill teacher to student
+    distiller.fit(fn.x_train, fn.y_train, epochs=EPOCHS)
+
+    # Evaluate student on test dataset
+    distiller.evaluate(fn.x_test, fn.y_test)
     stop = timeit.default_timer()
 
     minutes, seconds = divmod(stop-start, 60.0)
