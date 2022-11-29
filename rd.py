@@ -108,7 +108,7 @@ class Distiller(tf.keras.Model):
         # Return a dict of performance
         results = {m.name: m.result() for m in self.metrics}
         results.update(
-            {"student_loss": student_loss, "distillation_loss": distillation_loss}
+            {"s_loss": student_loss, "d_loss": distillation_loss}
         )
         return results
 
@@ -518,7 +518,7 @@ def init():
 
     # Save old logs
     curr_time =datetime.now().strftime('%b-%d-%Y_%H%M%S')
-    if os.path.exists(f'./{LOG_DIR}') and os.path.getsize(f'./{LOG_DIR}/latest_run.log') > 10:
+    if False and os.path.exists(f'./{LOG_DIR}') and os.path.getsize(f'./{LOG_DIR}/latest_run.log') > 10:
         os.rename(f'./{LOG_DIR}/training_logs/', f'./{LOG_DIR}/training_logs_{curr_time}/')
         os.rename(f'./{LOG_DIR}/latest_run.log', f'./{LOG_DIR}/latest_run_{curr_time}.log')
         os.rename(f'./{LOG_DIR}/tensorflow.log', f'./{LOG_DIR}/tensorflow_{curr_time}.log')
@@ -643,43 +643,51 @@ def main():
 #    bf_unit_nns()
     
     models = loadNNs()
+    for m in models:
+        for l in m.layers:
+            l.trainable = False
     logging.info(f'Loaded unit student models')
 
     fn = mystery_function("0>>x{0}0>>x{1}^*/", 2, True, scale = 20)
     logging.info(f'Mystery function generated')
-
-    student = construct_student(fn.shape, 10, "Student", models)
-    logging.info(f'Student model generated')
-
     # Let's just go with a random teacher architecture and use it to work with for now
     teacher = getNN(10, 256, fn.shape, name='Teacher')
     logging.info(f'Teacher model generated')
-
+    t_params = np.sum([np.prod(v.get_shape().as_list()) for v in teacher.trainable_variables])
+    logging.info(f'Teacher has {t_params} trainable params')
+    
     teacher.compile(optimizer=tf.keras.optimizers.Adam(), loss='mean_squared_error') # Compile it
-    teacher.fit(fn.x_train, fn.y_train, epochs=EPOCHS) # Train
+    teacher.fit(fn.x_train, fn.y_train, epochs=5) # Train
     teacher.evaluate(fn.x_test, fn.y_test)
 
     logging.info(f"Beginning knowledge distillation step")
-    distiller = Distiller(student=student, teacher=teacher)
-    distiller.compile(
-        optimizer=tf.keras.optimizers.Adam(),
-        metrics=[tf.keras.metrics.MeanSquaredError()],
-        student_loss_fn=tf.keras.losses.MeanSquaredError(),
-        distillation_loss_fn=tf.keras.losses.KLDivergence(),
-        alpha=0.1,
-        temperature=10,
-    )
 
-    # Distill teacher to student
-    distiller.fit(fn.x_train, fn.y_train, epochs=EPOCHS)
+    for i in range(7):
+        student = construct_student(fn.shape, i, "Student", models)
+        logging.info(f'Student model {i} generated')
+        s_params = np.sum([np.prod(v.get_shape().as_list()) for v in student.trainable_variables])
+        logging.info(f'Student has {s_params} trainable params\nCR: \
+                {s_params/t_params:.5f}')
+        distiller = Distiller(student=student, teacher=teacher)
+        distiller.compile(
+            optimizer=tf.keras.optimizers.Adam(),
+            metrics=[tf.keras.metrics.MeanSquaredError()],
+            student_loss_fn=tf.keras.losses.MeanSquaredError(),
+            distillation_loss_fn=tf.keras.losses.MeanSquaredError(),
+            alpha=0.1,
+            temperature=10,
+        )
 
-    # Evaluate student on test dataset
-    distiller.evaluate(fn.x_test, fn.y_test)
+        # Distill teacher to student
+        history = distiller.fit(fn.x_train, fn.y_train, epochs=EPOCHS)
+
+        # Evaluate student on test dataset
+        distiller.evaluate(fn.x_test, fn.y_test)
     stop = timeit.default_timer()
 
     minutes, seconds = divmod(stop-start, 60.0)
     hours, minutes = divmod(minutes, 60)
-    print(f"Took {int(hours)}:{int(minutes)}:{seconds}")
+    print(f"Took {int(hours)}:{int(minutes)}:{seconds:.3f}")
 
 if __name__ == "__main__":
     print('Initializing...', end='\r')
