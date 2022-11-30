@@ -172,8 +172,8 @@ class Distiller(tf.keras.Model):
         return results
 
 class FnLayer(tf.keras.layers.Layer):
-    def __init__(self, input_dim, NNs, repeats=1):
-        super(FnLayer, self).__init__()
+    def __init__(self, input_dim, NNs, repeats=1, *args, **kwargs):
+        super(FnLayer, self).__init__(*args, **kwargs)
         self.units = input_dim + repeats*len(NNs)
         self.NNs = NNs
         self.repeats = repeats
@@ -182,13 +182,12 @@ class FnLayer(tf.keras.layers.Layer):
         # Our w and b matrices shouldn't do anything, the Dense layers do the work for us
         self.w = self.add_weight(
             shape=(input_shape[-1], self.units),
-            initializer="identity",
+            initializer="glorot_uniform",
             trainable=True,
         )
         self.b = self.add_weight(
             shape=(self.units,), initializer="zeros", trainable=True
         )
-            
     def call(self, inputs): 
         """This is broken"""
         # Get our input from the dense layer
@@ -231,12 +230,12 @@ class FnLayer(tf.keras.layers.Layer):
 def construct_student(in_shape, layers, name, NNs):
     # Make template NN
     model = tf.keras.Sequential([tf.keras.Input(shape=in_shape)],name=name)
+
     # Iteratively add layers
     for i in range(layers):
-#        model.add(tf.keras.layers.Dense(len(NNs) + in_shape[0] if i < 1 else model.layers[2 * i - 1].output_shape[1], activation='linear'))
         model.add(FnLayer(in_shape[0] if i < 1 else model.layers[i-1].output_shape[1], NNs))
-        model.add(tf.keras.layers.Dropout(rate=0.1))
 
     # Add final layer for regression
     model.add(tf.keras.layers.Dense(1))
+
     return model

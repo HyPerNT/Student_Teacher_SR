@@ -69,15 +69,18 @@ def main():
     start = timeit.default_timer()
 #    bf_unit_nns()
     
-    models = loadNNs()
+    models = loadNNs(abs=False, acos=False, asin=False, atan=False, exp=False, log=False)
     for m in models:
         for l in m.layers:
             l.trainable = False
     logging.info(f'Loaded unit student models')
 
-    fn = mystery_function("0>>x{0}0>>x{1}^*/", 2, True, scale = 10)
-#    fn = mystery_function("x{0}S", 1, True, scale=10, sample_size=1_000)
+    # fn = mystery_function("0>>x{0}0>>x{1}^*/", 2, True, scale = 10)
+    fn = mystery_function("x{0}S", 1, True, scale=10, sample_size=1_000)
+    # fn = mystery_function("x{0}x{1}*", 2, True, scale=10, sample_size=10_000)
     logging.info(f'Mystery function generated')
+
+
     # Let's just go with a random teacher architecture and use it to work with for now
     teacher = getNN(10, 256, fn.shape, name='Teacher')
     logging.info(f'Teacher model generated')
@@ -103,7 +106,7 @@ def main():
             student_loss_fn=tf.keras.losses.MeanSquaredError(),
             distillation_loss_fn=tf.keras.losses.MeanSquaredError(),
             alpha=0.1,
-            temperature=20,
+            temperature=10,
         )
 
         # Distill teacher to student
@@ -115,7 +118,7 @@ def main():
 
     minutes, seconds = divmod(stop-start, 60.0)
     hours, minutes = divmod(minutes, 60)
-    print(f"Took {int(hours)}:{int(minutes)}:{seconds:.3f}")
+    print(f"Took {int(hours):2d}:{int(minutes):2d}:{seconds:2.3f}")
 
 if __name__ == "__main__":
     print('Initializing...', end='\r')

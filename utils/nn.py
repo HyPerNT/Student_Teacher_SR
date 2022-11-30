@@ -275,13 +275,22 @@ def bf_unit_nns():
         best_nn.save(path)
 
 # Reads in and returns our unit students as a tuple
-def loadNNs():
-    absNN = tf.keras.models.load_model(f'{UNIT_DIR}/abs')
-    atanNN = tf.keras.models.load_model(f'{UNIT_DIR}/arctan')
-    acosNN = tf.keras.models.load_model(f'{UNIT_DIR}/arccos')
-    asinNN = tf.keras.models.load_model(f'{UNIT_DIR}/arcsin')
-    sinNN = tf.keras.models.load_model(f'{UNIT_DIR}/sin')
-    cosNN = tf.keras.models.load_model(f'{UNIT_DIR}/cos')
-    expNN = tf.keras.models.load_model(f'{UNIT_DIR}/exp')
-    logNN = tf.keras.models.load_model(f'{UNIT_DIR}/log')
-    return (acosNN, asinNN, atanNN, absNN, sinNN, cosNN, expNN, logNN)
+def loadNNs(abs=True, atan=True, acos=True, asin=True, sin=True, cos=True, exp=True, log=True):
+    NNs = []
+    if abs:
+        NNs.append(tf.keras.models.load_model(f'{UNIT_DIR}/abs'))
+    if atan:
+        NNs.append(tf.keras.models.load_model(f'{UNIT_DIR}/arctan'))
+    if acos:
+        NNs.append(tf.keras.models.load_model(f'{UNIT_DIR}/arccos'))
+    if asin:
+        NNs.append(tf.keras.models.load_model(f'{UNIT_DIR}/arcsin'))
+    if sin:
+        NNs.append(tf.keras.models.load_model(f'{UNIT_DIR}/sin'))
+    if cos:
+        NNs.append(tf.keras.models.load_model(f'{UNIT_DIR}/cos'))
+    if exp:
+        NNs.append(tf.keras.models.load_model(f'{UNIT_DIR}/exp'))
+    if log:
+        NNs.append(tf.keras.models.load_model(f'{UNIT_DIR}/log'))
+    return NNs
