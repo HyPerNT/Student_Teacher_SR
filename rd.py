@@ -87,8 +87,8 @@ class Distiller(tf.keras.Model):
             # as 1/T^2, multiply them by T^2 when using both hard and soft targets.
             distillation_loss = (
                 self.distillation_loss_fn(
-                    tf.nn.softmax(teacher_predictions / self.temperature, axis=1),
-                    tf.nn.softmax(student_predictions / self.temperature, axis=1),
+                    teacher_predictions / self.temperature,
+                    student_predictions / self.temperature,
                 )
                 * self.temperature**2
             )
@@ -197,20 +197,21 @@ class mystery_function():
                 i = i + noise_factor * (np.random.rand((0)) - 0.5)
 # Custom layer for handling our processing of unit students in the FF step
 class FnLayer(tf.keras.layers.Layer):
-    def __init__(self, input_dim, NNs):
+    def __init__(self, input_dim, NNs, repeats=1):
         super(FnLayer, self).__init__()
-        self.units = input_dim + len(NNs)
+        self.units = input_dim + repeats*len(NNs)
         self.NNs = NNs
+        self.repeats = repeats
 
     def build(self, input_shape):
         # Our w and b matrices shouldn't do anything, the Dense layers do the work for us
         self.w = self.add_weight(
             shape=(input_shape[-1], self.units),
             initializer="identity",
-            trainable=False,
+            trainable=True,
         )
         self.b = self.add_weight(
-            shape=(self.units,), initializer="zeros", trainable=False
+            shape=(self.units,), initializer="zeros", trainable=True
         )
             
     def call(self, inputs): 
@@ -222,23 +223,28 @@ class FnLayer(tf.keras.layers.Layer):
         result = self.NNs[0](mat[0])[0]
 
         # Iterate over unit students
-        for i in range(1, len(self.NNs)):
-            
+        for i in range(1, self.repeats*len(self.NNs)):
             # Ask them for an answer, add it to the result tensor
-            ans = self.NNs[i](mat[i])[i]
+            k = i % len(self.NNs)
+            arg = mat[k]
+            if k > 3 and k < 5:
+                arg %= 2 * np.pi
+            ans = self.NNs[k](arg)[k]
+
             result = tf.concat((result, ans), axis=0)
 
         # This basically makes the shape correct, I think? But it breaks our training apparently
 
         # Make a tensor of zeroes to pad with, pad result so the top rows = the input (for passing past layers forward),
         # bottom rows = the answers we've just obtained from the unit students on this layer
-        padding = tf.constant([[0,0], [mat.shape[1] - result.shape[0], 0]])
-        result = tf.reshape(result, [-1, result.shape[0]])
+        sh = result.shape[0]
+        padding = tf.constant([[0,0], [self.units - sh, 0]])
+        result = tf.reshape(result, [-1, sh])
         result = tf.pad(result, padding, "CONSTANT")
 
         # Make an identity matrix with some 0s. Multiply by the original input to drop the bottom rows (unnecessary,
         # they should be nonsense anyway for our purposes)
-        diag = [1.0 if i < inputs.shape[1] else 0.0 for i in range(mat.shape[1])]
+        diag = [1.0 if i < inputs.shape[1] else 0.0 for i in range(self.units)]
         mask = tf.linalg.tensor_diag(diag)
         mask = tf.matmul(mat, mask)
         result = tf.reshape(result, [-1, result.shape[1]])
@@ -568,8 +574,10 @@ def construct_student(in_shape, layers, name, NNs):
     model = tf.keras.Sequential([tf.keras.Input(shape=in_shape)],name=name)
     # Iteratively add layers
     for i in range(layers):
-        model.add(tf.keras.layers.Dense(len(NNs) + in_shape[0] if i < 1 else model.layers[2 * i - 1].output_shape[1], activation='linear'))
-        model.add(FnLayer(model.layers[2 * i].output_shape[1], NNs))
+#        model.add(tf.keras.layers.Dense(len(NNs) + in_shape[0] if i < 1 else model.layers[2 * i - 1].output_shape[1], activation='linear'))
+        model.add(FnLayer(in_shape[0] if i < 1 else model.layers[i-1].output_shape[1], NNs))
+        model.add(tf.keras.layers.Dropout(rate=0.1))
+
     # Add final layer for regression
     model.add(tf.keras.layers.Dense(1))
     return model
@@ -577,13 +585,14 @@ def construct_student(in_shape, layers, name, NNs):
 # Reads in and returns our unit students as a tuple
 def loadNNs():
     absNN = tf.keras.models.load_model(f'{UNIT_DIR}/abs')
+    atanNN = tf.keras.models.load_model(f'{UNIT_DIR}/arctan')
     acosNN = tf.keras.models.load_model(f'{UNIT_DIR}/arccos')
     asinNN = tf.keras.models.load_model(f'{UNIT_DIR}/arcsin')
+    sinNN = tf.keras.models.load_model(f'{UNIT_DIR}/sin')
     cosNN = tf.keras.models.load_model(f'{UNIT_DIR}/cos')
     expNN = tf.keras.models.load_model(f'{UNIT_DIR}/exp')
     logNN = tf.keras.models.load_model(f'{UNIT_DIR}/log')
-    sinNN = tf.keras.models.load_model(f'{UNIT_DIR}/sin')
-    return (absNN, acosNN, asinNN, cosNN, expNN, logNN, sinNN)
+    return (acosNN, asinNN, atanNN, absNN, sinNN, cosNN, expNN, logNN)
     
 #########################################################   NOTES   ######################################################################
 
@@ -648,7 +657,8 @@ def main():
             l.trainable = False
     logging.info(f'Loaded unit student models')
 
-    fn = mystery_function("0>>x{0}0>>x{1}^*/", 2, True, scale = 20)
+    fn = mystery_function("0>>x{0}0>>x{1}^*/", 2, True, scale = 10)
+#    fn = mystery_function("x{0}S", 1, True, scale=10, sample_size=1_000)
     logging.info(f'Mystery function generated')
     # Let's just go with a random teacher architecture and use it to work with for now
     teacher = getNN(10, 256, fn.shape, name='Teacher')
@@ -662,7 +672,7 @@ def main():
 
     logging.info(f"Beginning knowledge distillation step")
 
-    for i in range(7):
+    for i in range(6):
         student = construct_student(fn.shape, i, "Student", models)
         logging.info(f'Student model {i} generated')
         s_params = np.sum([np.prod(v.get_shape().as_list()) for v in student.trainable_variables])
@@ -675,7 +685,7 @@ def main():
             student_loss_fn=tf.keras.losses.MeanSquaredError(),
             distillation_loss_fn=tf.keras.losses.MeanSquaredError(),
             alpha=0.1,
-            temperature=10,
+            temperature=20,
         )
 
         # Distill teacher to student
