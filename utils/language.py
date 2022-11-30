@@ -1,3 +1,5 @@
+"""Definitions for different atoms in our language"""
+
 unary = ['~', 'A', '>', '<']
 trig = ['S', 'C']
 inverse_trig = ['s', 'c', 't']

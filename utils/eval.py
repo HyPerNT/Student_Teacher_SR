@@ -13,7 +13,7 @@ This behavior can be changed in the future, but suffices to tell the user that t
 
 import math
 import numpy as np
-from language import * # Utilize the basic context-free grammar for math
+from utils.language import * # Utilize the basic context-free grammar for math
 import traceback # For some light error-logging, in the worst case
 
 
