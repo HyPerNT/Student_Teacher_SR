@@ -1,22 +1,22 @@
 #########################################################   NOTES   ######################################################################
-
+#
 # Maybe we can identify certain operations?
 # Identity is always identity matrix
 # We can preserve arguments by passing forward args as identity matrix forward to next layer, same with operations we've gathered
 # Lin. combinations look like [ ... a b c.... d] for something like ax_n + bx_n+1 + cx_n+2 + dx_m
 # ... I can't figure out how to do multiplication of two variables in an array...
-
+#
 # Ideas:
 #   - Maybe do one knowledge distillation step of teacher -> student to reduce size of the NN/make the FF step easier
 #   - We can probably assume that over the domain we've learned, the teacher/student are "accurate enough" to throw random
 #     vectors at it and trust the result
 #   ✔ Memorize/store unit student NNs? We can build ASTs from these and pass the results of one into another
-#   - We can also extend otherwise tricky/periodic functions with some pre/post-processing by doing things like % 2 pi
+#   ✔ We can also extend otherwise tricky/periodic functions with some pre/post-processing by doing things like % 2 pi
 #   - We can also check for out of bounds/NaNs and throw them out of ASTs for things like lg(0), if the student/teacher return *something*
 #       - Can we check for discontinuities in the NNs? I might play with this more...
 #       - This might be useful: https://arxiv.org/pdf/2012.03016.pdf
 #       - We need to build a NN with at least 2d + 1 hidden nodes in one of the layers though, it seems. Not a difficult thing to do
-
+#
 #  Unit NN's to hard-code:
 #   - Addition: 0 hidden layers, weights = 1 bias = 0. Output has leaky ReLU w/ alpha = 1
 #   - Subtraction: Basically the same, but w_1 = -1
@@ -27,17 +27,17 @@
 #
 #  Some things we could do, that feel like cheating:
 #   - Input preprocessing, do %2pi before passing to sin, cos. Change A * B to ln(a) + ln(b), etc.
-#   - Only wrench in the works is to learn ln, exponentiation
-#   - Actually, we can do exponentiation to some capacity by learning weights I think?
-#   - x^3 looks like 3ln(x) via our hacky multiplication, I think.
-#   - If we learn e^x on a finite enough domain, we can also reverse it without cheating.
+#   ✔ Only wrench in the works is to learn ln, exponentiation
+#   ✔ Actually, we can do exponentiation to some capacity by learning weights I think?
+#   ✔ x^3 looks like 3ln(x) via our hacky multiplication, I think.
+#   ✔ If we learn e^x on a finite enough domain, we can also reverse it without cheating.
 #   - We could also have two modes, hard-preprocessing using exact math, and soft-preprocessing using our learned NNs
-
-
+#
+#
 # TODO List:
-#   1. A metric that is able to quantify the error between the teacher network’s soft-label and
+#   ✔ A metric that is able to quantify the error between the teacher network’s soft-label and
 #   the student’s predicted label.
-#   2. A training algorithm that leverages the above algorithm to train the student network.
+#   ✔ A training algorithm that leverages the above algorithm to train the student network.
 #   3. An algorithm that is able to evaluate a cost metric for a string that represents the equation
 #   a set of unit student NNs are modeling.
 #   4. An algorithm to evaluate the associated Pareto score between the string cost and the
@@ -45,5 +45,5 @@
 #   5. An algorithm that generates a candidate Pareto frontier of student networks.
 #   6. An algorithm that removes the Pareto dominated candidates from the frontier and repopoulates the frontier with a genetic algorithm to emulate the Pareto optimal candidates.
 #   7. After satisfactory training, the best Pareto optimal candidate will be selected as the condensed model, and its string returned as the symbolic extraction.
-
+#
 #############################################################################################################################################

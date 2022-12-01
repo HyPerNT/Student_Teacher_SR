@@ -73,12 +73,12 @@ class mystery_function():
                 i = i + noise_factor * (np.random.rand((0)) - 0.5)        
         
         if outlier_rate > 0:
-            mask = np.random.randint(0,2,size=self.x_train.shape, p=((1-outlier_rate), outlier_rate)).astype(np.bool)
-            r = np.random.rand(*self.x_train.shape)*np.max(self.x_train.shape)
+            mask = np.random.choice([0,1],size=self.x_train.shape, p=((1-outlier_rate), outlier_rate)).astype(np.bool)
+            r = np.random.rand(*self.x_train.shape)*np.max(self.x_train)
             self.x_train[mask] = r[mask]
 
-            mask = np.random.randint(0,2,size=self.y_train.shape, p=((1-outlier_rate), outlier_rate)).astype(np.bool)
-            r = np.random.rand(*self.y_train.shape)*np.max(self.y_train.shape)
+            mask = np.random.choice([0,1],size=self.y_train.shape, p=((1-outlier_rate), outlier_rate)).astype(np.bool)
+            r = np.random.rand(*self.y_train.shape)*np.max(self.y_train)
             self.y_train[mask] = r[mask]
 
 # Distiller class for Student-Teacher capability, ripped from a TF Docs page

@@ -67,8 +67,8 @@ def init():
 
 def main():
     start = timeit.default_timer()
-    bf_unit_nns()
-    return
+    # bf_unit_nns()
+
     models = loadNNs(abs=False, acos=False, asin=False, atan=False, exp=False, log=False)
     for m in models:
         for l in m.layers:
