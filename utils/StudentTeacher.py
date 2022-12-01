@@ -8,7 +8,7 @@ from utils.eval import Eval
 
 class mystery_function():
     """A class to model a given fn, also handles creation/storage of data to train/test on"""
-    def __init__(self, fn, dim, gen_data=False, sample_size=DEFAULT_SAMPLE_SIZE, scale=DEFAULT_SCALE, center=DEFAULT_CENTER, test_size=DEFAULT_TEST_SIZE, noisy=False, noise_factor=DEFAULT_NOISE):
+    def __init__(self, fn, dim, gen_data=False, sample_size=DEFAULT_SAMPLE_SIZE, scale=DEFAULT_SCALE, center=DEFAULT_CENTER, test_size=DEFAULT_TEST_SIZE, noisy=False, noise_factor=DEFAULT_NOISE, outlier_rate=DEFAULT_OUTLIER):
         """Init function, generates a function for fn in dim variables, includes optional params for tuning the data generated
         
             Parameters
@@ -26,9 +26,9 @@ class mystery_function():
         self.dim = dim
         self.shape = (dim, )
         if gen_data:
-            self.gen_data(sample_size=sample_size, scale=scale, test_size=test_size, center=center, noisy=noisy, noise_factor=noise_factor)
+            self.gen_data(sample_size=sample_size, scale=scale, test_size=test_size, center=center, noisy=noisy, noise_factor=noise_factor, outlier_rate=outlier_rate)
 
-    def gen_data(self, sample_size=DEFAULT_SAMPLE_SIZE, scale=DEFAULT_SCALE, center=DEFAULT_CENTER, test_size=DEFAULT_TEST_SIZE, noisy=False, noise_factor=DEFAULT_NOISE, sorted=False):
+    def gen_data(self, sample_size=DEFAULT_SAMPLE_SIZE, scale=DEFAULT_SCALE, center=DEFAULT_CENTER, test_size=DEFAULT_TEST_SIZE, noisy=False, noise_factor=DEFAULT_NOISE, sorted=False, outlier_rate=DEFAULT_OUTLIER):
         """
         Method to generate data for our candidate fn, makes a random numpy array and defers to Eval() for answers
 
@@ -58,7 +58,6 @@ class mystery_function():
         r = r + center_factor
         self.x_test = r
         self.y_test = Eval(self.fn, self.x_test)[:,-1]  # Also init x_test and y_test
-        
         # The below just adds noise as specified, centered at 0
         if noisy:
             noise = np.random.rand(int(sample_size * (1 - test_size)), self.dim)
@@ -72,7 +71,15 @@ class mystery_function():
             self.x_test = self.x_test + noise_factor * noise
             for i in self.y_test:
                 i = i + noise_factor * (np.random.rand((0)) - 0.5)        
+        
+        if outlier_rate > 0:
+            mask = np.random.randint(0,2,size=self.x_train.shape, p=((1-outlier_rate), outlier_rate)).astype(np.bool)
+            r = np.random.rand(*self.x_train.shape)*np.max(self.x_train.shape)
+            self.x_train[mask] = r[mask]
 
+            mask = np.random.randint(0,2,size=self.y_train.shape, p=((1-outlier_rate), outlier_rate)).astype(np.bool)
+            r = np.random.rand(*self.y_train.shape)*np.max(self.y_train.shape)
+            self.y_train[mask] = r[mask]
 
 # Distiller class for Student-Teacher capability, ripped from a TF Docs page
 class Distiller(tf.keras.Model):
@@ -172,8 +179,8 @@ class Distiller(tf.keras.Model):
         return results
 
 class FnLayer(tf.keras.layers.Layer):
-    def __init__(self, input_dim, NNs, repeats=1, *args, **kwargs):
-        super(FnLayer, self).__init__(*args, **kwargs)
+    def __init__(self, input_dim, NNs, repeats=1):
+        super(FnLayer, self).__init__()
         self.units = input_dim + repeats*len(NNs)
         self.NNs = NNs
         self.repeats = repeats

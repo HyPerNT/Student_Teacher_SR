@@ -244,9 +244,10 @@ def bf_unit_nns():
         if i > 2 and i < 5:
             scale = 2
         if i == 0:
-            center = 5_000
+            center = 50
+            scale = 100
         if i == 6:
-            scale = 20
+            scale = 10
 
         # Skip NNs we've found (allows us to select which NNs to re-train by renaming them/deleting them)
         path = os.path.join(UNIT_DIR, ext[i][1])
