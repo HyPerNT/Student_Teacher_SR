@@ -8,7 +8,7 @@ from utils.eval import Eval
 
 class mystery_function():
     """A class to model a given fn, also handles creation/storage of data to train/test on"""
-    def __init__(self, fn, dim, gen_data=False, sample_size=DEFAULT_SAMPLE_SIZE, scale=DEFAULT_SCALE, center=DEFAULT_CENTER, test_size=DEFAULT_TEST_SIZE, noisy=False, noise_factor=DEFAULT_NOISE, outlier_rate=DEFAULT_OUTLIER):
+    def __init__(self, fn, dim, gen_data=False, sample_size=DEFAULT_SAMPLE_SIZE, min_x=0, max_x=100, test_size=DEFAULT_TEST_SIZE, noisy=False, noise_factor=DEFAULT_NOISE, outlier_rate=DEFAULT_OUTLIER):
         """Init function, generates a function for fn in dim variables, includes optional params for tuning the data generated
         
             Parameters
@@ -26,9 +26,9 @@ class mystery_function():
         self.dim = dim
         self.shape = (dim, )
         if gen_data:
-            self.gen_data(sample_size=sample_size, scale=scale, test_size=test_size, center=center, noisy=noisy, noise_factor=noise_factor, outlier_rate=outlier_rate)
+            self.gen_data(sample_size=sample_size, test_size=test_size,  min_x=min_x, max_x=max_x, noisy=noisy, noise_factor=noise_factor, outlier_rate=outlier_rate)
 
-    def gen_data(self, sample_size=DEFAULT_SAMPLE_SIZE, scale=DEFAULT_SCALE, center=DEFAULT_CENTER, test_size=DEFAULT_TEST_SIZE, noisy=False, noise_factor=DEFAULT_NOISE, sorted=False, outlier_rate=DEFAULT_OUTLIER):
+    def gen_data(self, sample_size=DEFAULT_SAMPLE_SIZE,  min_x=0, max_x=100, test_size=DEFAULT_TEST_SIZE, noisy=False, noise_factor=DEFAULT_NOISE, sorted=False, outlier_rate=DEFAULT_OUTLIER):
         """
         Method to generate data for our candidate fn, makes a random numpy array and defers to Eval() for answers
 
@@ -45,16 +45,16 @@ class mystery_function():
                 sorted : Whether to sort the data, useful for plots. Should also only be used on fns with a single variable
                 """
 
-        r = np.random.rand(int(sample_size*(1-test_size)), self.dim) * scale # Generate input train array according to params
-        center_factor = center - scale/2
-        r = r + center_factor
+        r = np.random.rand(int(sample_size*(1-test_size)), self.dim) * (max_x-min_x) # Generate input train array according to params
+        center_factor = (max_x-min_x)/2
+        r = r - center_factor
         self.x_train = r
         if sorted:
-            self.x_train = np.arange(center-scale/2, center+scale/2, scale/sample_size)
+            self.x_train = np.arange(min_x, max_x, (max_x-min_x)/sample_size)
             self.x_train = np.reshape(self.x_train, (len(self.x_train), 1))
         self.y_train = Eval(self.fn, self.x_train)[:,-1] # Init x_train and y_train
 
-        r = np.random.rand(int(sample_size*test_size), self.dim) * scale # Generate seperate test array according to params
+        r = np.random.rand(int(sample_size*test_size), self.dim) * (max_x-min_x) # Generate seperate test array according to params
         r = r + center_factor
         self.x_test = r
         self.y_test = Eval(self.fn, self.x_test)[:,-1]  # Also init x_test and y_test
@@ -74,6 +74,7 @@ class mystery_function():
         
         if outlier_rate > 0:
             mask = np.random.choice([0,1],size=self.x_train.shape, p=((1-outlier_rate), outlier_rate)).astype(np.bool)
+            scale_factor = np.max(self.x_train) - np.min(self.x_train)
             r = np.random.rand(*self.x_train.shape)*np.max(self.x_train)
             self.x_train[mask] = r[mask]
 
