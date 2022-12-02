@@ -1,0 +1,45 @@
+11-29 14:55 root         INFO     Loaded unit student models
+
+11-29 14:55 root         INFO     Mystery function generated
+
+11-29 14:55 root         INFO     Teacher model generated
+
+11-29 14:55 root         INFO     Teacher has 593153 trainable params
+
+11-29 14:55 root         INFO     Beginning knowledge distillation step
+
+11-29 14:55 root         INFO     Student model 0 generated
+
+11-29 14:55 root         INFO     Student has 3 trainable params
+CR:                 0.00001
+
+11-29 14:56 root         INFO     Student model 1 generated
+
+11-29 14:56 root         INFO     Student has 44 trainable params
+CR:                 0.00007
+
+11-29 14:56 root         INFO     Student model 2 generated
+
+11-29 14:56 root         INFO     Student has 323 trainable params
+CR:                 0.00054
+
+11-29 14:58 root         INFO     Student model 3 generated
+
+11-29 14:58 root         INFO     Student has 882 trainable params
+CR:                 0.00149
+
+11-29 14:59 root         INFO     Student model 4 generated
+
+11-29 14:59 root         INFO     Student has 1819 trainable params
+CR:                 0.00307
+
+11-29 15:01 root         INFO     Student model 5 generated
+
+11-29 15:01 root         INFO     Student has 3232 trainable params
+CR:                 0.00545
+
+11-29 15:04 root         INFO     Student model 6 generated
+
+11-29 15:04 root         INFO     Student has 5219 trainable params
+CR:                 0.00880
+

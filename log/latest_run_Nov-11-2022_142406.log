@@ -1,0 +1,245 @@
+11-11 14:07 root         INFO     
+
+Training addition_0-layers_1-nodes...
+-------------------------------------
+
+11-11 14:07 root         INFO     ------------------
+New Best: [0, 1]
+Score: 0.0000
+------------------
+
+11-11 14:07 root         INFO     Got greedy, found sufficient loss
+
+11-11 14:07 root         INFO     Best Configuration: 0 layers and 1 nodes/layer, loss of 0.0000
+
+11-11 14:07 root         INFO     Satisfactory models for addition
+
+11-11 14:07 root         INFO     Config:[0, 1]	Score:7.51369406628398e-09	Params:3
+
+11-11 14:07 tensorflow   INFO     Assets written to: unit_fns/addition/assets
+
+11-11 14:07 root         INFO     
+
+Training subtraction_0-layers_1-nodes...
+----------------------------------------
+
+11-11 14:08 root         INFO     ------------------
+New Best: [0, 1]
+Score: 0.0000
+------------------
+
+11-11 14:08 root         INFO     Got greedy, found sufficient loss
+
+11-11 14:08 root         INFO     Best Configuration: 0 layers and 1 nodes/layer, loss of 0.0000
+
+11-11 14:08 root         INFO     Satisfactory models for subtraction
+
+11-11 14:08 root         INFO     Config:[0, 1]	Score:3.213402559540164e-09	Params:3
+
+11-11 14:08 tensorflow   INFO     Assets written to: unit_fns/subtraction/assets
+
+11-11 14:08 root         INFO     
+
+Training multiplication_0-layers_1-nodes...
+-------------------------------------------
+
+11-11 14:08 root         INFO     ------------------
+New Best: [0, 1]
+Score: 3.5726
+------------------
+
+11-11 14:08 root         INFO     
+
+Training multiplication_1-layers_1-nodes...
+-------------------------------------------
+
+11-11 14:09 root         INFO     ------------------
+New Best: [1, 1]
+Score: 2.5997
+------------------
+
+11-11 14:09 root         INFO     
+
+Training multiplication_1-layers_2-nodes...
+-------------------------------------------
+
+11-11 14:09 root         INFO     
+
+Training multiplication_1-layers_4-nodes...
+-------------------------------------------
+
+11-11 14:10 root         INFO     ------------------
+New Best: [1, 4]
+Score: 1.8356
+------------------
+
+11-11 14:10 root         INFO     
+
+Training multiplication_1-layers_8-nodes...
+-------------------------------------------
+
+11-11 14:10 root         INFO     ------------------
+New Best: [1, 8]
+Score: 0.0285
+------------------
+
+11-11 14:10 root         INFO     
+
+Training multiplication_1-layers_16-nodes...
+--------------------------------------------
+
+11-11 14:11 root         INFO     ------------------
+New Best: [1, 16]
+Score: 0.0083
+------------------
+
+11-11 14:11 root         INFO     
+
+Training multiplication_1-layers_32-nodes...
+--------------------------------------------
+
+11-11 14:11 root         INFO     ------------------
+New Best: [1, 32]
+Score: 0.0046
+------------------
+
+11-11 14:11 root         INFO     
+
+Training multiplication_1-layers_64-nodes...
+--------------------------------------------
+
+11-11 14:11 root         INFO     ------------------
+New Best: [1, 64]
+Score: 0.0020
+------------------
+
+11-11 14:11 root         INFO     
+
+Training multiplication_1-layers_128-nodes...
+---------------------------------------------
+
+11-11 14:12 root         INFO     ------------------
+New Best: [1, 128]
+Score: 0.0012
+------------------
+
+11-11 14:12 root         INFO     
+
+Training multiplication_1-layers_256-nodes...
+---------------------------------------------
+
+11-11 14:12 root         INFO     ------------------
+New Best: [1, 256]
+Score: 0.0007
+------------------
+
+11-11 14:12 root         INFO     
+
+Training multiplication_1-layers_512-nodes...
+---------------------------------------------
+
+11-11 14:13 root         INFO     ------------------
+New Best: [1, 512]
+Score: 0.0006
+------------------
+
+11-11 14:13 root         INFO     
+
+Training multiplication_2-layers_1-nodes...
+-------------------------------------------
+
+11-11 14:13 root         INFO     
+
+Training multiplication_2-layers_2-nodes...
+-------------------------------------------
+
+11-11 14:13 root         INFO     
+
+Training multiplication_2-layers_4-nodes...
+-------------------------------------------
+
+11-11 14:14 root         INFO     
+
+Training multiplication_2-layers_8-nodes...
+-------------------------------------------
+
+11-11 14:14 root         INFO     
+
+Training multiplication_2-layers_16-nodes...
+--------------------------------------------
+
+11-11 14:14 root         INFO     
+
+Training multiplication_2-layers_32-nodes...
+--------------------------------------------
+
+11-11 14:15 root         INFO     
+
+Training multiplication_2-layers_64-nodes...
+--------------------------------------------
+
+11-11 14:15 root         INFO     
+
+Training multiplication_2-layers_128-nodes...
+---------------------------------------------
+
+11-11 14:16 root         INFO     
+
+Training multiplication_2-layers_256-nodes...
+---------------------------------------------
+
+11-11 14:16 root         INFO     
+
+Training multiplication_2-layers_512-nodes...
+---------------------------------------------
+
+11-11 14:18 root         INFO     
+
+Training multiplication_3-layers_1-nodes...
+-------------------------------------------
+
+11-11 14:18 root         INFO     
+
+Training multiplication_3-layers_2-nodes...
+-------------------------------------------
+
+11-11 14:18 root         INFO     
+
+Training multiplication_3-layers_4-nodes...
+-------------------------------------------
+
+11-11 14:19 root         INFO     
+
+Training multiplication_3-layers_8-nodes...
+-------------------------------------------
+
+11-11 14:19 root         INFO     
+
+Training multiplication_3-layers_16-nodes...
+--------------------------------------------
+
+11-11 14:20 root         INFO     
+
+Training multiplication_3-layers_32-nodes...
+--------------------------------------------
+
+11-11 14:20 root         INFO     
+
+Training multiplication_3-layers_64-nodes...
+--------------------------------------------
+
+11-11 14:21 root         INFO     
+
+Training multiplication_3-layers_128-nodes...
+---------------------------------------------
+
+11-11 14:21 root         INFO     
+
+Training multiplication_3-layers_256-nodes...
+---------------------------------------------
+
+11-11 14:22 root         INFO     
+
+Training multiplication_3-layers_512-nodes...
+---------------------------------------------
+

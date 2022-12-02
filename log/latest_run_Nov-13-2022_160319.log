@@ -1,0 +1,4123 @@
+11-11 14:25 root         INFO     
+
+Training negation_0-layers_1-nodes...
+-------------------------------------
+
+11-11 14:25 root         INFO     ------------------
+New Best: [0, 1]
+Score: 0.0000
+------------------
+
+11-11 14:25 root         INFO     Got greedy, found sufficient loss
+
+11-11 14:25 root         INFO     Best Configuration: 0 layers and 1 nodes/layer, loss of 0.0000
+
+11-11 14:25 root         INFO     Satisfactory models for negation
+
+11-11 14:25 root         INFO     Config:[0, 1]	Score:0.0	Params:2
+
+11-11 14:25 tensorflow   INFO     Assets written to: unit_fns/negation/assets
+
+11-11 14:25 root         INFO     
+
+Training abs_0-layers_1-nodes...
+--------------------------------
+
+11-11 14:26 root         INFO     ------------------
+New Best: [0, 1]
+Score: 0.1674
+------------------
+
+11-11 14:26 root         INFO     
+
+Training abs_1-layers_1-nodes...
+--------------------------------
+
+11-11 14:26 root         INFO     
+
+Training abs_1-layers_2-nodes...
+--------------------------------
+
+11-11 14:27 root         INFO     ------------------
+New Best: [1, 2]
+Score: 0.1147
+------------------
+
+11-11 14:27 root         INFO     
+
+Training abs_1-layers_4-nodes...
+--------------------------------
+
+11-11 14:27 root         INFO     
+
+Training abs_1-layers_8-nodes...
+--------------------------------
+
+11-11 14:28 root         INFO     ------------------
+New Best: [1, 8]
+Score: 0.0013
+------------------
+
+11-11 14:28 root         INFO     
+
+Training abs_1-layers_16-nodes...
+---------------------------------
+
+11-11 14:28 root         INFO     ------------------
+New Best: [1, 16]
+Score: 0.0007
+------------------
+
+11-11 14:28 root         INFO     
+
+Training abs_1-layers_32-nodes...
+---------------------------------
+
+11-11 14:29 root         INFO     ------------------
+New Best: [1, 32]
+Score: 0.0004
+------------------
+
+11-11 14:29 root         INFO     
+
+Training abs_1-layers_64-nodes...
+---------------------------------
+
+11-11 14:29 root         INFO     ------------------
+New Best: [1, 64]
+Score: 0.0002
+------------------
+
+11-11 14:29 root         INFO     
+
+Training abs_1-layers_128-nodes...
+----------------------------------
+
+11-11 14:30 root         INFO     ------------------
+New Best: [1, 128]
+Score: 0.0001
+------------------
+
+11-11 14:30 root         INFO     
+
+Training abs_1-layers_256-nodes...
+----------------------------------
+
+11-11 14:30 root         INFO     ------------------
+New Best: [1, 256]
+Score: 0.0001
+------------------
+
+11-11 14:30 root         INFO     
+
+Training abs_1-layers_512-nodes...
+----------------------------------
+
+11-11 14:31 root         INFO     ------------------
+New Best: [1, 512]
+Score: 0.0001
+------------------
+
+11-11 14:31 root         INFO     
+
+Training abs_2-layers_1-nodes...
+--------------------------------
+
+11-11 14:31 root         INFO     
+
+Training abs_2-layers_2-nodes...
+--------------------------------
+
+11-11 14:31 root         INFO     
+
+Training abs_2-layers_4-nodes...
+--------------------------------
+
+11-11 14:32 root         INFO     
+
+Training abs_2-layers_8-nodes...
+--------------------------------
+
+11-11 14:32 root         INFO     
+
+Training abs_2-layers_16-nodes...
+---------------------------------
+
+11-11 14:33 root         INFO     
+
+Training abs_2-layers_32-nodes...
+---------------------------------
+
+11-11 14:33 root         INFO     
+
+Training abs_2-layers_64-nodes...
+---------------------------------
+
+11-11 14:34 root         INFO     
+
+Training abs_2-layers_128-nodes...
+----------------------------------
+
+11-11 14:34 root         INFO     
+
+Training abs_2-layers_256-nodes...
+----------------------------------
+
+11-11 14:35 root         INFO     
+
+Training abs_2-layers_512-nodes...
+----------------------------------
+
+11-11 14:36 root         INFO     
+
+Training abs_3-layers_1-nodes...
+--------------------------------
+
+11-11 14:37 root         INFO     
+
+Training abs_3-layers_2-nodes...
+--------------------------------
+
+11-11 14:37 root         INFO     
+
+Training abs_3-layers_4-nodes...
+--------------------------------
+
+11-11 14:38 root         INFO     
+
+Training abs_3-layers_8-nodes...
+--------------------------------
+
+11-11 14:38 root         INFO     
+
+Training abs_3-layers_16-nodes...
+---------------------------------
+
+11-11 14:39 root         INFO     
+
+Training abs_3-layers_32-nodes...
+---------------------------------
+
+11-11 14:39 root         INFO     
+
+Training abs_3-layers_64-nodes...
+---------------------------------
+
+11-11 14:40 root         INFO     
+
+Training abs_3-layers_128-nodes...
+----------------------------------
+
+11-11 14:40 root         INFO     
+
+Training abs_3-layers_256-nodes...
+----------------------------------
+
+11-11 14:41 root         INFO     
+
+Training abs_3-layers_512-nodes...
+----------------------------------
+
+11-11 14:44 root         INFO     
+
+Training abs_4-layers_1-nodes...
+--------------------------------
+
+11-11 14:45 root         INFO     
+
+Training abs_4-layers_2-nodes...
+--------------------------------
+
+11-11 14:46 root         INFO     
+
+Training abs_4-layers_4-nodes...
+--------------------------------
+
+11-11 14:48 root         INFO     
+
+Training abs_4-layers_8-nodes...
+--------------------------------
+
+11-11 14:49 root         INFO     
+
+Training abs_4-layers_16-nodes...
+---------------------------------
+
+11-11 14:51 root         INFO     
+
+Training abs_4-layers_32-nodes...
+---------------------------------
+
+11-11 14:52 root         INFO     
+
+Training abs_4-layers_64-nodes...
+---------------------------------
+
+11-11 14:53 root         INFO     
+
+Training abs_4-layers_128-nodes...
+----------------------------------
+
+11-11 14:54 root         INFO     
+
+Training abs_4-layers_256-nodes...
+----------------------------------
+
+11-11 14:55 root         INFO     
+
+Training abs_4-layers_512-nodes...
+----------------------------------
+
+11-11 14:57 root         INFO     
+
+Training abs_5-layers_1-nodes...
+--------------------------------
+
+11-11 14:57 root         INFO     
+
+Training abs_5-layers_2-nodes...
+--------------------------------
+
+11-11 14:58 root         INFO     
+
+Training abs_5-layers_4-nodes...
+--------------------------------
+
+11-11 14:58 root         INFO     
+
+Training abs_5-layers_8-nodes...
+--------------------------------
+
+11-11 14:59 root         INFO     
+
+Training abs_5-layers_16-nodes...
+---------------------------------
+
+11-11 14:59 root         INFO     
+
+Training abs_5-layers_32-nodes...
+---------------------------------
+
+11-11 15:00 root         INFO     
+
+Training abs_5-layers_64-nodes...
+---------------------------------
+
+11-11 15:00 root         INFO     
+
+Training abs_5-layers_128-nodes...
+----------------------------------
+
+11-11 15:01 root         INFO     
+
+Training abs_5-layers_256-nodes...
+----------------------------------
+
+11-11 15:02 root         INFO     
+
+Training abs_5-layers_512-nodes...
+----------------------------------
+
+11-11 15:05 root         INFO     
+
+Training abs_6-layers_1-nodes...
+--------------------------------
+
+11-11 15:06 root         INFO     
+
+Training abs_6-layers_2-nodes...
+--------------------------------
+
+11-11 15:06 root         INFO     
+
+Training abs_6-layers_4-nodes...
+--------------------------------
+
+11-11 15:07 root         INFO     
+
+Training abs_6-layers_8-nodes...
+--------------------------------
+
+11-11 15:07 root         INFO     
+
+Training abs_6-layers_16-nodes...
+---------------------------------
+
+11-11 15:08 root         INFO     
+
+Training abs_6-layers_32-nodes...
+---------------------------------
+
+11-11 15:08 root         INFO     
+
+Training abs_6-layers_64-nodes...
+---------------------------------
+
+11-11 15:09 root         INFO     
+
+Training abs_6-layers_128-nodes...
+----------------------------------
+
+11-11 15:10 root         INFO     
+
+Training abs_6-layers_256-nodes...
+----------------------------------
+
+11-11 15:11 root         INFO     
+
+Training abs_6-layers_512-nodes...
+----------------------------------
+
+11-11 15:15 root         INFO     
+
+Training abs_7-layers_1-nodes...
+--------------------------------
+
+11-11 15:15 root         INFO     
+
+Training abs_7-layers_2-nodes...
+--------------------------------
+
+11-11 15:16 root         INFO     
+
+Training abs_7-layers_4-nodes...
+--------------------------------
+
+11-11 15:16 root         INFO     
+
+Training abs_7-layers_8-nodes...
+--------------------------------
+
+11-11 15:17 root         INFO     
+
+Training abs_7-layers_16-nodes...
+---------------------------------
+
+11-11 15:17 root         INFO     
+
+Training abs_7-layers_32-nodes...
+---------------------------------
+
+11-11 15:18 root         INFO     
+
+Training abs_7-layers_64-nodes...
+---------------------------------
+
+11-11 15:18 root         INFO     
+
+Training abs_7-layers_128-nodes...
+----------------------------------
+
+11-11 15:19 root         INFO     
+
+Training abs_7-layers_256-nodes...
+----------------------------------
+
+11-11 15:21 root         INFO     
+
+Training abs_7-layers_512-nodes...
+----------------------------------
+
+11-11 15:25 root         INFO     
+
+Training abs_8-layers_1-nodes...
+--------------------------------
+
+11-11 15:26 root         INFO     
+
+Training abs_8-layers_2-nodes...
+--------------------------------
+
+11-11 15:26 root         INFO     
+
+Training abs_8-layers_4-nodes...
+--------------------------------
+
+11-11 15:27 root         INFO     
+
+Training abs_8-layers_8-nodes...
+--------------------------------
+
+11-11 15:27 root         INFO     
+
+Training abs_8-layers_16-nodes...
+---------------------------------
+
+11-11 15:28 root         INFO     
+
+Training abs_8-layers_32-nodes...
+---------------------------------
+
+11-11 15:28 root         INFO     
+
+Training abs_8-layers_64-nodes...
+---------------------------------
+
+11-11 15:29 root         INFO     
+
+Training abs_8-layers_128-nodes...
+----------------------------------
+
+11-11 15:30 root         INFO     
+
+Training abs_8-layers_256-nodes...
+----------------------------------
+
+11-11 15:32 root         INFO     
+
+Training abs_8-layers_512-nodes...
+----------------------------------
+
+11-11 15:37 root         INFO     
+
+Training abs_9-layers_1-nodes...
+--------------------------------
+
+11-11 15:37 root         INFO     
+
+Training abs_9-layers_2-nodes...
+--------------------------------
+
+11-11 15:38 root         INFO     
+
+Training abs_9-layers_4-nodes...
+--------------------------------
+
+11-11 15:38 root         INFO     
+
+Training abs_9-layers_8-nodes...
+--------------------------------
+
+11-11 15:39 root         INFO     
+
+Training abs_9-layers_16-nodes...
+---------------------------------
+
+11-11 15:39 root         INFO     
+
+Training abs_9-layers_32-nodes...
+---------------------------------
+
+11-11 15:40 root         INFO     
+
+Training abs_9-layers_64-nodes...
+---------------------------------
+
+11-11 15:41 root         INFO     
+
+Training abs_9-layers_128-nodes...
+----------------------------------
+
+11-11 15:42 root         INFO     
+
+Training abs_9-layers_256-nodes...
+----------------------------------
+
+11-11 15:44 root         INFO     
+
+Training abs_9-layers_512-nodes...
+----------------------------------
+
+11-11 15:49 root         INFO     Best Configuration: 1 layers and 512 nodes/layer, loss of 0.0001
+
+11-11 15:49 root         INFO     Satisfactory models for abs
+
+11-11 15:49 root         INFO     Config:[1, 64]	Score:0.00019709025764313992	Params:193
+
+11-11 15:49 root         INFO     Config:[1, 128]	Score:0.00010284203290211735	Params:385
+
+11-11 15:49 root         INFO     Config:[1, 256]	Score:7.773260040266905e-05	Params:769
+
+11-11 15:49 root         INFO     Config:[1, 512]	Score:6.201916221471038e-05	Params:1537
+
+11-11 15:49 root         INFO     Config:[2, 32]	Score:0.0002746612299233675	Params:1153
+
+11-11 15:49 root         INFO     Config:[2, 64]	Score:0.0001509504727437161	Params:4353
+
+11-11 15:49 root         INFO     Config:[2, 128]	Score:0.0001663853763602674	Params:16897
+
+11-11 15:49 root         INFO     Config:[2, 256]	Score:9.736452921060845e-05	Params:66561
+
+11-11 15:49 root         INFO     Config:[2, 512]	Score:8.444646482530516e-05	Params:264193
+
+11-11 15:49 root         INFO     Config:[3, 32]	Score:0.00025184653350152075	Params:2209
+
+11-11 15:49 root         INFO     Config:[3, 64]	Score:0.00021466449106810614	Params:8513
+
+11-11 15:49 root         INFO     Config:[3, 128]	Score:0.00011200371227459982	Params:33409
+
+11-11 15:49 root         INFO     Config:[3, 256]	Score:0.00010688545080483891	Params:132353
+
+11-11 15:49 root         INFO     Config:[3, 512]	Score:0.00011585799802560359	Params:526849
+
+11-11 15:49 root         INFO     Config:[4, 32]	Score:0.00025495699082966894	Params:3265
+
+11-11 15:49 root         INFO     Config:[4, 64]	Score:0.00014039086818229407	Params:12673
+
+11-11 15:49 root         INFO     Config:[4, 128]	Score:0.00012441583385225385	Params:49921
+
+11-11 15:49 root         INFO     Config:[4, 256]	Score:0.00011213678953936324	Params:198145
+
+11-11 15:49 root         INFO     Config:[4, 512]	Score:0.00011051744149881415	Params:789505
+
+11-11 15:49 root         INFO     Config:[5, 32]	Score:0.00029115291545167565	Params:4321
+
+11-11 15:49 root         INFO     Config:[5, 64]	Score:0.00020020262309117243	Params:16833
+
+11-11 15:49 root         INFO     Config:[5, 128]	Score:0.00010043716611107811	Params:66433
+
+11-11 15:49 root         INFO     Config:[5, 256]	Score:0.00010444767031003721	Params:263937
+
+11-11 15:49 root         INFO     Config:[5, 512]	Score:8.896688268578146e-05	Params:1052161
+
+11-11 15:49 root         INFO     Config:[6, 32]	Score:0.0002841310779331252	Params:5377
+
+11-11 15:49 root         INFO     Config:[6, 128]	Score:0.0001170878458651714	Params:82945
+
+11-11 15:49 root         INFO     Config:[6, 256]	Score:9.369373765366618e-05	Params:329729
+
+11-11 15:49 root         INFO     Config:[6, 512]	Score:0.00010674662007659208	Params:1314817
+
+11-11 15:49 root         INFO     Config:[7, 64]	Score:0.0001858195464592427	Params:25153
+
+11-11 15:49 root         INFO     Config:[7, 128]	Score:0.00011410877414164133	Params:99457
+
+11-11 15:49 root         INFO     Config:[7, 256]	Score:0.00011873626499436796	Params:395521
+
+11-11 15:49 root         INFO     Config:[7, 512]	Score:0.00018437248945701867	Params:1577473
+
+11-11 15:49 root         INFO     Config:[8, 64]	Score:0.0002571623044786975	Params:29313
+
+11-11 15:49 root         INFO     Config:[8, 128]	Score:0.0001646689051995054	Params:115969
+
+11-11 15:49 root         INFO     Config:[8, 256]	Score:0.0003030290754395537	Params:461313
+
+11-11 15:49 root         INFO     Config:[8, 512]	Score:0.00015278591308742762	Params:1840129
+
+11-11 15:49 root         INFO     Config:[9, 128]	Score:0.00014933171769371256	Params:132481
+
+11-11 15:49 root         INFO     Config:[9, 256]	Score:0.0001161335785582196	Params:527105
+
+11-11 15:49 root         INFO     Config:[9, 512]	Score:0.00018301376985618845	Params:2102785
+
+11-11 15:49 tensorflow   INFO     Assets written to: unit_fns/abs/assets
+
+11-11 15:49 root         INFO     
+
+Training successor_0-layers_1-nodes...
+--------------------------------------
+
+11-11 15:50 root         INFO     ------------------
+New Best: [0, 1]
+Score: 0.0000
+------------------
+
+11-11 15:50 root         INFO     Got greedy, found sufficient loss
+
+11-11 15:50 root         INFO     Best Configuration: 0 layers and 1 nodes/layer, loss of 0.0000
+
+11-11 15:50 root         INFO     Satisfactory models for successor
+
+11-11 15:50 root         INFO     Config:[0, 1]	Score:2.187318721655667e-12	Params:2
+
+11-11 15:50 tensorflow   INFO     Assets written to: unit_fns/successor/assets
+
+11-11 15:50 root         INFO     
+
+Training predecessor_0-layers_1-nodes...
+----------------------------------------
+
+11-11 15:50 root         INFO     ------------------
+New Best: [0, 1]
+Score: 0.0000
+------------------
+
+11-11 15:50 root         INFO     Got greedy, found sufficient loss
+
+11-11 15:50 root         INFO     Best Configuration: 0 layers and 1 nodes/layer, loss of 0.0000
+
+11-11 15:50 root         INFO     Satisfactory models for predecessor
+
+11-11 15:50 root         INFO     Config:[0, 1]	Score:2.5832865247228513e-14	Params:2
+
+11-11 15:50 tensorflow   INFO     Assets written to: unit_fns/predecessor/assets
+
+11-11 15:50 root         INFO     
+
+Training log_0-layers_1-nodes...
+--------------------------------
+
+11-11 15:50 root         INFO     ------------------
+New Best: [0, 1]
+Score: 0.5844
+------------------
+
+11-11 15:50 root         INFO     
+
+Training log_1-layers_1-nodes...
+--------------------------------
+
+11-11 15:51 root         INFO     ------------------
+New Best: [1, 1]
+Score: 0.5587
+------------------
+
+11-11 15:51 root         INFO     
+
+Training log_1-layers_2-nodes...
+--------------------------------
+
+11-11 15:51 root         INFO     
+
+Training log_1-layers_4-nodes...
+--------------------------------
+
+11-11 15:52 root         INFO     
+
+Training log_1-layers_8-nodes...
+--------------------------------
+
+11-11 15:52 root         INFO     ------------------
+New Best: [1, 8]
+Score: 0.5249
+------------------
+
+11-11 15:52 root         INFO     
+
+Training log_1-layers_16-nodes...
+---------------------------------
+
+11-11 15:52 root         INFO     ------------------
+New Best: [1, 16]
+Score: 0.4853
+------------------
+
+11-11 15:52 root         INFO     
+
+Training log_1-layers_32-nodes...
+---------------------------------
+
+11-11 15:53 root         INFO     ------------------
+New Best: [1, 32]
+Score: 0.4640
+------------------
+
+11-11 15:53 root         INFO     
+
+Training log_1-layers_64-nodes...
+---------------------------------
+
+11-11 15:54 root         INFO     ------------------
+New Best: [1, 64]
+Score: 0.1961
+------------------
+
+11-11 15:54 root         INFO     
+
+Training log_1-layers_128-nodes...
+----------------------------------
+
+11-11 15:56 root         INFO     ------------------
+New Best: [1, 128]
+Score: 0.1783
+------------------
+
+11-11 15:56 root         INFO     
+
+Training log_1-layers_256-nodes...
+----------------------------------
+
+11-11 15:57 root         INFO     
+
+Training log_1-layers_512-nodes...
+----------------------------------
+
+11-11 15:58 root         INFO     
+
+Training log_2-layers_1-nodes...
+--------------------------------
+
+11-11 16:00 root         INFO     
+
+Training log_2-layers_2-nodes...
+--------------------------------
+
+11-11 16:02 root         INFO     
+
+Training log_2-layers_4-nodes...
+--------------------------------
+
+11-11 16:03 root         INFO     
+
+Training log_2-layers_8-nodes...
+--------------------------------
+
+11-11 16:05 root         INFO     
+
+Training log_2-layers_16-nodes...
+---------------------------------
+
+11-11 16:06 root         INFO     ------------------
+New Best: [2, 16]
+Score: 0.1189
+------------------
+
+11-11 16:06 root         INFO     
+
+Training log_2-layers_32-nodes...
+---------------------------------
+
+11-11 16:07 root         INFO     
+
+Training log_2-layers_64-nodes...
+---------------------------------
+
+11-11 16:09 root         INFO     
+
+Training log_2-layers_128-nodes...
+----------------------------------
+
+11-11 16:10 root         INFO     
+
+Training log_2-layers_256-nodes...
+----------------------------------
+
+11-11 16:22 root         INFO     
+
+Training log_2-layers_512-nodes...
+----------------------------------
+
+11-11 16:23 root         INFO     
+
+Training log_3-layers_1-nodes...
+--------------------------------
+
+11-11 16:23 root         INFO     
+
+Training log_3-layers_2-nodes...
+--------------------------------
+
+11-11 16:24 root         INFO     
+
+Training log_3-layers_4-nodes...
+--------------------------------
+
+11-11 16:24 root         INFO     
+
+Training log_3-layers_8-nodes...
+--------------------------------
+
+11-11 16:25 root         INFO     
+
+Training log_3-layers_16-nodes...
+---------------------------------
+
+11-11 16:25 root         INFO     
+
+Training log_3-layers_32-nodes...
+---------------------------------
+
+11-11 16:26 root         INFO     
+
+Training log_3-layers_64-nodes...
+---------------------------------
+
+11-11 16:26 root         INFO     ------------------
+New Best: [3, 64]
+Score: 0.0588
+------------------
+
+11-11 16:26 root         INFO     
+
+Training log_3-layers_128-nodes...
+----------------------------------
+
+11-11 16:27 root         INFO     ------------------
+New Best: [3, 128]
+Score: 0.0290
+------------------
+
+11-11 16:27 root         INFO     
+
+Training log_3-layers_256-nodes...
+----------------------------------
+
+11-11 16:28 root         INFO     
+
+Training log_3-layers_512-nodes...
+----------------------------------
+
+11-11 16:30 root         INFO     
+
+Training log_4-layers_1-nodes...
+--------------------------------
+
+11-11 16:30 root         INFO     
+
+Training log_4-layers_2-nodes...
+--------------------------------
+
+11-11 16:31 root         INFO     
+
+Training log_4-layers_4-nodes...
+--------------------------------
+
+11-11 16:31 root         INFO     
+
+Training log_4-layers_8-nodes...
+--------------------------------
+
+11-11 16:32 root         INFO     
+
+Training log_4-layers_16-nodes...
+---------------------------------
+
+11-11 16:32 root         INFO     
+
+Training log_4-layers_32-nodes...
+---------------------------------
+
+11-11 16:33 root         INFO     
+
+Training log_4-layers_64-nodes...
+---------------------------------
+
+11-11 16:33 root         INFO     
+
+Training log_4-layers_128-nodes...
+----------------------------------
+
+11-11 16:34 root         INFO     
+
+Training log_4-layers_256-nodes...
+----------------------------------
+
+11-11 16:35 root         INFO     ------------------
+New Best: [4, 256]
+Score: 0.0242
+------------------
+
+11-11 16:35 root         INFO     
+
+Training log_4-layers_512-nodes...
+----------------------------------
+
+11-11 16:38 root         INFO     
+
+Training log_5-layers_1-nodes...
+--------------------------------
+
+11-11 16:38 root         INFO     
+
+Training log_5-layers_2-nodes...
+--------------------------------
+
+11-11 16:39 root         INFO     
+
+Training log_5-layers_4-nodes...
+--------------------------------
+
+11-11 16:39 root         INFO     
+
+Training log_5-layers_8-nodes...
+--------------------------------
+
+11-11 16:40 root         INFO     
+
+Training log_5-layers_16-nodes...
+---------------------------------
+
+11-11 16:40 root         INFO     
+
+Training log_5-layers_32-nodes...
+---------------------------------
+
+11-11 16:41 root         INFO     
+
+Training log_5-layers_64-nodes...
+---------------------------------
+
+11-11 16:41 root         INFO     
+
+Training log_5-layers_128-nodes...
+----------------------------------
+
+11-11 16:42 root         INFO     
+
+Training log_5-layers_256-nodes...
+----------------------------------
+
+11-11 16:43 root         INFO     
+
+Training log_5-layers_512-nodes...
+----------------------------------
+
+11-11 16:47 root         INFO     
+
+Training log_6-layers_1-nodes...
+--------------------------------
+
+11-11 16:47 root         INFO     
+
+Training log_6-layers_2-nodes...
+--------------------------------
+
+11-11 16:48 root         INFO     
+
+Training log_6-layers_4-nodes...
+--------------------------------
+
+11-11 16:48 root         INFO     
+
+Training log_6-layers_8-nodes...
+--------------------------------
+
+11-11 16:49 root         INFO     
+
+Training log_6-layers_16-nodes...
+---------------------------------
+
+11-11 16:49 root         INFO     
+
+Training log_6-layers_32-nodes...
+---------------------------------
+
+11-11 16:50 root         INFO     
+
+Training log_6-layers_64-nodes...
+---------------------------------
+
+11-11 16:50 root         INFO     
+
+Training log_6-layers_128-nodes...
+----------------------------------
+
+11-11 16:51 root         INFO     ------------------
+New Best: [6, 128]
+Score: 0.0240
+------------------
+
+11-11 16:51 root         INFO     
+
+Training log_6-layers_256-nodes...
+----------------------------------
+
+11-11 16:53 root         INFO     ------------------
+New Best: [6, 256]
+Score: 0.0127
+------------------
+
+11-11 16:53 root         INFO     
+
+Training log_6-layers_512-nodes...
+----------------------------------
+
+11-11 16:56 root         INFO     
+
+Training log_7-layers_1-nodes...
+--------------------------------
+
+11-11 16:57 root         INFO     
+
+Training log_7-layers_2-nodes...
+--------------------------------
+
+11-11 16:58 root         INFO     
+
+Training log_7-layers_4-nodes...
+--------------------------------
+
+11-11 16:58 root         INFO     
+
+Training log_7-layers_8-nodes...
+--------------------------------
+
+11-11 16:59 root         INFO     
+
+Training log_7-layers_16-nodes...
+---------------------------------
+
+11-11 16:59 root         INFO     
+
+Training log_7-layers_32-nodes...
+---------------------------------
+
+11-11 17:00 root         INFO     
+
+Training log_7-layers_64-nodes...
+---------------------------------
+
+11-11 17:00 root         INFO     
+
+Training log_7-layers_128-nodes...
+----------------------------------
+
+11-11 17:01 root         INFO     
+
+Training log_7-layers_256-nodes...
+----------------------------------
+
+11-11 17:03 root         INFO     ------------------
+New Best: [7, 256]
+Score: 0.0125
+------------------
+
+11-11 17:03 root         INFO     
+
+Training log_7-layers_512-nodes...
+----------------------------------
+
+11-11 17:08 root         INFO     ------------------
+New Best: [7, 512]
+Score: 0.0097
+------------------
+
+11-11 17:08 root         INFO     
+
+Training log_8-layers_1-nodes...
+--------------------------------
+
+11-11 17:09 root         INFO     
+
+Training log_8-layers_2-nodes...
+--------------------------------
+
+11-11 17:11 root         INFO     
+
+Training log_8-layers_4-nodes...
+--------------------------------
+
+11-11 17:12 root         INFO     
+
+Training log_8-layers_8-nodes...
+--------------------------------
+
+11-11 17:14 root         INFO     
+
+Training log_8-layers_16-nodes...
+---------------------------------
+
+11-11 17:16 root         INFO     
+
+Training log_8-layers_32-nodes...
+---------------------------------
+
+11-11 17:17 root         INFO     
+
+Training log_8-layers_64-nodes...
+---------------------------------
+
+11-11 17:19 root         INFO     
+
+Training log_8-layers_128-nodes...
+----------------------------------
+
+11-11 17:21 root         INFO     
+
+Training log_8-layers_256-nodes...
+----------------------------------
+
+11-11 17:23 root         INFO     
+
+Training log_8-layers_512-nodes...
+----------------------------------
+
+11-11 17:28 root         INFO     
+
+Training log_9-layers_1-nodes...
+--------------------------------
+
+11-11 17:28 root         INFO     
+
+Training log_9-layers_2-nodes...
+--------------------------------
+
+11-11 17:29 root         INFO     
+
+Training log_9-layers_4-nodes...
+--------------------------------
+
+11-11 17:29 root         INFO     
+
+Training log_9-layers_8-nodes...
+--------------------------------
+
+11-11 17:30 root         INFO     
+
+Training log_9-layers_16-nodes...
+---------------------------------
+
+11-11 17:31 root         INFO     
+
+Training log_9-layers_32-nodes...
+---------------------------------
+
+11-11 17:31 root         INFO     
+
+Training log_9-layers_64-nodes...
+---------------------------------
+
+11-11 17:32 root         INFO     
+
+Training log_9-layers_128-nodes...
+----------------------------------
+
+11-11 17:33 root         INFO     
+
+Training log_9-layers_256-nodes...
+----------------------------------
+
+11-11 17:35 root         INFO     
+
+Training log_9-layers_512-nodes...
+----------------------------------
+
+11-11 17:41 root         INFO     Best Configuration: 7 layers and 512 nodes/layer, loss of 0.0097
+
+11-11 17:41 root         INFO     Satisfactory models for log
+
+11-11 17:41 root         INFO     Config:[3, 128]	Score:0.029008583864197135	Params:33409
+
+11-11 17:41 root         INFO     Config:[4, 128]	Score:0.035593181382864714	Params:49921
+
+11-11 17:41 root         INFO     Config:[4, 256]	Score:0.024230443639680743	Params:198145
+
+11-11 17:41 root         INFO     Config:[4, 512]	Score:0.02610184089280665	Params:789505
+
+11-11 17:41 root         INFO     Config:[5, 32]	Score:0.03182701952755451	Params:4321
+
+11-11 17:41 root         INFO     Config:[5, 64]	Score:0.044599032728001475	Params:16833
+
+11-11 17:41 root         INFO     Config:[5, 128]	Score:0.04266431927680969	Params:66433
+
+11-11 17:41 root         INFO     Config:[6, 64]	Score:0.037893383763730526	Params:20993
+
+11-11 17:41 root         INFO     Config:[6, 128]	Score:0.02401673048734665	Params:82945
+
+11-11 17:41 root         INFO     Config:[6, 256]	Score:0.012690558680333197	Params:329729
+
+11-11 17:41 root         INFO     Config:[6, 512]	Score:0.01723445171955973	Params:1314817
+
+11-11 17:41 root         INFO     Config:[7, 32]	Score:0.03387856064364314	Params:6433
+
+11-11 17:41 root         INFO     Config:[7, 64]	Score:0.01994256372563541	Params:25153
+
+11-11 17:41 root         INFO     Config:[7, 128]	Score:0.017268008436076343	Params:99457
+
+11-11 17:41 root         INFO     Config:[7, 256]	Score:0.012476914678700268	Params:395521
+
+11-11 17:41 root         INFO     Config:[7, 512]	Score:0.009667104459367692	Params:1577473
+
+11-11 17:41 root         INFO     Config:[8, 16]	Score:0.047314795665442944	Params:1953
+
+11-11 17:41 root         INFO     Config:[8, 32]	Score:0.02963645802810788	Params:7489
+
+11-11 17:41 root         INFO     Config:[8, 64]	Score:0.022831072565168142	Params:29313
+
+11-11 17:41 root         INFO     Config:[8, 128]	Score:0.016562249045819044	Params:115969
+
+11-11 17:41 root         INFO     Config:[8, 256]	Score:0.014264955651015043	Params:461313
+
+11-11 17:41 root         INFO     Config:[8, 512]	Score:0.009691321523860097	Params:1840129
+
+11-11 17:41 root         INFO     Config:[9, 32]	Score:0.03882931778207421	Params:8545
+
+11-11 17:41 root         INFO     Config:[9, 64]	Score:0.03020039014518261	Params:33473
+
+11-11 17:41 root         INFO     Config:[9, 128]	Score:0.024060426279902458	Params:132481
+
+11-11 17:41 root         INFO     Config:[9, 256]	Score:0.0105601487448439	Params:527105
+
+11-11 17:41 root         INFO     Config:[9, 512]	Score:0.020437069237232208	Params:2102785
+
+11-11 17:41 tensorflow   INFO     Assets written to: unit_fns/log/assets
+
+11-11 17:41 root         INFO     
+
+Training sin_0-layers_1-nodes...
+--------------------------------
+
+11-11 17:41 root         INFO     ------------------
+New Best: [0, 1]
+Score: 0.3911
+------------------
+
+11-11 17:41 root         INFO     
+
+Training sin_1-layers_1-nodes...
+--------------------------------
+
+11-11 17:42 root         INFO     
+
+Training sin_1-layers_2-nodes...
+--------------------------------
+
+11-11 17:42 root         INFO     ------------------
+New Best: [1, 2]
+Score: 0.3256
+------------------
+
+11-11 17:42 root         INFO     
+
+Training sin_1-layers_4-nodes...
+--------------------------------
+
+11-11 17:43 root         INFO     ------------------
+New Best: [1, 4]
+Score: 0.3244
+------------------
+
+11-11 17:43 root         INFO     
+
+Training sin_1-layers_8-nodes...
+--------------------------------
+
+11-11 17:43 root         INFO     ------------------
+New Best: [1, 8]
+Score: 0.3097
+------------------
+
+11-11 17:43 root         INFO     
+
+Training sin_1-layers_16-nodes...
+---------------------------------
+
+11-11 17:43 root         INFO     ------------------
+New Best: [1, 16]
+Score: 0.3045
+------------------
+
+11-11 17:43 root         INFO     
+
+Training sin_1-layers_32-nodes...
+---------------------------------
+
+11-11 17:44 root         INFO     ------------------
+New Best: [1, 32]
+Score: 0.2928
+------------------
+
+11-11 17:44 root         INFO     
+
+Training sin_1-layers_64-nodes...
+---------------------------------
+
+11-11 17:44 root         INFO     ------------------
+New Best: [1, 64]
+Score: 0.2875
+------------------
+
+11-11 17:44 root         INFO     
+
+Training sin_1-layers_128-nodes...
+----------------------------------
+
+11-11 17:45 root         INFO     ------------------
+New Best: [1, 128]
+Score: 0.1203
+------------------
+
+11-11 17:45 root         INFO     
+
+Training sin_1-layers_256-nodes...
+----------------------------------
+
+11-11 17:45 root         INFO     ------------------
+New Best: [1, 256]
+Score: 0.1008
+------------------
+
+11-11 17:45 root         INFO     
+
+Training sin_1-layers_512-nodes...
+----------------------------------
+
+11-11 17:45 root         INFO     ------------------
+New Best: [1, 512]
+Score: 0.0139
+------------------
+
+11-11 17:45 root         INFO     
+
+Training sin_2-layers_1-nodes...
+--------------------------------
+
+11-11 17:46 root         INFO     
+
+Training sin_2-layers_2-nodes...
+--------------------------------
+
+11-11 17:46 root         INFO     
+
+Training sin_2-layers_4-nodes...
+--------------------------------
+
+11-11 17:47 root         INFO     
+
+Training sin_2-layers_8-nodes...
+--------------------------------
+
+11-11 17:47 root         INFO     ------------------
+New Best: [2, 8]
+Score: 0.0114
+------------------
+
+11-11 17:47 root         INFO     
+
+Training sin_2-layers_16-nodes...
+---------------------------------
+
+11-11 17:47 root         INFO     ------------------
+New Best: [2, 16]
+Score: 0.0028
+------------------
+
+11-11 17:47 root         INFO     
+
+Training sin_2-layers_32-nodes...
+---------------------------------
+
+11-11 17:48 root         INFO     ------------------
+New Best: [2, 32]
+Score: 0.0024
+------------------
+
+11-11 17:48 root         INFO     
+
+Training sin_2-layers_64-nodes...
+---------------------------------
+
+11-11 17:48 root         INFO     ------------------
+New Best: [2, 64]
+Score: 0.0012
+------------------
+
+11-11 17:48 root         INFO     
+
+Training sin_2-layers_128-nodes...
+----------------------------------
+
+11-11 17:49 root         INFO     ------------------
+New Best: [2, 128]
+Score: 0.0010
+------------------
+
+11-11 17:49 root         INFO     
+
+Training sin_2-layers_256-nodes...
+----------------------------------
+
+11-11 17:50 root         INFO     ------------------
+New Best: [2, 256]
+Score: 0.0005
+------------------
+
+11-11 17:50 root         INFO     
+
+Training sin_2-layers_512-nodes...
+----------------------------------
+
+11-11 17:51 root         INFO     ------------------
+New Best: [2, 512]
+Score: 0.0004
+------------------
+
+11-11 17:51 root         INFO     
+
+Training sin_3-layers_1-nodes...
+--------------------------------
+
+11-11 17:51 root         INFO     
+
+Training sin_3-layers_2-nodes...
+--------------------------------
+
+11-11 17:52 root         INFO     
+
+Training sin_3-layers_4-nodes...
+--------------------------------
+
+11-11 17:52 root         INFO     
+
+Training sin_3-layers_8-nodes...
+--------------------------------
+
+11-11 17:52 root         INFO     
+
+Training sin_3-layers_16-nodes...
+---------------------------------
+
+11-11 17:53 root         INFO     
+
+Training sin_3-layers_32-nodes...
+---------------------------------
+
+11-11 17:53 root         INFO     
+
+Training sin_3-layers_64-nodes...
+---------------------------------
+
+11-11 17:54 root         INFO     
+
+Training sin_3-layers_128-nodes...
+----------------------------------
+
+11-11 17:54 root         INFO     
+
+Training sin_3-layers_256-nodes...
+----------------------------------
+
+11-11 17:55 root         INFO     
+
+Training sin_3-layers_512-nodes...
+----------------------------------
+
+11-11 17:57 root         INFO     
+
+Training sin_4-layers_1-nodes...
+--------------------------------
+
+11-11 17:57 root         INFO     
+
+Training sin_4-layers_2-nodes...
+--------------------------------
+
+11-11 17:58 root         INFO     
+
+Training sin_4-layers_4-nodes...
+--------------------------------
+
+11-11 17:58 root         INFO     
+
+Training sin_4-layers_8-nodes...
+--------------------------------
+
+11-11 17:59 root         INFO     
+
+Training sin_4-layers_16-nodes...
+---------------------------------
+
+11-11 17:59 root         INFO     
+
+Training sin_4-layers_32-nodes...
+---------------------------------
+
+11-11 18:00 root         INFO     
+
+Training sin_4-layers_64-nodes...
+---------------------------------
+
+11-11 18:00 root         INFO     
+
+Training sin_4-layers_128-nodes...
+----------------------------------
+
+11-11 18:01 root         INFO     
+
+Training sin_4-layers_256-nodes...
+----------------------------------
+
+11-11 18:02 root         INFO     
+
+Training sin_4-layers_512-nodes...
+----------------------------------
+
+11-11 18:04 root         INFO     
+
+Training sin_5-layers_1-nodes...
+--------------------------------
+
+11-11 18:04 root         INFO     
+
+Training sin_5-layers_2-nodes...
+--------------------------------
+
+11-11 18:05 root         INFO     
+
+Training sin_5-layers_4-nodes...
+--------------------------------
+
+11-11 18:05 root         INFO     
+
+Training sin_5-layers_8-nodes...
+--------------------------------
+
+11-11 18:06 root         INFO     
+
+Training sin_5-layers_16-nodes...
+---------------------------------
+
+11-11 18:06 root         INFO     
+
+Training sin_5-layers_32-nodes...
+---------------------------------
+
+11-11 18:07 root         INFO     
+
+Training sin_5-layers_64-nodes...
+---------------------------------
+
+11-11 18:07 root         INFO     
+
+Training sin_5-layers_128-nodes...
+----------------------------------
+
+11-11 18:08 root         INFO     
+
+Training sin_5-layers_256-nodes...
+----------------------------------
+
+11-11 18:09 root         INFO     
+
+Training sin_5-layers_512-nodes...
+----------------------------------
+
+11-11 18:12 root         INFO     
+
+Training sin_6-layers_1-nodes...
+--------------------------------
+
+11-11 18:13 root         INFO     
+
+Training sin_6-layers_2-nodes...
+--------------------------------
+
+11-11 18:13 root         INFO     
+
+Training sin_6-layers_4-nodes...
+--------------------------------
+
+11-11 18:14 root         INFO     
+
+Training sin_6-layers_8-nodes...
+--------------------------------
+
+11-11 18:14 root         INFO     
+
+Training sin_6-layers_16-nodes...
+---------------------------------
+
+11-11 18:15 root         INFO     
+
+Training sin_6-layers_32-nodes...
+---------------------------------
+
+11-11 18:15 root         INFO     
+
+Training sin_6-layers_64-nodes...
+---------------------------------
+
+11-11 18:16 root         INFO     
+
+Training sin_6-layers_128-nodes...
+----------------------------------
+
+11-11 18:16 root         INFO     
+
+Training sin_6-layers_256-nodes...
+----------------------------------
+
+11-11 18:18 root         INFO     
+
+Training sin_6-layers_512-nodes...
+----------------------------------
+
+11-11 18:21 root         INFO     
+
+Training sin_7-layers_1-nodes...
+--------------------------------
+
+11-11 18:22 root         INFO     
+
+Training sin_7-layers_2-nodes...
+--------------------------------
+
+11-11 18:22 root         INFO     
+
+Training sin_7-layers_4-nodes...
+--------------------------------
+
+11-11 18:23 root         INFO     
+
+Training sin_7-layers_8-nodes...
+--------------------------------
+
+11-11 18:23 root         INFO     
+
+Training sin_7-layers_16-nodes...
+---------------------------------
+
+11-11 18:24 root         INFO     
+
+Training sin_7-layers_32-nodes...
+---------------------------------
+
+11-11 18:24 root         INFO     
+
+Training sin_7-layers_64-nodes...
+---------------------------------
+
+11-11 18:25 root         INFO     
+
+Training sin_7-layers_128-nodes...
+----------------------------------
+
+11-11 18:26 root         INFO     
+
+Training sin_7-layers_256-nodes...
+----------------------------------
+
+11-11 18:27 root         INFO     
+
+Training sin_7-layers_512-nodes...
+----------------------------------
+
+11-11 18:32 root         INFO     
+
+Training sin_8-layers_1-nodes...
+--------------------------------
+
+11-11 18:32 root         INFO     
+
+Training sin_8-layers_2-nodes...
+--------------------------------
+
+11-11 18:33 root         INFO     
+
+Training sin_8-layers_4-nodes...
+--------------------------------
+
+11-11 18:33 root         INFO     
+
+Training sin_8-layers_8-nodes...
+--------------------------------
+
+11-11 18:34 root         INFO     
+
+Training sin_8-layers_16-nodes...
+---------------------------------
+
+11-11 18:34 root         INFO     
+
+Training sin_8-layers_32-nodes...
+---------------------------------
+
+11-11 18:35 root         INFO     
+
+Training sin_8-layers_64-nodes...
+---------------------------------
+
+11-11 18:35 root         INFO     
+
+Training sin_8-layers_128-nodes...
+----------------------------------
+
+11-11 18:36 root         INFO     
+
+Training sin_8-layers_256-nodes...
+----------------------------------
+
+11-11 18:38 root         INFO     
+
+Training sin_8-layers_512-nodes...
+----------------------------------
+
+11-11 18:43 root         INFO     
+
+Training sin_9-layers_1-nodes...
+--------------------------------
+
+11-11 18:44 root         INFO     
+
+Training sin_9-layers_2-nodes...
+--------------------------------
+
+11-11 18:44 root         INFO     
+
+Training sin_9-layers_4-nodes...
+--------------------------------
+
+11-11 18:45 root         INFO     
+
+Training sin_9-layers_8-nodes...
+--------------------------------
+
+11-11 18:46 root         INFO     
+
+Training sin_9-layers_16-nodes...
+---------------------------------
+
+11-11 18:48 root         INFO     
+
+Training sin_9-layers_32-nodes...
+---------------------------------
+
+11-11 18:50 root         INFO     
+
+Training sin_9-layers_64-nodes...
+---------------------------------
+
+11-11 18:52 root         INFO     
+
+Training sin_9-layers_128-nodes...
+----------------------------------
+
+11-11 18:55 root         INFO     
+
+Training sin_9-layers_256-nodes...
+----------------------------------
+
+11-11 19:00 root         INFO     
+
+Training sin_9-layers_512-nodes...
+----------------------------------
+
+11-11 19:09 root         INFO     Best Configuration: 2 layers and 512 nodes/layer, loss of 0.0004
+
+11-11 19:09 root         INFO     Satisfactory models for sin
+
+11-11 19:09 root         INFO     Config:[2, 64]	Score:0.0012211814755573869	Params:4353
+
+11-11 19:09 root         INFO     Config:[2, 128]	Score:0.0009907004132401198	Params:16897
+
+11-11 19:09 root         INFO     Config:[2, 256]	Score:0.0005360562718124129	Params:66561
+
+11-11 19:09 root         INFO     Config:[2, 512]	Score:0.0004250670244800858	Params:264193
+
+11-11 19:09 root         INFO     Config:[3, 32]	Score:0.0015524878690484911	Params:2209
+
+11-11 19:09 root         INFO     Config:[3, 64]	Score:0.000732234628230799	Params:8513
+
+11-11 19:09 root         INFO     Config:[3, 128]	Score:0.0007466420211130753	Params:33409
+
+11-11 19:09 root         INFO     Config:[3, 256]	Score:0.0006187702092574909	Params:132353
+
+11-11 19:09 root         INFO     Config:[3, 512]	Score:0.0005055727160652168	Params:526849
+
+11-11 19:09 root         INFO     Config:[4, 64]	Score:0.0011790156713686883	Params:12673
+
+11-11 19:09 root         INFO     Config:[4, 128]	Score:0.0007505268004024401	Params:49921
+
+11-11 19:09 root         INFO     Config:[4, 256]	Score:0.0007829632377251983	Params:198145
+
+11-11 19:09 root         INFO     Config:[4, 512]	Score:0.0006711751484544948	Params:789505
+
+11-11 19:09 root         INFO     Config:[5, 64]	Score:0.0014664026093669236	Params:16833
+
+11-11 19:09 root         INFO     Config:[5, 128]	Score:0.0010944836540147662	Params:66433
+
+11-11 19:09 root         INFO     Config:[5, 256]	Score:0.0007311942463275045	Params:263937
+
+11-11 19:09 root         INFO     Config:[5, 512]	Score:0.0006839679408585653	Params:1052161
+
+11-11 19:09 root         INFO     Config:[6, 32]	Score:0.0018914960091933608	Params:5377
+
+11-11 19:09 root         INFO     Config:[6, 64]	Score:0.0021093645482324064	Params:20993
+
+11-11 19:09 root         INFO     Config:[6, 128]	Score:0.0019475349690765142	Params:82945
+
+11-11 19:09 root         INFO     Config:[6, 256]	Score:0.001003609853796661	Params:329729
+
+11-11 19:09 root         INFO     Config:[6, 512]	Score:0.0008315658196806908	Params:1314817
+
+11-11 19:09 root         INFO     Config:[7, 64]	Score:0.001389499579090625	Params:25153
+
+11-11 19:09 root         INFO     Config:[7, 256]	Score:0.0016636871150694788	Params:395521
+
+11-11 19:09 root         INFO     Config:[7, 512]	Score:0.0008683679334353656	Params:1577473
+
+11-11 19:09 root         INFO     Config:[8, 128]	Score:0.0010954425670206547	Params:115969
+
+11-11 19:09 root         INFO     Config:[8, 256]	Score:0.0009426170727238059	Params:461313
+
+11-11 19:09 root         INFO     Config:[8, 512]	Score:0.0010382866021245718	Params:1840129
+
+11-11 19:09 root         INFO     Config:[9, 128]	Score:0.0015006536850705743	Params:132481
+
+11-11 19:09 root         INFO     Config:[9, 256]	Score:0.0009859477286227047	Params:527105
+
+11-11 19:09 root         INFO     Config:[9, 512]	Score:0.0012338653905317187	Params:2102785
+
+11-11 19:09 tensorflow   INFO     Assets written to: unit_fns/sin/assets
+
+11-11 19:09 root         INFO     
+
+Training cos_0-layers_1-nodes...
+--------------------------------
+
+11-11 19:09 root         INFO     ------------------
+New Best: [0, 1]
+Score: 1.0056
+------------------
+
+11-11 19:09 root         INFO     
+
+Training cos_1-layers_1-nodes...
+--------------------------------
+
+11-11 19:10 root         INFO     ------------------
+New Best: [1, 1]
+Score: 0.6878
+------------------
+
+11-11 19:10 root         INFO     
+
+Training cos_1-layers_2-nodes...
+--------------------------------
+
+11-11 19:11 root         INFO     
+
+Training cos_1-layers_4-nodes...
+--------------------------------
+
+11-11 19:11 root         INFO     ------------------
+New Best: [1, 4]
+Score: 0.6878
+------------------
+
+11-11 19:11 root         INFO     
+
+Training cos_1-layers_8-nodes...
+--------------------------------
+
+11-11 19:12 root         INFO     ------------------
+New Best: [1, 8]
+Score: 0.1127
+------------------
+
+11-11 19:12 root         INFO     
+
+Training cos_1-layers_16-nodes...
+---------------------------------
+
+11-11 19:12 root         INFO     ------------------
+New Best: [1, 16]
+Score: 0.0349
+------------------
+
+11-11 19:12 root         INFO     
+
+Training cos_1-layers_32-nodes...
+---------------------------------
+
+11-11 19:12 root         INFO     ------------------
+New Best: [1, 32]
+Score: 0.0292
+------------------
+
+11-11 19:12 root         INFO     
+
+Training cos_1-layers_64-nodes...
+---------------------------------
+
+11-11 19:13 root         INFO     ------------------
+New Best: [1, 64]
+Score: 0.0196
+------------------
+
+11-11 19:13 root         INFO     
+
+Training cos_1-layers_128-nodes...
+----------------------------------
+
+11-11 19:13 root         INFO     ------------------
+New Best: [1, 128]
+Score: 0.0095
+------------------
+
+11-11 19:13 root         INFO     
+
+Training cos_1-layers_256-nodes...
+----------------------------------
+
+11-11 19:14 root         INFO     ------------------
+New Best: [1, 256]
+Score: 0.0088
+------------------
+
+11-11 19:14 root         INFO     
+
+Training cos_1-layers_512-nodes...
+----------------------------------
+
+11-11 19:14 root         INFO     ------------------
+New Best: [1, 512]
+Score: 0.0063
+------------------
+
+11-11 19:14 root         INFO     
+
+Training cos_2-layers_1-nodes...
+--------------------------------
+
+11-11 19:15 root         INFO     
+
+Training cos_2-layers_2-nodes...
+--------------------------------
+
+11-11 19:15 root         INFO     
+
+Training cos_2-layers_4-nodes...
+--------------------------------
+
+11-11 19:16 root         INFO     
+
+Training cos_2-layers_8-nodes...
+--------------------------------
+
+11-11 19:16 root         INFO     
+
+Training cos_2-layers_16-nodes...
+---------------------------------
+
+11-11 19:17 root         INFO     ------------------
+New Best: [2, 16]
+Score: 0.0043
+------------------
+
+11-11 19:17 root         INFO     
+
+Training cos_2-layers_32-nodes...
+---------------------------------
+
+11-11 19:17 root         INFO     ------------------
+New Best: [2, 32]
+Score: 0.0016
+------------------
+
+11-11 19:17 root         INFO     
+
+Training cos_2-layers_64-nodes...
+---------------------------------
+
+11-11 19:18 root         INFO     ------------------
+New Best: [2, 64]
+Score: 0.0010
+------------------
+
+11-11 19:18 root         INFO     
+
+Training cos_2-layers_128-nodes...
+----------------------------------
+
+11-11 19:18 root         INFO     ------------------
+New Best: [2, 128]
+Score: 0.0009
+------------------
+
+11-11 19:18 root         INFO     
+
+Training cos_2-layers_256-nodes...
+----------------------------------
+
+11-11 19:19 root         INFO     ------------------
+New Best: [2, 256]
+Score: 0.0005
+------------------
+
+11-11 19:19 root         INFO     
+
+Training cos_2-layers_512-nodes...
+----------------------------------
+
+11-11 19:21 root         INFO     ------------------
+New Best: [2, 512]
+Score: 0.0005
+------------------
+
+11-11 19:21 root         INFO     
+
+Training cos_3-layers_1-nodes...
+--------------------------------
+
+11-11 19:21 root         INFO     
+
+Training cos_3-layers_2-nodes...
+--------------------------------
+
+11-11 19:22 root         INFO     
+
+Training cos_3-layers_4-nodes...
+--------------------------------
+
+11-11 19:22 root         INFO     
+
+Training cos_3-layers_8-nodes...
+--------------------------------
+
+11-11 19:23 root         INFO     
+
+Training cos_3-layers_16-nodes...
+---------------------------------
+
+11-11 19:23 root         INFO     
+
+Training cos_3-layers_32-nodes...
+---------------------------------
+
+11-11 19:24 root         INFO     
+
+Training cos_3-layers_64-nodes...
+---------------------------------
+
+11-11 19:25 root         INFO     
+
+Training cos_3-layers_128-nodes...
+----------------------------------
+
+11-11 19:25 root         INFO     
+
+Training cos_3-layers_256-nodes...
+----------------------------------
+
+11-11 19:26 root         INFO     
+
+Training cos_3-layers_512-nodes...
+----------------------------------
+
+11-11 19:28 root         INFO     
+
+Training cos_4-layers_1-nodes...
+--------------------------------
+
+11-11 19:29 root         INFO     
+
+Training cos_4-layers_2-nodes...
+--------------------------------
+
+11-11 19:29 root         INFO     
+
+Training cos_4-layers_4-nodes...
+--------------------------------
+
+11-11 19:29 root         INFO     
+
+Training cos_4-layers_8-nodes...
+--------------------------------
+
+11-11 19:30 root         INFO     
+
+Training cos_4-layers_16-nodes...
+---------------------------------
+
+11-11 19:30 root         INFO     
+
+Training cos_4-layers_32-nodes...
+---------------------------------
+
+11-11 19:31 root         INFO     
+
+Training cos_4-layers_64-nodes...
+---------------------------------
+
+11-11 19:32 root         INFO     
+
+Training cos_4-layers_128-nodes...
+----------------------------------
+
+11-11 19:33 root         INFO     
+
+Training cos_4-layers_256-nodes...
+----------------------------------
+
+11-11 19:34 root         INFO     
+
+Training cos_4-layers_512-nodes...
+----------------------------------
+
+11-11 19:37 root         INFO     
+
+Training cos_5-layers_1-nodes...
+--------------------------------
+
+11-11 19:37 root         INFO     
+
+Training cos_5-layers_2-nodes...
+--------------------------------
+
+11-11 19:38 root         INFO     
+
+Training cos_5-layers_4-nodes...
+--------------------------------
+
+11-11 19:38 root         INFO     
+
+Training cos_5-layers_8-nodes...
+--------------------------------
+
+11-11 19:39 root         INFO     
+
+Training cos_5-layers_16-nodes...
+---------------------------------
+
+11-11 19:40 root         INFO     
+
+Training cos_5-layers_32-nodes...
+---------------------------------
+
+11-11 19:40 root         INFO     
+
+Training cos_5-layers_64-nodes...
+---------------------------------
+
+11-11 19:41 root         INFO     
+
+Training cos_5-layers_128-nodes...
+----------------------------------
+
+11-11 19:42 root         INFO     
+
+Training cos_5-layers_256-nodes...
+----------------------------------
+
+11-11 19:43 root         INFO     
+
+Training cos_5-layers_512-nodes...
+----------------------------------
+
+11-11 19:47 root         INFO     
+
+Training cos_6-layers_1-nodes...
+--------------------------------
+
+11-11 19:47 root         INFO     
+
+Training cos_6-layers_2-nodes...
+--------------------------------
+
+11-11 19:48 root         INFO     
+
+Training cos_6-layers_4-nodes...
+--------------------------------
+
+11-11 19:48 root         INFO     
+
+Training cos_6-layers_8-nodes...
+--------------------------------
+
+11-11 19:49 root         INFO     
+
+Training cos_6-layers_16-nodes...
+---------------------------------
+
+11-11 19:49 root         INFO     
+
+Training cos_6-layers_32-nodes...
+---------------------------------
+
+11-11 19:50 root         INFO     
+
+Training cos_6-layers_64-nodes...
+---------------------------------
+
+11-11 19:51 root         INFO     
+
+Training cos_6-layers_128-nodes...
+----------------------------------
+
+11-11 19:52 root         INFO     
+
+Training cos_6-layers_256-nodes...
+----------------------------------
+
+11-11 19:53 root         INFO     
+
+Training cos_6-layers_512-nodes...
+----------------------------------
+
+11-11 19:57 root         INFO     
+
+Training cos_7-layers_1-nodes...
+--------------------------------
+
+11-11 19:58 root         INFO     
+
+Training cos_7-layers_2-nodes...
+--------------------------------
+
+11-11 19:58 root         INFO     
+
+Training cos_7-layers_4-nodes...
+--------------------------------
+
+11-11 19:59 root         INFO     
+
+Training cos_7-layers_8-nodes...
+--------------------------------
+
+11-11 19:59 root         INFO     
+
+Training cos_7-layers_16-nodes...
+---------------------------------
+
+11-11 20:00 root         INFO     
+
+Training cos_7-layers_32-nodes...
+---------------------------------
+
+11-11 20:01 root         INFO     
+
+Training cos_7-layers_64-nodes...
+---------------------------------
+
+11-11 20:02 root         INFO     
+
+Training cos_7-layers_128-nodes...
+----------------------------------
+
+11-11 20:03 root         INFO     
+
+Training cos_7-layers_256-nodes...
+----------------------------------
+
+11-11 20:04 root         INFO     
+
+Training cos_7-layers_512-nodes...
+----------------------------------
+
+11-11 20:09 root         INFO     
+
+Training cos_8-layers_1-nodes...
+--------------------------------
+
+11-11 20:10 root         INFO     
+
+Training cos_8-layers_2-nodes...
+--------------------------------
+
+11-11 20:10 root         INFO     
+
+Training cos_8-layers_4-nodes...
+--------------------------------
+
+11-11 20:11 root         INFO     
+
+Training cos_8-layers_8-nodes...
+--------------------------------
+
+11-11 20:12 root         INFO     
+
+Training cos_8-layers_16-nodes...
+---------------------------------
+
+11-11 20:12 root         INFO     
+
+Training cos_8-layers_32-nodes...
+---------------------------------
+
+11-11 20:13 root         INFO     
+
+Training cos_8-layers_64-nodes...
+---------------------------------
+
+11-11 20:14 root         INFO     
+
+Training cos_8-layers_128-nodes...
+----------------------------------
+
+11-11 20:15 root         INFO     
+
+Training cos_8-layers_256-nodes...
+----------------------------------
+
+11-11 20:17 root         INFO     
+
+Training cos_8-layers_512-nodes...
+----------------------------------
+
+11-11 20:22 root         INFO     
+
+Training cos_9-layers_1-nodes...
+--------------------------------
+
+11-11 20:23 root         INFO     
+
+Training cos_9-layers_2-nodes...
+--------------------------------
+
+11-11 20:24 root         INFO     
+
+Training cos_9-layers_4-nodes...
+--------------------------------
+
+11-11 20:24 root         INFO     
+
+Training cos_9-layers_8-nodes...
+--------------------------------
+
+11-11 20:25 root         INFO     
+
+Training cos_9-layers_16-nodes...
+---------------------------------
+
+11-11 20:26 root         INFO     
+
+Training cos_9-layers_32-nodes...
+---------------------------------
+
+11-11 20:27 root         INFO     
+
+Training cos_9-layers_64-nodes...
+---------------------------------
+
+11-11 20:27 root         INFO     
+
+Training cos_9-layers_128-nodes...
+----------------------------------
+
+11-11 20:29 root         INFO     
+
+Training cos_9-layers_256-nodes...
+----------------------------------
+
+11-11 20:31 root         INFO     
+
+Training cos_9-layers_512-nodes...
+----------------------------------
+
+11-11 20:37 root         INFO     Best Configuration: 2 layers and 512 nodes/layer, loss of 0.0005
+
+11-11 20:37 root         INFO     Satisfactory models for cos
+
+11-11 20:37 root         INFO     Config:[2, 32]	Score:0.0016464147483929992	Params:1153
+
+11-11 20:37 root         INFO     Config:[2, 64]	Score:0.0009869196510408074	Params:4353
+
+11-11 20:37 root         INFO     Config:[2, 128]	Score:0.0009348616877105087	Params:16897
+
+11-11 20:37 root         INFO     Config:[2, 256]	Score:0.0005179441723157652	Params:66561
+
+11-11 20:37 root         INFO     Config:[2, 512]	Score:0.0004722219309769571	Params:264193
+
+11-11 20:37 root         INFO     Config:[3, 32]	Score:0.0015577486483380198	Params:2209
+
+11-11 20:37 root         INFO     Config:[3, 64]	Score:0.0008145217288983986	Params:8513
+
+11-11 20:37 root         INFO     Config:[3, 128]	Score:0.0008626701892353594	Params:33409
+
+11-11 20:37 root         INFO     Config:[3, 256]	Score:0.0005238012672634795	Params:132353
+
+11-11 20:37 root         INFO     Config:[3, 512]	Score:0.0008487844024784863	Params:526849
+
+11-11 20:37 root         INFO     Config:[4, 64]	Score:0.0012399739352986217	Params:12673
+
+11-11 20:37 root         INFO     Config:[4, 128]	Score:0.001703624555375427	Params:49921
+
+11-11 20:37 root         INFO     Config:[4, 256]	Score:0.0005860116652911529	Params:198145
+
+11-11 20:37 root         INFO     Config:[4, 512]	Score:0.0005495500845427159	Params:789505
+
+11-11 20:37 root         INFO     Config:[5, 64]	Score:0.0020931916078552604	Params:16833
+
+11-11 20:37 root         INFO     Config:[5, 128]	Score:0.0016849914682097733	Params:66433
+
+11-11 20:37 root         INFO     Config:[5, 256]	Score:0.00102505341055803	Params:263937
+
+11-11 20:37 root         INFO     Config:[5, 512]	Score:0.0009222227963618934	Params:1052161
+
+11-11 20:37 root         INFO     Config:[6, 128]	Score:0.001959497865755111	Params:82945
+
+11-11 20:37 root         INFO     Config:[6, 256]	Score:0.0018510905210860074	Params:329729
+
+11-11 20:37 root         INFO     Config:[6, 512]	Score:0.000935168587602675	Params:1314817
+
+11-11 20:37 root         INFO     Config:[7, 128]	Score:0.0021558499429374933	Params:99457
+
+11-11 20:37 root         INFO     Config:[7, 256]	Score:0.0008793472952675074	Params:395521
+
+11-11 20:37 root         INFO     Config:[7, 512]	Score:0.0015770624740980566	Params:1577473
+
+11-11 20:37 root         INFO     Config:[8, 128]	Score:0.0015909869689494371	Params:115969
+
+11-11 20:37 root         INFO     Config:[8, 256]	Score:0.0009222221269737929	Params:461313
+
+11-11 20:37 root         INFO     Config:[8, 512]	Score:0.0014863035175949335	Params:1840129
+
+11-11 20:37 root         INFO     Config:[9, 256]	Score:0.0013487630058079958	Params:527105
+
+11-11 20:37 root         INFO     Config:[9, 512]	Score:0.0010097812919411808	Params:2102785
+
+11-11 20:37 tensorflow   INFO     Assets written to: unit_fns/cos/assets
+
+11-11 20:37 root         INFO     
+
+Training arcsin_0-layers_1-nodes...
+-----------------------------------
+
+11-11 20:37 root         INFO     ------------------
+New Best: [0, 1]
+Score: 0.0096
+------------------
+
+11-11 20:37 root         INFO     
+
+Training arcsin_1-layers_1-nodes...
+-----------------------------------
+
+11-11 20:38 root         INFO     
+
+Training arcsin_1-layers_2-nodes...
+-----------------------------------
+
+11-11 20:38 root         INFO     
+
+Training arcsin_1-layers_4-nodes...
+-----------------------------------
+
+11-11 20:39 root         INFO     ------------------
+New Best: [1, 4]
+Score: 0.0062
+------------------
+
+11-11 20:39 root         INFO     
+
+Training arcsin_1-layers_8-nodes...
+-----------------------------------
+
+11-11 20:39 root         INFO     
+
+Training arcsin_1-layers_16-nodes...
+------------------------------------
+
+11-11 20:40 root         INFO     ------------------
+New Best: [1, 16]
+Score: 0.0017
+------------------
+
+11-11 20:40 root         INFO     
+
+Training arcsin_1-layers_32-nodes...
+------------------------------------
+
+11-11 20:40 root         INFO     ------------------
+New Best: [1, 32]
+Score: 0.0012
+------------------
+
+11-11 20:40 root         INFO     
+
+Training arcsin_1-layers_64-nodes...
+------------------------------------
+
+11-11 20:41 root         INFO     ------------------
+New Best: [1, 64]
+Score: 0.0004
+------------------
+
+11-11 20:41 root         INFO     
+
+Training arcsin_1-layers_128-nodes...
+-------------------------------------
+
+11-11 20:41 root         INFO     ------------------
+New Best: [1, 128]
+Score: 0.0002
+------------------
+
+11-11 20:41 root         INFO     
+
+Training arcsin_1-layers_256-nodes...
+-------------------------------------
+
+11-11 20:42 root         INFO     ------------------
+New Best: [1, 256]
+Score: 0.0001
+------------------
+
+11-11 20:42 root         INFO     
+
+Training arcsin_1-layers_512-nodes...
+-------------------------------------
+
+11-11 20:42 root         INFO     
+
+Training arcsin_2-layers_1-nodes...
+-----------------------------------
+
+11-11 20:43 root         INFO     
+
+Training arcsin_2-layers_2-nodes...
+-----------------------------------
+
+11-11 20:43 root         INFO     
+
+Training arcsin_2-layers_4-nodes...
+-----------------------------------
+
+11-11 20:44 root         INFO     
+
+Training arcsin_2-layers_8-nodes...
+-----------------------------------
+
+11-11 20:44 root         INFO     
+
+Training arcsin_2-layers_16-nodes...
+------------------------------------
+
+11-11 20:45 root         INFO     
+
+Training arcsin_2-layers_32-nodes...
+------------------------------------
+
+11-11 20:45 root         INFO     
+
+Training arcsin_2-layers_64-nodes...
+------------------------------------
+
+11-11 20:46 root         INFO     
+
+Training arcsin_2-layers_128-nodes...
+-------------------------------------
+
+11-11 20:46 root         INFO     
+
+Training arcsin_2-layers_256-nodes...
+-------------------------------------
+
+11-11 20:47 root         INFO     
+
+Training arcsin_2-layers_512-nodes...
+-------------------------------------
+
+11-11 20:48 root         INFO     
+
+Training arcsin_3-layers_1-nodes...
+-----------------------------------
+
+11-11 20:49 root         INFO     
+
+Training arcsin_3-layers_2-nodes...
+-----------------------------------
+
+11-11 20:49 root         INFO     
+
+Training arcsin_3-layers_4-nodes...
+-----------------------------------
+
+11-11 20:50 root         INFO     
+
+Training arcsin_3-layers_8-nodes...
+-----------------------------------
+
+11-11 20:50 root         INFO     
+
+Training arcsin_3-layers_16-nodes...
+------------------------------------
+
+11-11 20:50 root         INFO     
+
+Training arcsin_3-layers_32-nodes...
+------------------------------------
+
+11-11 20:51 root         INFO     
+
+Training arcsin_3-layers_64-nodes...
+------------------------------------
+
+11-11 20:51 root         INFO     
+
+Training arcsin_3-layers_128-nodes...
+-------------------------------------
+
+11-11 20:52 root         INFO     
+
+Training arcsin_3-layers_256-nodes...
+-------------------------------------
+
+11-11 20:53 root         INFO     
+
+Training arcsin_3-layers_512-nodes...
+-------------------------------------
+
+11-11 20:55 root         INFO     
+
+Training arcsin_4-layers_1-nodes...
+-----------------------------------
+
+11-11 20:55 root         INFO     
+
+Training arcsin_4-layers_2-nodes...
+-----------------------------------
+
+11-11 20:56 root         INFO     
+
+Training arcsin_4-layers_4-nodes...
+-----------------------------------
+
+11-11 20:56 root         INFO     
+
+Training arcsin_4-layers_8-nodes...
+-----------------------------------
+
+11-11 20:57 root         INFO     
+
+Training arcsin_4-layers_16-nodes...
+------------------------------------
+
+11-11 20:57 root         INFO     
+
+Training arcsin_4-layers_32-nodes...
+------------------------------------
+
+11-11 20:58 root         INFO     
+
+Training arcsin_4-layers_64-nodes...
+------------------------------------
+
+11-11 20:58 root         INFO     
+
+Training arcsin_4-layers_128-nodes...
+-------------------------------------
+
+11-11 20:59 root         INFO     
+
+Training arcsin_4-layers_256-nodes...
+-------------------------------------
+
+11-11 21:00 root         INFO     
+
+Training arcsin_4-layers_512-nodes...
+-------------------------------------
+
+11-11 21:03 root         INFO     
+
+Training arcsin_5-layers_1-nodes...
+-----------------------------------
+
+11-11 21:03 root         INFO     
+
+Training arcsin_5-layers_2-nodes...
+-----------------------------------
+
+11-11 21:04 root         INFO     
+
+Training arcsin_5-layers_4-nodes...
+-----------------------------------
+
+11-11 21:04 root         INFO     
+
+Training arcsin_5-layers_8-nodes...
+-----------------------------------
+
+11-11 21:05 root         INFO     
+
+Training arcsin_5-layers_16-nodes...
+------------------------------------
+
+11-11 21:05 root         INFO     
+
+Training arcsin_5-layers_32-nodes...
+------------------------------------
+
+11-11 21:06 root         INFO     
+
+Training arcsin_5-layers_64-nodes...
+------------------------------------
+
+11-11 21:06 root         INFO     
+
+Training arcsin_5-layers_128-nodes...
+-------------------------------------
+
+11-11 21:07 root         INFO     
+
+Training arcsin_5-layers_256-nodes...
+-------------------------------------
+
+11-11 21:08 root         INFO     
+
+Training arcsin_5-layers_512-nodes...
+-------------------------------------
+
+11-11 21:11 root         INFO     
+
+Training arcsin_6-layers_1-nodes...
+-----------------------------------
+
+11-11 21:12 root         INFO     
+
+Training arcsin_6-layers_2-nodes...
+-----------------------------------
+
+11-11 21:12 root         INFO     
+
+Training arcsin_6-layers_4-nodes...
+-----------------------------------
+
+11-11 21:13 root         INFO     
+
+Training arcsin_6-layers_8-nodes...
+-----------------------------------
+
+11-11 21:14 root         INFO     
+
+Training arcsin_6-layers_16-nodes...
+------------------------------------
+
+11-11 21:14 root         INFO     
+
+Training arcsin_6-layers_32-nodes...
+------------------------------------
+
+11-11 21:15 root         INFO     
+
+Training arcsin_6-layers_64-nodes...
+------------------------------------
+
+11-11 21:15 root         INFO     
+
+Training arcsin_6-layers_128-nodes...
+-------------------------------------
+
+11-11 21:16 root         INFO     
+
+Training arcsin_6-layers_256-nodes...
+-------------------------------------
+
+11-11 21:18 root         INFO     
+
+Training arcsin_6-layers_512-nodes...
+-------------------------------------
+
+11-11 21:21 root         INFO     
+
+Training arcsin_7-layers_1-nodes...
+-----------------------------------
+
+11-11 21:22 root         INFO     
+
+Training arcsin_7-layers_2-nodes...
+-----------------------------------
+
+11-11 21:22 root         INFO     
+
+Training arcsin_7-layers_4-nodes...
+-----------------------------------
+
+11-11 21:23 root         INFO     
+
+Training arcsin_7-layers_8-nodes...
+-----------------------------------
+
+11-11 21:24 root         INFO     
+
+Training arcsin_7-layers_16-nodes...
+------------------------------------
+
+11-11 21:24 root         INFO     
+
+Training arcsin_7-layers_32-nodes...
+------------------------------------
+
+11-11 21:25 root         INFO     
+
+Training arcsin_7-layers_64-nodes...
+------------------------------------
+
+11-11 21:25 root         INFO     
+
+Training arcsin_7-layers_128-nodes...
+-------------------------------------
+
+11-11 21:26 root         INFO     
+
+Training arcsin_7-layers_256-nodes...
+-------------------------------------
+
+11-11 21:28 root         INFO     
+
+Training arcsin_7-layers_512-nodes...
+-------------------------------------
+
+11-11 21:32 root         INFO     
+
+Training arcsin_8-layers_1-nodes...
+-----------------------------------
+
+11-11 21:33 root         INFO     
+
+Training arcsin_8-layers_2-nodes...
+-----------------------------------
+
+11-11 21:34 root         INFO     
+
+Training arcsin_8-layers_4-nodes...
+-----------------------------------
+
+11-11 21:34 root         INFO     
+
+Training arcsin_8-layers_8-nodes...
+-----------------------------------
+
+11-11 21:35 root         INFO     
+
+Training arcsin_8-layers_16-nodes...
+------------------------------------
+
+11-11 21:36 root         INFO     
+
+Training arcsin_8-layers_32-nodes...
+------------------------------------
+
+11-11 21:36 root         INFO     
+
+Training arcsin_8-layers_64-nodes...
+------------------------------------
+
+11-11 21:37 root         INFO     
+
+Training arcsin_8-layers_128-nodes...
+-------------------------------------
+
+11-11 21:38 root         INFO     
+
+Training arcsin_8-layers_256-nodes...
+-------------------------------------
+
+11-11 21:40 root         INFO     
+
+Training arcsin_8-layers_512-nodes...
+-------------------------------------
+
+11-11 21:45 root         INFO     
+
+Training arcsin_9-layers_1-nodes...
+-----------------------------------
+
+11-11 21:45 root         INFO     
+
+Training arcsin_9-layers_2-nodes...
+-----------------------------------
+
+11-11 21:46 root         INFO     
+
+Training arcsin_9-layers_4-nodes...
+-----------------------------------
+
+11-11 21:47 root         INFO     
+
+Training arcsin_9-layers_8-nodes...
+-----------------------------------
+
+11-11 21:47 root         INFO     
+
+Training arcsin_9-layers_16-nodes...
+------------------------------------
+
+11-11 21:48 root         INFO     
+
+Training arcsin_9-layers_32-nodes...
+------------------------------------
+
+11-11 21:49 root         INFO     
+
+Training arcsin_9-layers_64-nodes...
+------------------------------------
+
+11-11 21:49 root         INFO     
+
+Training arcsin_9-layers_128-nodes...
+-------------------------------------
+
+11-11 21:50 root         INFO     
+
+Training arcsin_9-layers_256-nodes...
+-------------------------------------
+
+11-11 21:52 root         INFO     
+
+Training arcsin_9-layers_512-nodes...
+-------------------------------------
+
+11-11 21:58 root         INFO     Best Configuration: 1 layers and 256 nodes/layer, loss of 0.0001
+
+11-11 21:58 root         INFO     Satisfactory models for arcsin
+
+11-11 21:58 root         INFO     Config:[1, 64]	Score:0.0003836057221633382	Params:193
+
+11-11 21:58 root         INFO     Config:[1, 128]	Score:0.00020743492132169195	Params:385
+
+11-11 21:58 root         INFO     Config:[1, 256]	Score:0.0001466537760279607	Params:769
+
+11-11 21:58 root         INFO     Config:[1, 512]	Score:0.0001468868831580039	Params:1537
+
+11-11 21:58 root         INFO     Config:[2, 32]	Score:0.0006356513040373102	Params:1153
+
+11-11 21:58 root         INFO     Config:[2, 64]	Score:0.0003896119087585248	Params:4353
+
+11-11 21:58 root         INFO     Config:[2, 256]	Score:0.00034535005397628993	Params:66561
+
+11-11 21:58 root         INFO     Config:[2, 512]	Score:0.0003470314113656059	Params:264193
+
+11-11 21:58 root         INFO     Config:[3, 64]	Score:0.0005907742888666689	Params:8513
+
+11-11 21:58 root         INFO     Config:[3, 128]	Score:0.0004888987605227157	Params:33409
+
+11-11 21:58 root         INFO     Config:[3, 256]	Score:0.0004064699533046223	Params:132353
+
+11-11 21:58 root         INFO     Config:[3, 512]	Score:0.0005692920240107924	Params:526849
+
+11-11 21:58 root         INFO     Config:[4, 128]	Score:0.0005663203774020076	Params:49921
+
+11-11 21:58 root         INFO     Config:[4, 256]	Score:0.0004891657008556649	Params:198145
+
+11-11 21:58 root         INFO     Config:[5, 128]	Score:0.0005500996048795059	Params:66433
+
+11-11 21:58 root         INFO     Config:[5, 256]	Score:0.000584817462367937	Params:263937
+
+11-11 21:58 root         INFO     Config:[5, 512]	Score:0.0005711761332349852	Params:1052161
+
+11-11 21:58 root         INFO     Config:[6, 128]	Score:0.0005392942548496649	Params:82945
+
+11-11 21:58 root         INFO     Config:[7, 512]	Score:0.0007193772471509874	Params:1577473
+
+11-11 21:58 root         INFO     Config:[8, 256]	Score:0.0007189821626525372	Params:461313
+
+11-11 21:58 tensorflow   INFO     Assets written to: unit_fns/arcsin/assets
+
+11-11 21:58 root         INFO     
+
+Training arccos_0-layers_1-nodes...
+-----------------------------------
+
+11-11 21:59 root         INFO     ------------------
+New Best: [0, 1]
+Score: 0.0095
+------------------
+
+11-11 21:59 root         INFO     
+
+Training arccos_1-layers_1-nodes...
+-----------------------------------
+
+11-11 22:00 root         INFO     
+
+Training arccos_1-layers_2-nodes...
+-----------------------------------
+
+11-11 22:00 root         INFO     
+
+Training arccos_1-layers_4-nodes...
+-----------------------------------
+
+11-11 22:01 root         INFO     
+
+Training arccos_1-layers_8-nodes...
+-----------------------------------
+
+11-11 22:01 root         INFO     ------------------
+New Best: [1, 8]
+Score: 0.0087
+------------------
+
+11-11 22:01 root         INFO     
+
+Training arccos_1-layers_16-nodes...
+------------------------------------
+
+11-11 22:02 root         INFO     ------------------
+New Best: [1, 16]
+Score: 0.0012
+------------------
+
+11-11 22:02 root         INFO     
+
+Training arccos_1-layers_32-nodes...
+------------------------------------
+
+11-11 22:03 root         INFO     ------------------
+New Best: [1, 32]
+Score: 0.0009
+------------------
+
+11-11 22:03 root         INFO     
+
+Training arccos_1-layers_64-nodes...
+------------------------------------
+
+11-11 22:03 root         INFO     ------------------
+New Best: [1, 64]
+Score: 0.0004
+------------------
+
+11-11 22:03 root         INFO     
+
+Training arccos_1-layers_128-nodes...
+-------------------------------------
+
+11-11 22:04 root         INFO     ------------------
+New Best: [1, 128]
+Score: 0.0003
+------------------
+
+11-11 22:04 root         INFO     
+
+Training arccos_1-layers_256-nodes...
+-------------------------------------
+
+11-11 22:04 root         INFO     ------------------
+New Best: [1, 256]
+Score: 0.0003
+------------------
+
+11-11 22:04 root         INFO     
+
+Training arccos_1-layers_512-nodes...
+-------------------------------------
+
+11-11 22:05 root         INFO     ------------------
+New Best: [1, 512]
+Score: 0.0003
+------------------
+
+11-11 22:05 root         INFO     
+
+Training arccos_2-layers_1-nodes...
+-----------------------------------
+
+11-11 22:05 root         INFO     
+
+Training arccos_2-layers_2-nodes...
+-----------------------------------
+
+11-11 22:06 root         INFO     
+
+Training arccos_2-layers_4-nodes...
+-----------------------------------
+
+11-11 22:07 root         INFO     
+
+Training arccos_2-layers_8-nodes...
+-----------------------------------
+
+11-11 22:07 root         INFO     
+
+Training arccos_2-layers_16-nodes...
+------------------------------------
+
+11-11 22:07 root         INFO     
+
+Training arccos_2-layers_32-nodes...
+------------------------------------
+
+11-11 22:08 root         INFO     
+
+Training arccos_2-layers_64-nodes...
+------------------------------------
+
+11-11 22:08 root         INFO     
+
+Training arccos_2-layers_128-nodes...
+-------------------------------------
+
+11-11 22:09 root         INFO     
+
+Training arccos_2-layers_256-nodes...
+-------------------------------------
+
+11-11 22:10 root         INFO     
+
+Training arccos_2-layers_512-nodes...
+-------------------------------------
+
+11-11 22:11 root         INFO     
+
+Training arccos_3-layers_1-nodes...
+-----------------------------------
+
+11-11 22:11 root         INFO     
+
+Training arccos_3-layers_2-nodes...
+-----------------------------------
+
+11-11 22:12 root         INFO     
+
+Training arccos_3-layers_4-nodes...
+-----------------------------------
+
+11-11 22:12 root         INFO     
+
+Training arccos_3-layers_8-nodes...
+-----------------------------------
+
+11-11 22:13 root         INFO     
+
+Training arccos_3-layers_16-nodes...
+------------------------------------
+
+11-11 22:14 root         INFO     
+
+Training arccos_3-layers_32-nodes...
+------------------------------------
+
+11-11 22:14 root         INFO     
+
+Training arccos_3-layers_64-nodes...
+------------------------------------
+
+11-11 22:15 root         INFO     
+
+Training arccos_3-layers_128-nodes...
+-------------------------------------
+
+11-11 22:15 root         INFO     
+
+Training arccos_3-layers_256-nodes...
+-------------------------------------
+
+11-11 22:16 root         INFO     
+
+Training arccos_3-layers_512-nodes...
+-------------------------------------
+
+11-11 22:18 root         INFO     
+
+Training arccos_4-layers_1-nodes...
+-----------------------------------
+
+11-11 22:19 root         INFO     
+
+Training arccos_4-layers_2-nodes...
+-----------------------------------
+
+11-11 22:19 root         INFO     
+
+Training arccos_4-layers_4-nodes...
+-----------------------------------
+
+11-11 22:20 root         INFO     
+
+Training arccos_4-layers_8-nodes...
+-----------------------------------
+
+11-11 22:21 root         INFO     
+
+Training arccos_4-layers_16-nodes...
+------------------------------------
+
+11-11 22:22 root         INFO     
+
+Training arccos_4-layers_32-nodes...
+------------------------------------
+
+11-11 22:22 root         INFO     
+
+Training arccos_4-layers_64-nodes...
+------------------------------------
+
+11-11 22:23 root         INFO     
+
+Training arccos_4-layers_128-nodes...
+-------------------------------------
+
+11-11 22:24 root         INFO     
+
+Training arccos_4-layers_256-nodes...
+-------------------------------------
+
+11-11 22:25 root         INFO     
+
+Training arccos_4-layers_512-nodes...
+-------------------------------------
+
+11-11 22:27 root         INFO     
+
+Training arccos_5-layers_1-nodes...
+-----------------------------------
+
+11-11 22:28 root         INFO     
+
+Training arccos_5-layers_2-nodes...
+-----------------------------------
+
+11-11 22:28 root         INFO     
+
+Training arccos_5-layers_4-nodes...
+-----------------------------------
+
+11-11 22:29 root         INFO     
+
+Training arccos_5-layers_8-nodes...
+-----------------------------------
+
+11-11 22:30 root         INFO     
+
+Training arccos_5-layers_16-nodes...
+------------------------------------
+
+11-11 22:30 root         INFO     
+
+Training arccos_5-layers_32-nodes...
+------------------------------------
+
+11-11 22:31 root         INFO     
+
+Training arccos_5-layers_64-nodes...
+------------------------------------
+
+11-11 22:32 root         INFO     
+
+Training arccos_5-layers_128-nodes...
+-------------------------------------
+
+11-11 22:33 root         INFO     
+
+Training arccos_5-layers_256-nodes...
+-------------------------------------
+
+11-11 22:34 root         INFO     
+
+Training arccos_5-layers_512-nodes...
+-------------------------------------
+
+11-11 22:37 root         INFO     
+
+Training arccos_6-layers_1-nodes...
+-----------------------------------
+
+11-11 22:38 root         INFO     
+
+Training arccos_6-layers_2-nodes...
+-----------------------------------
+
+11-11 22:39 root         INFO     
+
+Training arccos_6-layers_4-nodes...
+-----------------------------------
+
+11-11 22:39 root         INFO     
+
+Training arccos_6-layers_8-nodes...
+-----------------------------------
+
+11-11 22:40 root         INFO     
+
+Training arccos_6-layers_16-nodes...
+------------------------------------
+
+11-11 22:41 root         INFO     
+
+Training arccos_6-layers_32-nodes...
+------------------------------------
+
+11-11 22:41 root         INFO     
+
+Training arccos_6-layers_64-nodes...
+------------------------------------
+
+11-11 22:42 root         INFO     
+
+Training arccos_6-layers_128-nodes...
+-------------------------------------
+
+11-11 22:43 root         INFO     
+
+Training arccos_6-layers_256-nodes...
+-------------------------------------
+
+11-11 22:45 root         INFO     
+
+Training arccos_6-layers_512-nodes...
+-------------------------------------
+
+11-11 22:49 root         INFO     
+
+Training arccos_7-layers_1-nodes...
+-----------------------------------
+
+11-11 22:49 root         INFO     
+
+Training arccos_7-layers_2-nodes...
+-----------------------------------
+
+11-11 22:50 root         INFO     
+
+Training arccos_7-layers_4-nodes...
+-----------------------------------
+
+11-11 22:51 root         INFO     
+
+Training arccos_7-layers_8-nodes...
+-----------------------------------
+
+11-11 22:51 root         INFO     
+
+Training arccos_7-layers_16-nodes...
+------------------------------------
+
+11-11 22:52 root         INFO     
+
+Training arccos_7-layers_32-nodes...
+------------------------------------
+
+11-11 22:53 root         INFO     
+
+Training arccos_7-layers_64-nodes...
+------------------------------------
+
+11-11 22:54 root         INFO     
+
+Training arccos_7-layers_128-nodes...
+-------------------------------------
+
+11-11 22:55 root         INFO     
+
+Training arccos_7-layers_256-nodes...
+-------------------------------------
+
+11-11 22:56 root         INFO     
+
+Training arccos_7-layers_512-nodes...
+-------------------------------------
+
+11-11 23:01 root         INFO     
+
+Training arccos_8-layers_1-nodes...
+-----------------------------------
+
+11-11 23:02 root         INFO     
+
+Training arccos_8-layers_2-nodes...
+-----------------------------------
+
+11-11 23:02 root         INFO     
+
+Training arccos_8-layers_4-nodes...
+-----------------------------------
+
+11-11 23:03 root         INFO     
+
+Training arccos_8-layers_8-nodes...
+-----------------------------------
+
+11-11 23:04 root         INFO     
+
+Training arccos_8-layers_16-nodes...
+------------------------------------
+
+11-11 23:05 root         INFO     
+
+Training arccos_8-layers_32-nodes...
+------------------------------------
+
+11-11 23:06 root         INFO     
+
+Training arccos_8-layers_64-nodes...
+------------------------------------
+
+11-11 23:07 root         INFO     
+
+Training arccos_8-layers_128-nodes...
+-------------------------------------
+
+11-11 23:08 root         INFO     
+
+Training arccos_8-layers_256-nodes...
+-------------------------------------
+
+11-11 23:10 root         INFO     
+
+Training arccos_8-layers_512-nodes...
+-------------------------------------
+
+11-11 23:15 root         INFO     
+
+Training arccos_9-layers_1-nodes...
+-----------------------------------
+
+11-11 23:16 root         INFO     
+
+Training arccos_9-layers_2-nodes...
+-----------------------------------
+
+11-11 23:17 root         INFO     
+
+Training arccos_9-layers_4-nodes...
+-----------------------------------
+
+11-11 23:18 root         INFO     
+
+Training arccos_9-layers_8-nodes...
+-----------------------------------
+
+11-11 23:19 root         INFO     
+
+Training arccos_9-layers_16-nodes...
+------------------------------------
+
+11-11 23:20 root         INFO     
+
+Training arccos_9-layers_32-nodes...
+------------------------------------
+
+11-11 23:21 root         INFO     
+
+Training arccos_9-layers_64-nodes...
+------------------------------------
+
+11-11 23:22 root         INFO     
+
+Training arccos_9-layers_128-nodes...
+-------------------------------------
+
+11-11 23:23 root         INFO     
+
+Training arccos_9-layers_256-nodes...
+-------------------------------------
+
+11-11 23:25 root         INFO     
+
+Training arccos_9-layers_512-nodes...
+-------------------------------------
+
+11-11 23:32 root         INFO     Best Configuration: 1 layers and 512 nodes/layer, loss of 0.0003
+
+11-11 23:32 root         INFO     Satisfactory models for arccos
+
+11-11 23:32 root         INFO     Config:[1, 16]	Score:0.00123119457566645	Params:49
+
+11-11 23:32 root         INFO     Config:[1, 32]	Score:0.0009274918120354414	Params:97
+
+11-11 23:32 root         INFO     Config:[1, 64]	Score:0.0004405950785439927	Params:193
+
+11-11 23:32 root         INFO     Config:[1, 128]	Score:0.00033563130637048744	Params:385
+
+11-11 23:32 root         INFO     Config:[1, 256]	Score:0.00029924424597993493	Params:769
+
+11-11 23:32 root         INFO     Config:[1, 512]	Score:0.0002740630297921598	Params:1537
+
+11-11 23:32 root         INFO     Config:[2, 16]	Score:0.0013017569435760379	Params:321
+
+11-11 23:32 root         INFO     Config:[2, 32]	Score:0.0008928416500566527	Params:1153
+
+11-11 23:32 root         INFO     Config:[2, 64]	Score:0.0006214770037331618	Params:4353
+
+11-11 23:32 root         INFO     Config:[2, 128]	Score:0.0005935991575825028	Params:16897
+
+11-11 23:32 root         INFO     Config:[2, 256]	Score:0.0005548705084947869	Params:66561
+
+11-11 23:32 root         INFO     Config:[2, 512]	Score:0.0005115996464155614	Params:264193
+
+11-11 23:32 root         INFO     Config:[3, 32]	Score:0.0011504366411827505	Params:2209
+
+11-11 23:32 root         INFO     Config:[3, 64]	Score:0.0007690253296459559	Params:8513
+
+11-11 23:32 root         INFO     Config:[3, 128]	Score:0.0006867009942652658	Params:33409
+
+11-11 23:32 root         INFO     Config:[3, 256]	Score:0.000712702123564668	Params:132353
+
+11-11 23:32 root         INFO     Config:[3, 512]	Score:0.0007285292667802423	Params:526849
+
+11-11 23:32 root         INFO     Config:[4, 64]	Score:0.0009172979043796659	Params:12673
+
+11-11 23:32 root         INFO     Config:[4, 128]	Score:0.001186115900054574	Params:49921
+
+11-11 23:32 root         INFO     Config:[4, 256]	Score:0.001011676446069032	Params:198145
+
+11-11 23:32 root         INFO     Config:[4, 512]	Score:0.0006006666153552942	Params:789505
+
+11-11 23:32 root         INFO     Config:[5, 64]	Score:0.001289890380576253	Params:16833
+
+11-11 23:32 root         INFO     Config:[5, 256]	Score:0.0013519610511139035	Params:263937
+
+11-11 23:32 root         INFO     Config:[5, 512]	Score:0.0007198371313279495	Params:1052161
+
+11-11 23:32 root         INFO     Config:[6, 256]	Score:0.0008783077646512538	Params:329729
+
+11-11 23:32 root         INFO     Config:[6, 512]	Score:0.0010070552525576204	Params:1314817
+
+11-11 23:32 root         INFO     Config:[7, 256]	Score:0.001001206022920087	Params:395521
+
+11-11 23:32 root         INFO     Config:[7, 512]	Score:0.0013419639435596764	Params:1577473
+
+11-11 23:32 root         INFO     Config:[8, 64]	Score:0.0011161719739902765	Params:29313
+
+11-11 23:32 root         INFO     Config:[8, 256]	Score:0.00117201340617612	Params:461313
+
+11-11 23:32 root         INFO     Config:[8, 512]	Score:0.000954072515014559	Params:1840129
+
+11-11 23:33 tensorflow   INFO     Assets written to: unit_fns/arccos/assets
+
+11-11 23:33 root         INFO     
+
+Training arctan_0-layers_1-nodes...
+-----------------------------------
+
+11-11 23:34 root         INFO     ------------------
+New Best: [0, 1]
+Score: 1.2787
+------------------
+
+11-11 23:34 root         INFO     
+
+Training arctan_1-layers_1-nodes...
+-----------------------------------
+
+11-11 23:35 root         INFO     
+
+Training arctan_1-layers_2-nodes...
+-----------------------------------
+
+11-11 23:36 root         INFO     
+
+Training arctan_1-layers_4-nodes...
+-----------------------------------
+
+11-11 23:37 root         INFO     ------------------
+New Best: [1, 4]
+Score: 1.0269
+------------------
+
+11-11 23:37 root         INFO     
+
+Training arctan_1-layers_8-nodes...
+-----------------------------------
+
+11-11 23:39 root         INFO     ------------------
+New Best: [1, 8]
+Score: 0.7379
+------------------
+
+11-11 23:39 root         INFO     
+
+Training arctan_1-layers_16-nodes...
+------------------------------------
+
+11-11 23:40 root         INFO     ------------------
+New Best: [1, 16]
+Score: 0.3808
+------------------
+
+11-11 23:40 root         INFO     
+
+Training arctan_1-layers_32-nodes...
+------------------------------------
+
+11-11 23:41 root         INFO     ------------------
+New Best: [1, 32]
+Score: 0.3625
+------------------
+
+11-11 23:41 root         INFO     
+
+Training arctan_1-layers_64-nodes...
+------------------------------------
+
+11-11 23:42 root         INFO     ------------------
+New Best: [1, 64]
+Score: 0.2890
+------------------
+
+11-11 23:42 root         INFO     
+
+Training arctan_1-layers_128-nodes...
+-------------------------------------
+
+11-11 23:43 root         INFO     ------------------
+New Best: [1, 128]
+Score: 0.2370
+------------------
+
+11-11 23:43 root         INFO     
+
+Training arctan_1-layers_256-nodes...
+-------------------------------------
+
+11-11 23:44 root         INFO     ------------------
+New Best: [1, 256]
+Score: 0.2354
+------------------
+
+11-11 23:44 root         INFO     
+
+Training arctan_1-layers_512-nodes...
+-------------------------------------
+
+11-11 23:45 root         INFO     
+
+Training arctan_2-layers_1-nodes...
+-----------------------------------
+
+11-11 23:46 root         INFO     
+
+Training arctan_2-layers_2-nodes...
+-----------------------------------
+
+11-11 23:46 root         INFO     ------------------
+New Best: [2, 2]
+Score: 0.0728
+------------------
+
+11-11 23:46 root         INFO     
+
+Training arctan_2-layers_4-nodes...
+-----------------------------------
+
+11-11 23:48 root         INFO     
+
+Training arctan_2-layers_8-nodes...
+-----------------------------------
+
+11-11 23:49 root         INFO     
+
+Training arctan_2-layers_16-nodes...
+------------------------------------
+
+11-11 23:49 root         INFO     
+
+Training arctan_2-layers_32-nodes...
+------------------------------------
+
+11-11 23:50 root         INFO     ------------------
+New Best: [2, 32]
+Score: 0.0288
+------------------
+
+11-11 23:50 root         INFO     
+
+Training arctan_2-layers_64-nodes...
+------------------------------------
+
+11-11 23:51 root         INFO     
+
+Training arctan_2-layers_128-nodes...
+-------------------------------------
+
+11-11 23:52 root         INFO     ------------------
+New Best: [2, 128]
+Score: 0.0258
+------------------
+
+11-11 23:52 root         INFO     
+
+Training arctan_2-layers_256-nodes...
+-------------------------------------
+
+11-11 23:53 root         INFO     
+
+Training arctan_2-layers_512-nodes...
+-------------------------------------
+
+11-11 23:54 root         INFO     
+
+Training arctan_3-layers_1-nodes...
+-----------------------------------
+
+11-11 23:55 root         INFO     
+
+Training arctan_3-layers_2-nodes...
+-----------------------------------
+
+11-11 23:56 root         INFO     
+
+Training arctan_3-layers_4-nodes...
+-----------------------------------
+
+11-11 23:57 root         INFO     
+
+Training arctan_3-layers_8-nodes...
+-----------------------------------
+
+11-11 23:58 root         INFO     
+
+Training arctan_3-layers_16-nodes...
+------------------------------------
+
+11-11 23:59 root         INFO     
+
+Training arctan_3-layers_32-nodes...
+------------------------------------
+
+11-12 00:00 root         INFO     ------------------
+New Best: [3, 32]
+Score: 0.0164
+------------------
+
+11-12 00:00 root         INFO     
+
+Training arctan_3-layers_64-nodes...
+------------------------------------
+
+11-12 00:02 root         INFO     ------------------
+New Best: [3, 64]
+Score: 0.0080
+------------------
+
+11-12 00:02 root         INFO     
+
+Training arctan_3-layers_128-nodes...
+-------------------------------------
+
+11-12 00:03 root         INFO     ------------------
+New Best: [3, 128]
+Score: 0.0017
+------------------
+
+11-12 00:03 root         INFO     
+
+Training arctan_3-layers_256-nodes...
+-------------------------------------
+
+11-12 00:04 root         INFO     
+
+Training arctan_3-layers_512-nodes...
+-------------------------------------
+
+11-12 00:06 root         INFO     
+
+Training arctan_4-layers_1-nodes...
+-----------------------------------
+
+11-12 00:07 root         INFO     
+
+Training arctan_4-layers_2-nodes...
+-----------------------------------
+
+11-12 00:08 root         INFO     
+
+Training arctan_4-layers_4-nodes...
+-----------------------------------
+
+11-12 00:09 root         INFO     
+
+Training arctan_4-layers_8-nodes...
+-----------------------------------
+
+11-12 00:11 root         INFO     
+
+Training arctan_4-layers_16-nodes...
+------------------------------------
+
+11-12 00:12 root         INFO     
+
+Training arctan_4-layers_32-nodes...
+------------------------------------
+
+11-12 00:13 root         INFO     
+
+Training arctan_4-layers_64-nodes...
+------------------------------------
+
+11-12 00:14 root         INFO     
+
+Training arctan_4-layers_128-nodes...
+-------------------------------------
+
+11-12 00:15 root         INFO     
+
+Training arctan_4-layers_256-nodes...
+-------------------------------------
+
+11-12 00:17 root         INFO     
+
+Training arctan_4-layers_512-nodes...
+-------------------------------------
+
+11-12 00:20 root         INFO     
+
+Training arctan_5-layers_1-nodes...
+-----------------------------------
+
+11-12 00:21 root         INFO     
+
+Training arctan_5-layers_2-nodes...
+-----------------------------------
+
+11-12 00:22 root         INFO     
+
+Training arctan_5-layers_4-nodes...
+-----------------------------------
+
+11-12 00:24 root         INFO     
+
+Training arctan_5-layers_8-nodes...
+-----------------------------------
+
+11-12 00:25 root         INFO     
+
+Training arctan_5-layers_16-nodes...
+------------------------------------
+
+11-12 00:26 root         INFO     
+
+Training arctan_5-layers_32-nodes...
+------------------------------------
+
+11-12 00:27 root         INFO     
+
+Training arctan_5-layers_64-nodes...
+------------------------------------
+
+11-12 00:29 root         INFO     
+
+Training arctan_5-layers_128-nodes...
+-------------------------------------
+
+11-12 00:30 root         INFO     
+
+Training arctan_5-layers_256-nodes...
+-------------------------------------
+
+11-12 00:32 root         INFO     
+
+Training arctan_5-layers_512-nodes...
+-------------------------------------
+
+11-12 00:36 root         INFO     
+
+Training arctan_6-layers_1-nodes...
+-----------------------------------
+
+11-12 00:37 root         INFO     
+
+Training arctan_6-layers_2-nodes...
+-----------------------------------
+
+11-12 00:39 root         INFO     
+
+Training arctan_6-layers_4-nodes...
+-----------------------------------
+
+11-12 00:40 root         INFO     
+
+Training arctan_6-layers_8-nodes...
+-----------------------------------
+
+11-12 00:41 root         INFO     
+
+Training arctan_6-layers_16-nodes...
+------------------------------------
+
+11-12 00:42 root         INFO     
+
+Training arctan_6-layers_32-nodes...
+------------------------------------
+
+11-12 00:43 root         INFO     
+
+Training arctan_6-layers_64-nodes...
+------------------------------------
+
+11-12 00:44 root         INFO     
+
+Training arctan_6-layers_128-nodes...
+-------------------------------------
+
+11-12 00:45 root         INFO     
+
+Training arctan_6-layers_256-nodes...
+-------------------------------------
+
+11-12 00:48 root         INFO     
+
+Training arctan_6-layers_512-nodes...
+-------------------------------------
+
+11-12 00:52 root         INFO     ------------------
+New Best: [6, 512]
+Score: 0.0010
+------------------
+
+11-12 00:52 root         INFO     
+
+Training arctan_7-layers_1-nodes...
+-----------------------------------
+
+11-12 00:53 root         INFO     
+
+Training arctan_7-layers_2-nodes...
+-----------------------------------
+
+11-12 00:55 root         INFO     
+
+Training arctan_7-layers_4-nodes...
+-----------------------------------
+
+11-12 00:56 root         INFO     
+
+Training arctan_7-layers_8-nodes...
+-----------------------------------
+
+11-12 00:57 root         INFO     
+
+Training arctan_7-layers_16-nodes...
+------------------------------------
+
+11-12 00:58 root         INFO     
+
+Training arctan_7-layers_32-nodes...
+------------------------------------
+
+11-12 01:00 root         INFO     
+
+Training arctan_7-layers_64-nodes...
+------------------------------------
+
+11-12 01:02 root         INFO     
+
+Training arctan_7-layers_128-nodes...
+-------------------------------------
+
+11-12 01:03 root         INFO     
+
+Training arctan_7-layers_256-nodes...
+-------------------------------------
+
+11-12 01:05 root         INFO     
+
+Training arctan_7-layers_512-nodes...
+-------------------------------------
+
+11-12 01:10 root         INFO     ------------------
+New Best: [7, 512]
+Score: 0.0006
+------------------
+
+11-12 01:10 root         INFO     
+
+Training arctan_8-layers_1-nodes...
+-----------------------------------
+
+11-12 01:12 root         INFO     
+
+Training arctan_8-layers_2-nodes...
+-----------------------------------
+
+11-12 01:13 root         INFO     
+
+Training arctan_8-layers_4-nodes...
+-----------------------------------
+
+11-12 01:14 root         INFO     
+
+Training arctan_8-layers_8-nodes...
+-----------------------------------
+
+11-12 01:17 root         INFO     
+
+Training arctan_8-layers_16-nodes...
+------------------------------------
+
+11-12 01:18 root         INFO     
+
+Training arctan_8-layers_32-nodes...
+------------------------------------
+
+11-12 01:20 root         INFO     
+
+Training arctan_8-layers_64-nodes...
+------------------------------------
+
+11-12 01:22 root         INFO     
+
+Training arctan_8-layers_128-nodes...
+-------------------------------------
+
+11-12 01:23 root         INFO     
+
+Training arctan_8-layers_256-nodes...
+-------------------------------------
+
+11-12 01:26 root         INFO     
+
+Training arctan_8-layers_512-nodes...
+-------------------------------------
+
+11-12 01:33 root         INFO     
+
+Training arctan_9-layers_1-nodes...
+-----------------------------------
+
+11-12 01:35 root         INFO     
+
+Training arctan_9-layers_2-nodes...
+-----------------------------------
+
+11-12 01:37 root         INFO     
+
+Training arctan_9-layers_4-nodes...
+-----------------------------------
+
+11-12 01:38 root         INFO     
+
+Training arctan_9-layers_8-nodes...
+-----------------------------------
+
+11-12 01:39 root         INFO     
+
+Training arctan_9-layers_16-nodes...
+------------------------------------
+
+11-12 01:41 root         INFO     
+
+Training arctan_9-layers_32-nodes...
+------------------------------------
+
+11-12 01:42 root         INFO     
+
+Training arctan_9-layers_64-nodes...
+------------------------------------
+
+11-12 01:45 root         INFO     
+
+Training arctan_9-layers_128-nodes...
+-------------------------------------
+
+11-12 01:47 root         INFO     
+
+Training arctan_9-layers_256-nodes...
+-------------------------------------
+
+11-12 01:50 root         INFO     
+
+Training arctan_9-layers_512-nodes...
+-------------------------------------
+
+11-12 01:56 root         INFO     Best Configuration: 7 layers and 512 nodes/layer, loss of 0.0006
+
+11-12 01:56 root         INFO     Satisfactory models for arctan
+
+11-12 01:56 root         INFO     Config:[3, 128]	Score:0.0016604771735728718	Params:33409
+
+11-12 01:56 root         INFO     Config:[4, 512]	Score:0.002228100143838674	Params:789505
+
+11-12 01:56 root         INFO     Config:[5, 64]	Score:0.003226710337912664	Params:16833
+
+11-12 01:56 root         INFO     Config:[5, 128]	Score:0.00305555108570843	Params:66433
+
+11-12 01:56 root         INFO     Config:[5, 512]	Score:0.001870625972514972	Params:1052161
+
+11-12 01:56 root         INFO     Config:[6, 64]	Score:0.0026456006744410843	Params:20993
+
+11-12 01:56 root         INFO     Config:[6, 128]	Score:0.0019649661262519658	Params:82945
+
+11-12 01:56 root         INFO     Config:[6, 256]	Score:0.001859573349065613	Params:329729
+
+11-12 01:56 root         INFO     Config:[6, 512]	Score:0.0009755483770277351	Params:1314817
+
+11-12 01:56 root         INFO     Config:[7, 64]	Score:0.0019285392554593273	Params:25153
+
+11-12 01:56 root         INFO     Config:[7, 128]	Score:0.0016489487752551213	Params:99457
+
+11-12 01:56 root         INFO     Config:[7, 512]	Score:0.0006457057061197702	Params:1577473
+
+11-12 01:56 root         INFO     Config:[8, 32]	Score:0.003039837843971327	Params:7489
+
+11-12 01:56 root         INFO     Config:[8, 64]	Score:0.003030324340215884	Params:29313
+
+11-12 01:56 root         INFO     Config:[8, 128]	Score:0.0016830695676617324	Params:115969
+
+11-12 01:56 root         INFO     Config:[8, 256]	Score:0.000868084083776921	Params:461313
+
+11-12 01:56 root         INFO     Config:[8, 512]	Score:0.0010918276966549456	Params:1840129
+
+11-12 01:56 root         INFO     Config:[9, 64]	Score:0.0018762840481940657	Params:33473
+
+11-12 01:56 root         INFO     Config:[9, 128]	Score:0.0012221590950503014	Params:132481
+
+11-12 01:56 root         INFO     Config:[9, 256]	Score:0.0007516446567024104	Params:527105
+
+11-12 01:56 root         INFO     Config:[9, 512]	Score:0.00124027841957286	Params:2102785
+
+11-12 01:57 tensorflow   INFO     Assets written to: unit_fns/arctan/assets
+

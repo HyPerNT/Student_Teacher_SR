@@ -1,0 +1,10 @@
+2022-11-11 14:25:28,403 - tensorflow - INFO - Assets written to: unit_fns/negation/assets
+2022-11-11 15:49:32,583 - tensorflow - INFO - Assets written to: unit_fns/abs/assets
+2022-11-11 15:50:01,748 - tensorflow - INFO - Assets written to: unit_fns/successor/assets
+2022-11-11 15:50:30,300 - tensorflow - INFO - Assets written to: unit_fns/predecessor/assets
+2022-11-11 17:41:17,533 - tensorflow - INFO - Assets written to: unit_fns/log/assets
+2022-11-11 19:09:06,194 - tensorflow - INFO - Assets written to: unit_fns/sin/assets
+2022-11-11 20:37:10,589 - tensorflow - INFO - Assets written to: unit_fns/cos/assets
+2022-11-11 21:58:33,402 - tensorflow - INFO - Assets written to: unit_fns/arcsin/assets
+2022-11-11 23:33:37,993 - tensorflow - INFO - Assets written to: unit_fns/arccos/assets
+2022-11-12 01:57:49,431 - tensorflow - INFO - Assets written to: unit_fns/arctan/assets

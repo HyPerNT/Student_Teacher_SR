@@ -2,6 +2,7 @@ from utils import *
 from sklearn.ensemble import IsolationForest
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
 def isCorrect(x, y):
     return (x and y > 0) or (not x and y < 0)
@@ -34,7 +35,7 @@ def fn_to_df(fn):
 
 def main():
     outlier_rate = 0.1
-    fn = mystery_function("x{0}S", 1, gen_data=True, sample_size=10_000, scale=10, center=5, outlier_rate=outlier_rate)
+    fn = mystery_function("x{0}S", 1, gen_data=True, sample_size=1_000, scale=10, center=5, outlier_rate=outlier_rate)
     df, mask = fn_to_df(fn)
     print(f'Number of bad data points: {len(mask)-np.sum(mask)}')
 
@@ -45,10 +46,18 @@ def main():
     df['anomaly']=model.predict(df[cols])
     df['correct']=[True if isCorrect(mask[i], df['anomaly'][i]) else False for i in range(len(mask))]
     df['truth']=[x for x in mask]
-    print_summary(df)
+    clean = print_summary(df)
+    plt.scatter(df["x0"], df["y"])
+    plt.show()    
+    # plt.savefig(f"./{FIG_DIR}/pre.png")
+    plt.scatter(clean["x0"], clean["y"])
+    plt.show()
+    # plt.savefig(f"./{FIG_DIR}/clean.png")
 
 
-    fn = mystery_function("x{0}S", 1, gen_data=True, sample_size=10_000, scale=10, center=5, outlier_rate=2*outlier_rate)
+
+
+    fn = mystery_function("x{0}S", 1, gen_data=True, sample_size=1_000, scale=10, center=5, outlier_rate=2*outlier_rate)
     df, mask = fn_to_df(fn)
 
     df['anomaly']=model.predict(df[cols])

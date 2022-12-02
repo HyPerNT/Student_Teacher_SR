@@ -1,0 +1,571 @@
+11-13 16:04 root         INFO     
+
+Training exp_0-layers_1-nodes...
+--------------------------------
+
+11-13 16:04 root         INFO     ------------------
+New Best: [0, 1]
+Score: 22994570.0000
+------------------
+
+11-13 16:04 root         INFO     
+
+Training exp_1-layers_1-nodes...
+--------------------------------
+
+11-13 16:05 root         INFO     
+
+Training exp_1-layers_2-nodes...
+--------------------------------
+
+11-13 16:05 root         INFO     
+
+Training exp_1-layers_4-nodes...
+--------------------------------
+
+11-13 16:05 root         INFO     ------------------
+New Best: [1, 4]
+Score: 12715337.0000
+------------------
+
+11-13 16:05 root         INFO     
+
+Training exp_1-layers_8-nodes...
+--------------------------------
+
+11-13 16:06 root         INFO     ------------------
+New Best: [1, 8]
+Score: 11425813.5000
+------------------
+
+11-13 16:06 root         INFO     
+
+Training exp_1-layers_16-nodes...
+---------------------------------
+
+11-13 16:06 root         INFO     ------------------
+New Best: [1, 16]
+Score: 10526619.0000
+------------------
+
+11-13 16:06 root         INFO     
+
+Training exp_1-layers_32-nodes...
+---------------------------------
+
+11-13 16:07 root         INFO     ------------------
+New Best: [1, 32]
+Score: 9976686.5000
+------------------
+
+11-13 16:07 root         INFO     
+
+Training exp_1-layers_64-nodes...
+---------------------------------
+
+11-13 16:07 root         INFO     ------------------
+New Best: [1, 64]
+Score: 7933867.5000
+------------------
+
+11-13 16:07 root         INFO     
+
+Training exp_1-layers_128-nodes...
+----------------------------------
+
+11-13 16:07 root         INFO     ------------------
+New Best: [1, 128]
+Score: 6306723.0000
+------------------
+
+11-13 16:07 root         INFO     
+
+Training exp_1-layers_256-nodes...
+----------------------------------
+
+11-13 16:08 root         INFO     ------------------
+New Best: [1, 256]
+Score: 5132646.5000
+------------------
+
+11-13 16:08 root         INFO     
+
+Training exp_1-layers_512-nodes...
+----------------------------------
+
+11-13 16:08 root         INFO     ------------------
+New Best: [1, 512]
+Score: 3723834.8750
+------------------
+
+11-13 16:08 root         INFO     
+
+Training exp_2-layers_1-nodes...
+--------------------------------
+
+11-13 16:09 root         INFO     
+
+Training exp_2-layers_2-nodes...
+--------------------------------
+
+11-13 16:09 root         INFO     
+
+Training exp_2-layers_4-nodes...
+--------------------------------
+
+11-13 16:10 root         INFO     
+
+Training exp_2-layers_8-nodes...
+--------------------------------
+
+11-13 16:10 root         INFO     ------------------
+New Best: [2, 8]
+Score: 3115154.0000
+------------------
+
+11-13 16:10 root         INFO     
+
+Training exp_2-layers_16-nodes...
+---------------------------------
+
+11-13 16:11 root         INFO     ------------------
+New Best: [2, 16]
+Score: 1248346.4688
+------------------
+
+11-13 16:11 root         INFO     
+
+Training exp_2-layers_32-nodes...
+---------------------------------
+
+11-13 16:11 root         INFO     ------------------
+New Best: [2, 32]
+Score: 147465.1641
+------------------
+
+11-13 16:11 root         INFO     
+
+Training exp_2-layers_64-nodes...
+---------------------------------
+
+11-13 16:12 root         INFO     ------------------
+New Best: [2, 64]
+Score: 49662.4180
+------------------
+
+11-13 16:12 root         INFO     
+
+Training exp_2-layers_128-nodes...
+----------------------------------
+
+11-13 16:12 root         INFO     ------------------
+New Best: [2, 128]
+Score: 25331.4575
+------------------
+
+11-13 16:12 root         INFO     
+
+Training exp_2-layers_256-nodes...
+----------------------------------
+
+11-13 16:13 root         INFO     ------------------
+New Best: [2, 256]
+Score: 20580.9379
+------------------
+
+11-13 16:13 root         INFO     
+
+Training exp_2-layers_512-nodes...
+----------------------------------
+
+11-13 16:14 root         INFO     ------------------
+New Best: [2, 512]
+Score: 15905.3864
+------------------
+
+11-13 16:14 root         INFO     
+
+Training exp_3-layers_1-nodes...
+--------------------------------
+
+11-13 16:15 root         INFO     
+
+Training exp_3-layers_2-nodes...
+--------------------------------
+
+11-13 16:15 root         INFO     
+
+Training exp_3-layers_4-nodes...
+--------------------------------
+
+11-13 16:16 root         INFO     
+
+Training exp_3-layers_8-nodes...
+--------------------------------
+
+11-13 16:16 root         INFO     
+
+Training exp_3-layers_16-nodes...
+---------------------------------
+
+11-13 16:17 root         INFO     
+
+Training exp_3-layers_32-nodes...
+---------------------------------
+
+11-13 16:17 root         INFO     
+
+Training exp_3-layers_64-nodes...
+---------------------------------
+
+11-13 16:18 root         INFO     
+
+Training exp_3-layers_128-nodes...
+----------------------------------
+
+11-13 16:18 root         INFO     
+
+Training exp_3-layers_256-nodes...
+----------------------------------
+
+11-13 16:19 root         INFO     
+
+Training exp_3-layers_512-nodes...
+----------------------------------
+
+11-13 16:21 root         INFO     
+
+Training exp_4-layers_1-nodes...
+--------------------------------
+
+11-13 16:21 root         INFO     
+
+Training exp_4-layers_2-nodes...
+--------------------------------
+
+11-13 16:22 root         INFO     
+
+Training exp_4-layers_4-nodes...
+--------------------------------
+
+11-13 16:22 root         INFO     
+
+Training exp_4-layers_8-nodes...
+--------------------------------
+
+11-13 16:23 root         INFO     
+
+Training exp_4-layers_16-nodes...
+---------------------------------
+
+11-13 16:23 root         INFO     
+
+Training exp_4-layers_32-nodes...
+---------------------------------
+
+11-13 16:24 root         INFO     
+
+Training exp_4-layers_64-nodes...
+---------------------------------
+
+11-13 16:24 root         INFO     
+
+Training exp_4-layers_128-nodes...
+----------------------------------
+
+11-13 16:25 root         INFO     
+
+Training exp_4-layers_256-nodes...
+----------------------------------
+
+11-13 16:26 root         INFO     
+
+Training exp_4-layers_512-nodes...
+----------------------------------
+
+11-13 16:28 root         INFO     
+
+Training exp_5-layers_1-nodes...
+--------------------------------
+
+11-13 16:29 root         INFO     
+
+Training exp_5-layers_2-nodes...
+--------------------------------
+
+11-13 16:29 root         INFO     
+
+Training exp_5-layers_4-nodes...
+--------------------------------
+
+11-13 16:30 root         INFO     
+
+Training exp_5-layers_8-nodes...
+--------------------------------
+
+11-13 16:30 root         INFO     
+
+Training exp_5-layers_16-nodes...
+---------------------------------
+
+11-13 16:31 root         INFO     
+
+Training exp_5-layers_32-nodes...
+---------------------------------
+
+11-13 16:31 root         INFO     
+
+Training exp_5-layers_64-nodes...
+---------------------------------
+
+11-13 16:32 root         INFO     
+
+Training exp_5-layers_128-nodes...
+----------------------------------
+
+11-13 16:32 root         INFO     
+
+Training exp_5-layers_256-nodes...
+----------------------------------
+
+11-13 16:34 root         INFO     
+
+Training exp_5-layers_512-nodes...
+----------------------------------
+
+11-13 16:37 root         INFO     
+
+Training exp_6-layers_1-nodes...
+--------------------------------
+
+11-13 16:37 root         INFO     
+
+Training exp_6-layers_2-nodes...
+--------------------------------
+
+11-13 16:37 root         INFO     
+
+Training exp_6-layers_4-nodes...
+--------------------------------
+
+11-13 16:38 root         INFO     
+
+Training exp_6-layers_8-nodes...
+--------------------------------
+
+11-13 16:38 root         INFO     
+
+Training exp_6-layers_16-nodes...
+---------------------------------
+
+11-13 16:39 root         INFO     
+
+Training exp_6-layers_32-nodes...
+---------------------------------
+
+11-13 16:39 root         INFO     
+
+Training exp_6-layers_64-nodes...
+---------------------------------
+
+11-13 16:40 root         INFO     
+
+Training exp_6-layers_128-nodes...
+----------------------------------
+
+11-13 16:41 root         INFO     
+
+Training exp_6-layers_256-nodes...
+----------------------------------
+
+11-13 16:42 root         INFO     
+
+Training exp_6-layers_512-nodes...
+----------------------------------
+
+11-13 16:46 root         INFO     
+
+Training exp_7-layers_1-nodes...
+--------------------------------
+
+11-13 16:46 root         INFO     
+
+Training exp_7-layers_2-nodes...
+--------------------------------
+
+11-13 16:47 root         INFO     
+
+Training exp_7-layers_4-nodes...
+--------------------------------
+
+11-13 16:47 root         INFO     
+
+Training exp_7-layers_8-nodes...
+--------------------------------
+
+11-13 16:48 root         INFO     
+
+Training exp_7-layers_16-nodes...
+---------------------------------
+
+11-13 16:48 root         INFO     
+
+Training exp_7-layers_32-nodes...
+---------------------------------
+
+11-13 16:49 root         INFO     
+
+Training exp_7-layers_64-nodes...
+---------------------------------
+
+11-13 16:49 root         INFO     
+
+Training exp_7-layers_128-nodes...
+----------------------------------
+
+11-13 16:50 root         INFO     
+
+Training exp_7-layers_256-nodes...
+----------------------------------
+
+11-13 16:52 root         INFO     
+
+Training exp_7-layers_512-nodes...
+----------------------------------
+
+11-13 16:56 root         INFO     
+
+Training exp_8-layers_1-nodes...
+--------------------------------
+
+11-13 16:56 root         INFO     
+
+Training exp_8-layers_2-nodes...
+--------------------------------
+
+11-13 16:57 root         INFO     
+
+Training exp_8-layers_4-nodes...
+--------------------------------
+
+11-13 16:57 root         INFO     
+
+Training exp_8-layers_8-nodes...
+--------------------------------
+
+11-13 16:58 root         INFO     
+
+Training exp_8-layers_16-nodes...
+---------------------------------
+
+11-13 16:58 root         INFO     
+
+Training exp_8-layers_32-nodes...
+---------------------------------
+
+11-13 16:59 root         INFO     
+
+Training exp_8-layers_64-nodes...
+---------------------------------
+
+11-13 17:00 root         INFO     
+
+Training exp_8-layers_128-nodes...
+----------------------------------
+
+11-13 17:01 root         INFO     
+
+Training exp_8-layers_256-nodes...
+----------------------------------
+
+11-13 17:02 root         INFO     
+
+Training exp_8-layers_512-nodes...
+----------------------------------
+
+11-13 17:07 root         INFO     
+
+Training exp_9-layers_1-nodes...
+--------------------------------
+
+11-13 17:08 root         INFO     
+
+Training exp_9-layers_2-nodes...
+--------------------------------
+
+11-13 17:08 root         INFO     
+
+Training exp_9-layers_4-nodes...
+--------------------------------
+
+11-13 17:09 root         INFO     
+
+Training exp_9-layers_8-nodes...
+--------------------------------
+
+11-13 17:09 root         INFO     
+
+Training exp_9-layers_16-nodes...
+---------------------------------
+
+11-13 17:10 root         INFO     
+
+Training exp_9-layers_32-nodes...
+---------------------------------
+
+11-13 17:10 root         INFO     
+
+Training exp_9-layers_64-nodes...
+---------------------------------
+
+11-13 17:11 root         INFO     
+
+Training exp_9-layers_128-nodes...
+----------------------------------
+
+11-13 17:12 root         INFO     
+
+Training exp_9-layers_256-nodes...
+----------------------------------
+
+11-13 17:14 root         INFO     
+
+Training exp_9-layers_512-nodes...
+----------------------------------
+
+11-13 17:20 root         INFO     Best Configuration: 2 layers and 512 nodes/layer, loss of 15905.3864
+
+11-13 17:20 root         INFO     Satisfactory models for exp
+
+11-13 17:20 root         INFO     Config:[2, 64]	Score:49662.41796875	Params:4353
+
+11-13 17:20 root         INFO     Config:[2, 128]	Score:25331.45751953125	Params:16897
+
+11-13 17:20 root         INFO     Config:[2, 256]	Score:20580.937866210938	Params:66561
+
+11-13 17:20 root         INFO     Config:[2, 512]	Score:15905.386352539062	Params:264193
+
+11-13 17:20 root         INFO     Config:[3, 64]	Score:51947.72265625	Params:8513
+
+11-13 17:20 root         INFO     Config:[3, 128]	Score:36830.37585449219	Params:33409
+
+11-13 17:20 root         INFO     Config:[3, 256]	Score:18588.380737304688	Params:132353
+
+11-13 17:20 root         INFO     Config:[3, 512]	Score:38415.423828125	Params:526849
+
+11-13 17:20 root         INFO     Config:[4, 32]	Score:64160.262451171875	Params:3265
+
+11-13 17:20 root         INFO     Config:[4, 128]	Score:47341.55078125	Params:49921
+
+11-13 17:20 root         INFO     Config:[4, 256]	Score:39836.545837402344	Params:198145
+
+11-13 17:20 root         INFO     Config:[4, 512]	Score:56037.06591796875	Params:789505
+
+11-13 17:20 root         INFO     Config:[5, 32]	Score:74559.93127441406	Params:4321
+
+11-13 17:20 root         INFO     Config:[5, 64]	Score:78219.939453125	Params:16833
+
+11-13 17:20 root         INFO     Config:[6, 64]	Score:64722.4599609375	Params:20993
+
+11-13 17:20 tensorflow   INFO     Assets written to: unit_fns/exp/assets
+
