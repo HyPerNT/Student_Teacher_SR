@@ -16,6 +16,41 @@ import numpy as np
 from utils.language import * # Utilize the basic context-free grammar for math
 import traceback # For some light error-logging, in the worst case
 
+def isSyntacticallyCorrect(expr):
+    stack = [] # Tracks numbers on the stack
+    i = 0 # Tracks position in overall expression, after edits (dropping braces during parsing)
+    # Surround in try-catch, we might be handed invalid syntax and cannot handle it otherwise
+    try:
+        # Parse to end of the expr
+        while i < len(expr):
+            symbol = expr[i] # Get next symbol to process
+            i += 1
+            # Inc i and k since we're now processing it
+            if symbol not in non_literals:  # Evaluate vars, constants
+                if symbol in constants: # Eval constants (e, pi, 0, 1)
+                    stack.append(0)         
+                else: # Encountered a variable, process it
+                    first = expr.index("{")
+                    last = expr.index("}")
+                    stack.append(0)
+                    expr = expr.replace('{', '', 1)
+                    expr = expr.replace('}', '', 1) # Replace braces in expr so next instance of braces can be correctly found
+                    i += last-first-1
+                    # Update i to reflect new position in expr, k to reflect updated position in orig_expr            
+            else: # On unary or binary operators
+                if symbol in binary:
+                    stack.pop()
+                    stack.pop()
+                    stack.append(0)
+                else: # Unary operators
+                    stack.pop()
+                    stack.append(0)
+        # Finished parsing the fn! Get the result (might err here if there's nothing to pop)
+        stack.pop()
+        return True
+    except Exception:
+        return False
+
 
 def EvalPt(expr: str, x: np.ndarray) -> np.ndarray:
     """Evaluates a unit vector x using the expression str

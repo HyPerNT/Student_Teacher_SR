@@ -13,8 +13,23 @@ import numpy as np
 import tensorflow as tf
 import logging
 import timeit # Just so I know how much time I've wasted
+import matplotlib.pyplot as plt
 from datetime import datetime
 
+def graph_data_result(fn):
+    x_train = fn.x_train
+    x = np.sort(x_train, axis=1)
+    a = fn.min
+    b = fn.max
+    data = Eval(fn.fn, x)[:,-1]
+    lin = np.linspace(a, b, x.size)
+    lin = np.reshape(lin, (-1, 1))
+    func = Eval(fn.fn, lin)[:,-1]
+    plt.scatter(x, data)
+    plt.scatter(lin, func)
+    plt.xlim(a, b)
+    plt.show()
+    plt.savefig(f"./{FIG_DIR}/{fn.fn}.png")
 
 def init():
     """Pre-processing code. Runs before main() to do any setup"""
@@ -68,18 +83,20 @@ def init():
 def main():
     start = timeit.default_timer()
     # bf_unit_nns()
+    print(eval.isSyntacticallyCorrect('X{0}S'))
+    print(eval.isSyntacticallyCorrect("S"))
 
-    models = loadNNs(abs=False, acos=False, asin=False, atan=False, exp=False, log=False)
+    models = loadNNs(abs=False, acos=False, asin=False, atan=False, cos=False, exp=False, log=False)
     for m in models:
         for l in m.layers:
             l.trainable = False
     logging.info(f'Loaded unit student models')
 
     # fn = mystery_function("0>>x{0}0>>x{1}^*/", 2, True, scale = 10)
-    fn = mystery_function("x{0}S", 1, True, scale=10, sample_size=1_000)
+    fn = mystery_function("X{0}S", 1, True, min_x=-5, max_x=5, sample_size=1_000)
     # fn = mystery_function("x{0}x{1}*", 2, True, scale=10, sample_size=10_000)
     logging.info(f'Mystery function generated')
-
+    graph_data_result(fn)
 
     # Let's just go with a random teacher architecture and use it to work with for now
     teacher = getNN(10, 256, fn.shape, name='Teacher')
@@ -88,32 +105,35 @@ def main():
     logging.info(f'Teacher has {t_params} trainable params')
     
     teacher.compile(optimizer=tf.keras.optimizers.Adam(), loss='mean_squared_error') # Compile it
-    teacher.fit(fn.x_train, fn.y_train, epochs=5) # Train
+    teacher.fit(fn.x_train, fn.y_train, epochs=EPOCHS) # Train
     teacher.evaluate(fn.x_test, fn.y_test)
-
+    plotNN(fn, teacher)
     logging.info(f"Beginning knowledge distillation step")
 
-    for i in range(6):
-        student = construct_student(fn.shape, i, "Student", models)
-        logging.info(f'Student model {i} generated')
-        s_params = np.sum([np.prod(v.get_shape().as_list()) for v in student.trainable_variables])
-        logging.info(f'Student has {s_params} trainable params\nCR: \
-                {s_params/t_params:.5f}')
-        distiller = Distiller(student=student, teacher=teacher)
-        distiller.compile(
-            optimizer=tf.keras.optimizers.Adam(),
-            metrics=[tf.keras.metrics.MeanSquaredError()],
-            student_loss_fn=tf.keras.losses.MeanSquaredError(),
-            distillation_loss_fn=tf.keras.losses.MeanSquaredError(),
-            alpha=0.1,
-            temperature=10,
-        )
+    i=1
+    student = construct_student_AST(fn.shape, "sin", models, ["S"], "0S")
+    logging.info(f'Student model {i} generated')
+    s_params = np.sum([np.prod(v.get_shape().as_list()) for v in student.trainable_variables])
+    logging.info(f'Student has {s_params} trainable params\nCR: \
+            {s_params/t_params:.5f}')
+    distiller = Distiller(student=student, teacher=teacher)
+    distiller.compile(
+        optimizer=tf.keras.optimizers.Adam(),
+        metrics=[tf.keras.metrics.MeanSquaredError()],
+        student_loss_fn=tf.keras.losses.MeanSquaredError(),
+        distillation_loss_fn=tf.keras.losses.MeanSquaredError(),
+        alpha=0.1,
+        temperature=10,
+    )
 
-        # Distill teacher to student
-        history = distiller.fit(fn.x_train, fn.y_train, epochs=EPOCHS)
+    # Distill teacher to student
+    cb = haltCallback()
+    distiller.fit(fn.x_train, fn.y_train, epochs=20, callbacks=['cb'])
 
-        # Evaluate student on test dataset
-        distiller.evaluate(fn.x_test, fn.y_test)
+    # Evaluate student on test dataset
+    distiller.evaluate(fn.x_test, fn.y_test)
+    plotNN(fn, student)
+
     stop = timeit.default_timer()
 
     minutes, seconds = divmod(stop-start, 60.0)

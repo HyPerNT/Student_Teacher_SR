@@ -4,8 +4,13 @@
 import tensorflow as tf
 import numpy as np
 from utils.conf import *
-from utils.eval import Eval
+from utils.eval import Eval, isSyntacticallyCorrect
 
+class haltCallback(tf.keras.callbacks.Callback):
+    def on_epoch_end(self, epoch, logs={}):
+        if(logs.get('loss') <= 0.05):
+            print("\n\n\nReached 0.05 loss value so cancelling training!\n\n\n")
+            self.model.stop_training = True
 class mystery_function():
     """A class to model a given fn, also handles creation/storage of data to train/test on"""
     def __init__(self, fn, dim, gen_data=False, sample_size=DEFAULT_SAMPLE_SIZE, min_x=0, max_x=100, test_size=DEFAULT_TEST_SIZE, noisy=False, noise_factor=DEFAULT_NOISE, outlier_rate=DEFAULT_OUTLIER):
@@ -25,6 +30,8 @@ class mystery_function():
         self.fn = fn
         self.dim = dim
         self.shape = (dim, )
+        self.min = min_x
+        self.max = max_x
         if gen_data:
             self.gen_data(sample_size=sample_size, test_size=test_size,  min_x=min_x, max_x=max_x, noisy=noisy, noise_factor=noise_factor, outlier_rate=outlier_rate)
 
@@ -75,7 +82,9 @@ class mystery_function():
         if outlier_rate > 0:
             mask = np.random.choice([0,1],size=self.x_train.shape, p=((1-outlier_rate), outlier_rate)).astype(np.bool)
             scale_factor = np.max(self.x_train) - np.min(self.x_train)
-            r = np.random.rand(*self.x_train.shape)*np.max(self.x_train)
+            r = np.random.rand(*self.x_train.shape)*scale_factor
+            center_factor = (max_x-min_x)/2
+            r = r - center_factor
             self.x_train[mask] = r[mask]
 
             mask = np.random.choice([0,1],size=self.y_train.shape, p=((1-outlier_rate), outlier_rate)).astype(np.bool)
@@ -179,9 +188,9 @@ class Distiller(tf.keras.Model):
         results.update({"student_loss": student_loss})
         return results
 
-class FnLayer(tf.keras.layers.Layer):
+class FnsLayer(tf.keras.layers.Layer):
     def __init__(self, input_dim, NNs, repeats=1):
-        super(FnLayer, self).__init__()
+        super(FnsLayer, self).__init__()
         self.units = input_dim + repeats*len(NNs)
         self.NNs = NNs
         self.repeats = repeats
@@ -234,15 +243,78 @@ class FnLayer(tf.keras.layers.Layer):
         # Return a matrix like [in[0], in[1], ..., in[n], unit[0], unit[1], ..., unit[m]
         return result + mask
 
+class FnLayer(tf.keras.layers.Layer):
+    def __init__(self, input_dim, NN):
+        super(FnLayer, self).__init__()
+        self.units = input_dim + 1
+        self.NN = NN
+
+    def build(self, input_shape):
+        # Our w and b matrices shouldn't do anything, the Dense layers do the work for us
+        self.w = self.add_weight(
+            shape=(input_shape[-1], self.units),
+            initializer="glorot_uniform",
+            trainable=True,
+        )
+        self.b = self.add_weight(
+            shape=(self.units,), initializer="zeros", trainable=True
+        )
+    def call(self, inputs): 
+        """This is broken"""
+        # Get our input from the dense layer
+        mat = tf.matmul(inputs, self.w) + self.b
+
+        # Init result so it has the correct shape
+        result = self.NN(mat[0])[0]
+        # This basically makes the shape correct, I think? But it breaks our training apparently
+
+        # Make a tensor of zeroes to pad with, pad result so the top rows = the input (for passing past layers forward),
+        # bottom rows = the answers we've just obtained from the unit students on this layer
+        sh = result.shape[0]
+        padding = tf.constant([[0,0], [self.units - sh, 0]])
+        result = tf.reshape(result, [-1, sh])
+        result = tf.pad(result, padding, "CONSTANT")
+
+        # Make an identity matrix with some 0s. Multiply by the original input to drop the bottom rows (unnecessary,
+        # they should be nonsense anyway for our purposes)
+        diag = [1.0 if i < inputs.shape[1] else 0.0 for i in range(self.units)]
+        mask = tf.linalg.tensor_diag(diag)
+        mask = tf.matmul(mat, mask)
+        result = tf.reshape(result, [-1, result.shape[1]])
+
+        # Return a matrix like [in[0], in[1], ..., in[n], unit[0], unit[1], ..., unit[m]
+        return result + mask
+
 # Builds a student of desired depth, depth is proportional to the nesting of operations/height of the AST to read
-def construct_student(in_shape, layers, name, NNs):
+def construct_student_big(in_shape, layers, name, NNs):
     # Make template NN
     model = tf.keras.Sequential([tf.keras.Input(shape=in_shape)],name=name)
 
     # Iteratively add layers
     for i in range(layers):
-        model.add(FnLayer(in_shape[0] if i < 1 else model.layers[i-1].output_shape[1], NNs))
+        model.add(FnsLayer(in_shape[0] if i < 1 else model.layers[i-1].output_shape[1], NNs))
 
+    # Add final layer for regression
+    model.add(tf.keras.layers.Dense(1))
+
+    return model
+
+# Builds a student using an AST
+def construct_student_AST(in_shape, name, NNs, syntax, expr):
+    if not isSyntacticallyCorrect(expr):
+        return None
+    # Make template NN
+    model = tf.keras.Sequential([tf.keras.Input(shape=in_shape)],name=name)
+
+    expr = expr.replace("0", '')
+
+    # Iteratively add layers
+    i = 0
+    while i < len(expr):
+        NN = NNs[syntax.index(expr[i])]
+        model.add(FnLayer(in_shape[0] if i < 1 else model.layers[i-1].output_shape[1], NN))
+        expr = expr.replace(expr[i], 'x', 1)
+        i+=1
     # Add final layer for regression
     model.add(tf.keras.layers.Dense(1))
 

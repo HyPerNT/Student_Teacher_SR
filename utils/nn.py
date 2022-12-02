@@ -149,10 +149,10 @@ def plotNN(fn, nn):
     # Show ticks in the left and lower axes only
     ax.xaxis.set_ticks_position('bottom')
     ax.yaxis.set_ticks_position('left')
-    plt.plot(x, y1, label = "Ground Truth", color = "blue")
-    plt.plot(x, y2, label = "Predicted", color = "red")
+    plt.scatter(x, y1, label = "Ground Truth", color = "blue")
+    plt.scatter(x, y2, label = "Predicted", color = "red")
     err = y2-y1
-    plt.plot(x, err, label = "Error", linestyle = "--", color = "green")
+    plt.scatter(x, err, label = "Error", linestyle = "--", color = "green")
 
 
     plt.legend()
